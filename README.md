@@ -14,11 +14,11 @@ Except this time, its gonna be
 
 ## Package commands (npm)
 
-### Vite:-
+### 1.Vite:-
 
 `npm create vite@latest`
 
-### Tailwind for vite:-
+### 2.Tailwind for vite:-
 
 Step 1: `npm install tailwindcss @tailwindcss/vite`
 
@@ -42,10 +42,12 @@ Step 3:
 index.css
 `@import "tailwindcss";`
 
-### react spring parallax
-step :-
+### 3.React spring parallax
+step 1:-
 `npm i @react-spring/parallax`
 
 step 2:-
-app.jsx
-`import { Parallax, ParallaxLayer } from '@react-spring/parallax'`
+[app.jsx]
+```
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
+```
