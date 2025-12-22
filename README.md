@@ -20,8 +20,10 @@ Except this time, its gonna be
 
 ### Tailwind for vite:-
 
-`npm install tailwindcss @tailwindcss/vite`
+Step 1: `npm install tailwindcss @tailwindcss/vite`
 
+Step 2:
+[vite.config.js]
 ```
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -36,3 +38,14 @@ export default defineConfig({
 })
 
 ```
+Step 3:
+index.css
+`@import "tailwindcss";`
+
+### react spring parallax
+step :-
+`npm i @react-spring/parallax`
+
+step 2:-
+app.jsx
+`import { Parallax, ParallaxLayer } from '@react-spring/parallax'`
