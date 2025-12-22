@@ -43,10 +43,10 @@ index.css
 `@import "tailwindcss";`
 
 ### 3.React spring parallax
-step 1:-
+step 1:
 `npm i @react-spring/parallax`
 
-step 2:-
+step 2:
 [app.jsx]
 ```
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'

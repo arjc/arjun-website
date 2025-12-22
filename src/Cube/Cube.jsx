@@ -22,7 +22,7 @@ const Cube = () => {
           <div className="cube-face bottom">{text2}</div>
         </div>
       </div>
-      <span className="-z-99 opacity-25 absolute text-[12vh] font-bold text-white pointer-events-none xl:text-[15em] rotate-90 xl:rotate-0">
+      <span className="-z-99 opacity-25 absolute text-[12vh] font-bold text-red-400 pointer-events-none xl:text-[15em] rotate-90 xl:rotate-0">
         arjunliji.me
       </span>
       <div className="absolute animate-bounce bottom-10 flex opacity-35">
