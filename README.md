@@ -2,4 +2,10 @@
 I recently lost the source code to my original react site [arjunliji.free.nf](https://arjunliji.free.nf)
 
 
-# Vite + React + Tailwind setup
+# Package commands (npm)
+
+## Vite
+`npm create vite@latest`
+
+## Tailwind for vite
+`npm install tailwindcss @tailwindcss/vite`
