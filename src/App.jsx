@@ -40,7 +40,7 @@ function App() {
         <div className="flex items-center justify-between p-4 h-20">
           <div className="flex items-center gap-2">
             <img className="h-12 rounded-full" src="src/assets/face.webp" alt="me" />
-            <span className="text-xl font-bold">arjunliji</span>
+            <span className="text-xl font-bold">arjc.me</span>
           </div>
           {/* desktop */}
           <div className="hidden lg:flex gap-10 text-lg mx-6">
@@ -61,7 +61,7 @@ function App() {
       {/* bakground */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
         <span className="text-[12vh] font-bold xl:text-[15em] rotate-90 xl:rotate-0"
-          style={{ opacity: 0.25 * (1 - p) }}>arjunliji.me</span>
+          style={{ opacity: 0.25 * (1 - p) }}>arjc.me</span>
       </div>
       <Parallax ref={parallaxRef} className="relative z-10" pages={3} style={{top: 0, left: 0}}
         config={{ mass: 1, tension: 280, friction: 20 }}>
