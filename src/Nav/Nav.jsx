@@ -1,49 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Nav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const Nav = ({ isOpen, setIsOpen }) => {
   return (
     <>
-      {/* Mobile Hamburger Button - fixed in header */}
-      <div className="lg:hidden fixed top-5 right-4 z-50">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-2 focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? (
-            <svg
-              className="w-8 h-8 text-cyan-400 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="w-8 h-8 text-cyan-400 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </button>
-      </div>
-
       {/* Mobile Menu Overlay */}
       <div
         className={`lg:hidden fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center gap-12 transition-all duration-300 ease-in-out ${

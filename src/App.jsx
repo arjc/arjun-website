@@ -15,6 +15,7 @@ import Contact from "./Contact/Contact.jsx";
 function App() {
   const parallaxRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,13 +89,49 @@ function App() {
           <div className="hidden lg:flex gap-10 text-lg mx-6">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
-            <a href="#blogs">Blogs</a>
+            <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a>
             <a href="#contact">Contact</a>
           </div>
+          {/* Mobile Hamburger Button */}
+          <a
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden border-none mx-4 cursor-pointer"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <svg
+                className="w-8 h-8 text-white transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-8 h-8 text-white transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </a>
         </div>
       </div>
 
-      {/* Fixed background text - fades out as you scroll */}
+      {/* Fixed background */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
         <span
           className="text-[12vh] font-bold xl:text-[15em] rotate-90 xl:rotate-0"
@@ -137,7 +174,7 @@ function App() {
         </ParallaxLayer>
         {/* Nav */}
         <ParallaxLayer factor={1} sticky={{ start: 0.84, end: 5.75 }}>
-          <Nav />
+          <Nav isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
         </ParallaxLayer>
         {/* Project */}
         <ParallaxLayer speed={1} offset={4} className="h-screen flex">
