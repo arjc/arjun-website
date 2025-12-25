@@ -6,7 +6,7 @@ const Cube = () => {
   const dev = <span className="bg-black p-1">DEVELOPER</span>;
   const des = <span className="bg-black p-1">DESIGNER</span>;
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen relative z-10">
+    <div className="flex flex-col items-center justify-center w-screen h-screen z-10">
       <div className="cube-container">
         <div className="cube">
           <div className="cube-face front">{face}</div>
@@ -18,6 +18,7 @@ const Cube = () => {
         </div>
       </div>
       {/* arroww */}
+
       <div className="absolute animate-bounce bottom-15 flex opacity-35">
         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
