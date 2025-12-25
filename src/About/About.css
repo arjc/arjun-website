@@ -1,0 +1,275 @@
+.about-container {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  align-items: center;
+  padding: 4rem 2rem;
+  max-width: 75vw;
+  margin: 0 auto;
+}
+
+.about-image {
+  display: flex;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.about-header h1 {
+  font-size: 5rem;
+  margin: 0;
+  color: #ffffffde;
+}
+
+.about-description {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #b0b0b0;
+  font-weight: 300;
+  margin: 0;
+}
+
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skills-category {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  /* justify-content: space-between; */
+  gap: 0.8rem;
+}
+
+.skills-category-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #d0d0d0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skill-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 2px solid;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  color: inherit;
+}
+
+
+/* Language-specific colors */
+.skill-python {
+  border-color: #3776ab;
+  color: #3776ab;
+}
+
+.skill-python:hover {
+  background-color: rgba(55, 118, 171, 0.1);
+}
+
+.skill-javascript {
+  border-color: #f7df1e;
+  color: #f7df1e;
+}
+
+.skill-javascript:hover {
+  background-color: rgba(247, 223, 30, 0.1);
+}
+
+.skill-cpp {
+  border-color: #00599c;
+  color: #00599c;
+}
+
+.skill-cpp:hover {
+  background-color: rgba(0, 89, 156, 0.1);
+}
+
+.skill-java {
+  border-color: #ed8936;
+  color: #ed8936;
+}
+
+.skill-java:hover {
+  background-color: rgba(237, 137, 54, 0.1);
+}
+
+.skill-html {
+  border-color: #e34c26;
+  color: #e34c26;
+}
+
+.skill-html:hover {
+  background-color: rgba(227, 76, 38, 0.1);
+}
+
+.skill-css {
+  border-color: #563d7c;
+  color: #563d7c;
+}
+
+.skill-css:hover {
+  background-color: rgba(86, 61, 124, 0.1);
+}
+
+.skill-react {
+  border-color: #61dafb;
+  color: #61dafb;
+}
+
+.skill-react:hover {
+  background-color: rgba(97, 218, 251, 0.1);
+}
+
+.skill-nodejs {
+  border-color: #68a063;
+  color: #68a063;
+}
+
+.skill-nodejs:hover {
+  background-color: rgba(104, 160, 99, 0.1);
+}
+
+.skill-mysql {
+  border-color: #00758f;
+  color: #00758f;
+}
+
+.skill-mysql:hover {
+  background-color: rgba(0, 117, 143, 0.1);
+}
+
+.skill-mongodb {
+  border-color: #13aa52;
+  color: #13aa52;
+}
+
+.skill-mongodb:hover {
+  background-color: rgba(19, 170, 82, 0.1);
+}
+
+.skill-git {
+  border-color: #f1502f;
+  color: #f1502f;
+}
+
+.skill-git:hover {
+  background-color: rgba(241, 80, 47, 0.1);
+}
+
+.skill-docker {
+  border-color: #2496ed;
+  color: #2496ed;
+}
+
+.skill-docker:hover {
+  background-color: rgba(36, 150, 237, 0.1);
+}
+
+.skill-aws {
+  border-color: #ff9900;
+  color: #ff9900;
+}
+
+.skill-aws:hover {
+  background-color: rgba(255, 153, 0, 0.1);
+}
+
+.skill-tensorflow {
+  border-color: #ff6f00;
+  color: #ff6f00;
+}
+
+.skill-tensorflow:hover {
+  background-color: rgba(255, 111, 0, 0.1);
+}
+
+.skill-aiml {
+  border-color: #4285f4;
+  color: #4285f4;
+}
+
+.skill-aiml:hover {
+  background-color: rgba(66, 133, 244, 0.1);
+}
+
+.skill-express {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.skill-express:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.skill-figma {
+  border-color: #f24e1e;
+  color: #f24e1e;
+}
+
+.skill-figma:hover {
+  background-color: rgba(242, 78, 30, 0.1);
+}
+
+.skill-flask {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.skill-flask:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    max-width: 100%;
+  }
+
+  .about-image {
+    order: -1;
+  }
+
+  .about-header h1 {
+    font-size: 2rem;
+  }
+
+  .about-description {
+    font-size: 0.95rem;
+  }
+}

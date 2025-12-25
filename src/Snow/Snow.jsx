@@ -1,3 +1,4 @@
+// AI generated code (only snow effect)
 import "./Snow.css";
 import { useEffect, useState } from "react";
 

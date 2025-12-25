@@ -10,21 +10,26 @@
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  animation: rotateCubeAlt 10s linear infinite;
+  animation: rotateCubeAlt 12s ease-in-out infinite;
+  will-change: transform;
+  backface-visibility: visible;
 }
 
 .cube-face {
-  border-radius: 5px;
+  border-radius: 0px;
   position: absolute;
-  width: 299px;
-  height: 299px;
-  background: #009b6741;
+  width: 300px;
+  height: 300px;
+  background: transparent;
+  border: 3px solid #004e9b85;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.75em;
   color: #fff;
+  backface-visibility: visible;
+  will-change: transform;
 }
 
 .cube-face:active {
@@ -101,10 +106,40 @@
 }
 
 @keyframes rotateCubeAlt {
+  /* Front face */
   0% {
-    transform: rotateX(0) rotateY(0) rotate(0);
+    transform: rotateX(-8deg) rotateY(12deg);
   }
-  to {
-    transform: rotateX(360deg) rotateY(360deg) rotate(-360deg);
+  /* Right face (DEVELOPER) */
+  12.5% {
+    transform: rotateY(-78deg) rotateX(-10deg);
+  }
+  /* Front face */
+  25% {
+    transform: rotateX(-8deg) rotateY(12deg);
+  }
+  /* Top face (DESIGNER) */
+  37.5% {
+    transform: rotateX(-80deg) rotateY(15deg);
+  }
+  /* Front face */
+  50% {
+    transform: rotateX(-8deg) rotateY(12deg);
+  }
+  /* Left face (DEVELOPER) */
+  62.5% {
+    transform: rotateY(102deg) rotateX(-10deg);
+  }
+  /* Front face */
+  75% {
+    transform: rotateX(-8deg) rotateY(12deg);
+  }
+  /* Bottom face (DESIGNER) */
+  87.5% {
+    transform: rotateX(100deg) rotateY(15deg);
+  }
+  /* Back to front face */
+  100% {
+    transform: rotateX(-8deg) rotateY(12deg);
   }
 }
