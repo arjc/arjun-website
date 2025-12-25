@@ -34,16 +34,16 @@ function App() {
     <>
       <Snow />
       {/* overlau */}
-      <div className="fixed inset-0 bg-black pointer-events-none z-[-1]" style={{ opacity: p * 0.8 }} />
+      {/* <div className="fixed inset-0 bg-black pointer-events-none z-[-1]" style={{ opacity: p * 0.8 }} /> */}
       {/* navbar */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
         <div className="flex items-center justify-between p-4 h-20">
           <div className="flex items-center gap-2">
-            <img className="h-12 rounded-full" src="src/assets/face.webp" alt="me" />
-            <span className="text-xl font-bold">arjc.me</span>
+            <img className="h-12 rounded-full" src="public/images/face.webp" alt="me" />
+            <span className="text-4xl font-bold">arjc.me</span>
           </div>
           {/* desktop */}
-          <div className="hidden lg:flex gap-10 text-lg mx-6">
+          <div className="hidden lg:flex gap-10 text-2xl mx-6">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a>
