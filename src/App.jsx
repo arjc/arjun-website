@@ -6,6 +6,7 @@ import Nav from "./Nav/Nav.jsx";
 import Cube from "./Cube/Cube.jsx";
 import Snow from "./Snow/Snow.jsx";
 import Action from "./Action/Action.jsx";
+import faceImg from "./assets/images/face.webp";
 
 function App() {
   const parallaxRef = useRef(null);
@@ -39,7 +40,7 @@ function App() {
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
         <div className="flex items-center justify-between p-4 h-20">
           <div className="flex items-center gap-2">
-            <img className="h-12 rounded-full" src="public/images/face.webp" alt="me" />
+            <img className="h-12 rounded-full" src={faceImg} alt="me" />
             <span className="text-4xl font-bold">arjc.me</span>
           </div>
           {/* desktop */}

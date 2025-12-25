@@ -1,7 +1,8 @@
 import "./Cube.css";
+import faceImg from "../assets/images/face.webp";
 
 const Cube = () => {
-  const face = <img className="h-10 sm:h-50 rounded-full" src="public/images/face.webp" alt="me" />;
+  const face = <img className="h-10 sm:h-50 rounded-full" src={faceImg} alt="me" />;
   const dev = <span className="bg-black p-1">DEVELOPER</span>;
   const des = <span className="bg-black p-1">DESIGNER</span>;
   return (
