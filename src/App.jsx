@@ -38,9 +38,9 @@ function App() {
       {/* <div className="fixed inset-0 bg-black pointer-events-none z-[-1]" style={{ opacity: p * 0.8 }} /> */}
       {/* navbar */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
-        <div className="flex items-center justify-between px-20 h-20 lg:h-25">
-          <div className="flex items-center gap-2">
-            <img className="h-12 rounded-full" src={faceImg} alt="me" />
+        <div className="flex items-center justify-between px-10 h-15 lg:h-25">
+          <div className="flex items-center gap-2" onClick={() => parallaxRef.current.scrollTo(0)} style={{ cursor: "pointer" }}>
+            <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="me" />
             <span className="text-4xl font-bold">arjc.me</span>
           </div>
           {/* desktop */}
@@ -66,7 +66,7 @@ function App() {
       </div>
       {/* navbar mob */}
       <Nav isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
-      <Parallax ref={parallaxRef} className="relative z-10" pages={5} style={{top: 0, left: 0}} config={{ mass: 1, tension: 280, friction: 20 }}>
+      <Parallax ref={parallaxRef} className="z-10" pages={5} style={{top: 0, left: 0}} config={{ mass: 1, tension: 280, friction: 20 }}>
         {/* spring =========================================================== */}
         
         {/* hero */}
@@ -75,12 +75,12 @@ function App() {
         </ParallaxLayer>
 
         {/* action */}
-        <ParallaxLayer offset={1} factor={1}>
+        <ParallaxLayer speed={1} offset={1} factor={1}>
           <Action />
         </ParallaxLayer>
 
         {/* footr */}
-        <ParallaxLayer offset={4.75} factor={0.25}>
+        <ParallaxLayer speed={1} offset={4.75} factor={0.25}>
           <Footer />
         </ParallaxLayer>
         {/* spring =========================================================== */}
