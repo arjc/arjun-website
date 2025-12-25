@@ -4,7 +4,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import Footer from "./Footer/Footer.jsx";
 import Nav from "./Nav/Nav.jsx";
 import Cube from "./Cube/Cube.jsx";
-// import Snow from "./Snow/Snow.jsx";
+import Snow from "./Snow/Snow.jsx";
 import Action from "./Action/Action.jsx";
 import faceImg from "./assets/images/face.webp";
 
@@ -33,12 +33,12 @@ function App() {
 
   return (
     <>
-      {/* <Snow /> */}
+      <Snow />
       {/* overlau */}
       {/* <div className="fixed inset-0 bg-black pointer-events-none z-[-1]" style={{ opacity: p * 0.8 }} /> */}
       {/* navbar */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
-        <div className="flex items-center justify-between px-20 h-30">
+        <div className="flex items-center justify-between px-20 h-20 lg:h-25">
           <div className="flex items-center gap-2">
             <img className="h-12 rounded-full" src={faceImg} alt="me" />
             <span className="text-4xl font-bold">arjc.me</span>
