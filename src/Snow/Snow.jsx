@@ -1,57 +1,28 @@
-// AI generated code (only snow effect)
 import "./Snow.css";
 import { useEffect, useState } from "react";
 
 const Snow = () => {
-  const [snowflakes, setSnowflakes] = useState([]);
+  const [flakes, setFlakes] = useState([]);
 
   useEffect(() => {
-    const createSnowflake = () => {
-      return {
-        id: Math.random(),
-        left: Math.random() * 100,
-        delay: Math.random() * 0.5,
-        duration: 10 + Math.random() * 10,
-        opacity: Math.random() * 0.5 + 0.5,
-        size: Math.random() * 10 + 5,
-      };
-    };
-
-    // Create initial snowflakes
-    const initialSnowflakes = Array.from({ length: 50 }, createSnowflake);
-    setSnowflakes(initialSnowflakes);
-
-    // Add new snowflakes periodically
-    const interval = setInterval(() => {
-      setSnowflakes((prev) => [
-        ...prev.slice(-49),
-        createSnowflake(),
-      ]);
-    }, 300);
-
-    return () => clearInterval(interval);
+    const make = () => ({
+      id: Math.random(), left: Math.random() * 100, delay: Math.random() * 0.5,
+      duration: 10 + Math.random() * 10, opacity: Math.random() * 0.5 + 0.5, size: Math.random() * 10 + 5
+    });
+    setFlakes(Array.from({ length: 50 }, make));
+    const i = setInterval(() => setFlakes(p => [...p.slice(-49), make()]), 300);
+    return () => clearInterval(i);
   }, []);
 
   return (
     <div className="snow-container">
-      {snowflakes.map((snowflake) => (
-        <div
-          key={snowflake.id}
-          className="snowflake"
-          style={{
-            left: `${snowflake.left}%`,
-            animationDelay: `${snowflake.delay}s`,
-            animationDuration: `${snowflake.duration}s`,
-            opacity: snowflake.opacity,
-            width: `${snowflake.size}px`,
-            height: `${snowflake.size}px`,
-          }}
-        >
-          .
-        </div>
+      {flakes.map(f => (
+        <div key={f.id} className="snowflake" style={{
+          left: `${f.left}%`, animationDelay: `${f.delay}s`, animationDuration: `${f.duration}s`,
+          opacity: f.opacity, width: `${f.size}px`, height: `${f.size}px`
+        }}>.</div>
       ))}
     </div>
   );
 };
-
 export default Snow;

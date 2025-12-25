@@ -4,13 +4,8 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import Footer from "./Footer/Footer.jsx";
 import Nav from "./Nav/Nav.jsx";
 import Cube from "./Cube/Cube.jsx";
-import Project from "./Project/Project.jsx";
-import About from "./About/About.jsx";
-import Timeline from "./Timeline/Timeline.jsx";
 import Snow from "./Snow/Snow.jsx";
 import Action from "./Action/Action.jsx";
-import Contact from "./Contact/Contact.jsx";
-// import spidey from "./assets/spiderman.webp";;
 
 function App() {
   const parallaxRef = useRef(null);
@@ -19,184 +14,73 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (parallaxRef.current) {
-        const container = parallaxRef.current.container.current;
-        const scrollTop = container.scrollTop;
-        const viewportHeight = container.clientHeight;
-        // Calculate progress from page 1 to page 2 (0 to 1)
-        const progress = Math.min(Math.max(scrollTop / viewportHeight, 0), 1);
-        setScrollProgress(progress);
-      }
+      if (!parallaxRef.current) return;
+      const c = parallaxRef.current.container.current;
+      setScrollProgress(Math.min(Math.max(c.scrollTop / c.clientHeight, 0), 1));
     };
-
-    // Add scroll listener to parallax container
-    const checkAndAddListener = () => {
-      if (parallaxRef.current?.container?.current) {
-        parallaxRef.current.container.current.addEventListener(
-          "scroll",
-          handleScroll
-        );
-      }
-    };
-
-    // Small delay to ensure parallax is mounted
-    const timeout = setTimeout(checkAndAddListener, 100);
-
+    const t = setTimeout(() => {
+      parallaxRef.current?.container?.current?.addEventListener("scroll", handleScroll);
+    }, 100);
     return () => {
-      clearTimeout(timeout);
-      if (parallaxRef.current?.container?.current) {
-        parallaxRef.current.container.current.removeEventListener(
-          "scroll",
-          handleScroll
-        );
-      }
+      clearTimeout(t);
+      parallaxRef.current?.container?.current?.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Calculate text opacity (fade from 0.25 to 0 with easing)
-  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-  const easedProgress = easeOutCubic(scrollProgress);
-  const textOpacity = 0.25 * (1 - easedProgress);
-
-  // Calculate background darkness (from 0 to 0.8 overlay)
-  const overlayOpacity = easedProgress * 0.8;
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  const p = ease(scrollProgress);
 
   return (
     <>
-      {/* <Snow /> */}
-
-      {/* Dark overlay that increases as you scroll - behind content */}
-      <div
-        className="fixed inset-0 bg-black pointer-events-none z-[-1]"
-        style={{
-          opacity: overlayOpacity,
-          transition: "opacity 0.1s ease-out",
-        }}
-      />
-
-      {/* Fixed header bar with logo and hamburger */}
+      <Snow />
+      {/* overlau */}
+      <div className="fixed inset-0 bg-black pointer-events-none z-[-1]" style={{ opacity: p * 0.8 }} />
+      {/* navbar */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
-        <div className="flex flex-row items-center justify-between p-4 h-20">
-          <div className="flex flex-row items-center gap-2">
-            <img
-              className="h-12 rounded-full"
-              src="src/assets/face.webp"
-              alt="arjunliji"
-            />
+        <div className="flex items-center justify-between p-4 h-20">
+          <div className="flex items-center gap-2">
+            <img className="h-12 rounded-full" src="src/assets/face.webp" alt="me" />
             <span className="text-xl font-bold">arjunliji</span>
           </div>
-          {/* Desktop nav links */}
+          {/* desktop */}
           <div className="hidden lg:flex gap-10 text-lg mx-6">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a>
             <a href="#contact">Contact</a>
           </div>
-          {/* Mobile Hamburger Button */}
-          <a
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden border-none mx-4 cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <svg
-                className="w-8 h-8 text-white transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-8 h-8 text-white transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
+          {/* hamburgr */}
+          <a onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden mx-4 cursor-pointer">
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
           </a>
         </div>
       </div>
-
-      {/* Fixed background */}
+      {/* bakground */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
-        <span
-          className="text-[12vh] font-bold xl:text-[15em] rotate-90 xl:rotate-0"
-          style={{
-            opacity: textOpacity,
-            transition: "opacity 0.1s ease-out",
-          }}
-        >
-          arjunliji.me
-        </span>
+        <span className="text-[12vh] font-bold xl:text-[15em] rotate-90 xl:rotate-0"
+          style={{ opacity: 0.25 * (1 - p) }}>arjunliji.me</span>
       </div>
-
-      <Parallax
-        ref={parallaxRef}
-        className="relative z-10"
-        pages={7}
-        style={{ top: "0", left: "0" }}
-        config={{ mass: 1, tension: 280, friction: 20 }}
-      >
-        {/* hero - Cube with parallax effect */}
-        <ParallaxLayer
-          speed={3}
-          factor={1}
-          className="h-screen flex items-center justify-center"
-        >
+      <Parallax ref={parallaxRef} className="relative z-10" pages={3} style={{top: 0, left: 0}}
+        config={{ mass: 1, tension: 280, friction: 20 }}>
+        {/* hero */}
+        <ParallaxLayer speed={3} className="h-screen flex items-center justify-center">
           <Cube />
         </ParallaxLayer>
-
-        {/* Action */}
+        {/* action */}
         <ParallaxLayer offset={1} className="h-screen flex">
           <Action />
         </ParallaxLayer>
-        {/* ABOUT */}
-        <ParallaxLayer offset={2} className="h-screen flex">
-          <About />
-        </ParallaxLayer>
-        {/* TIMELINE */}
-        <ParallaxLayer offset={3} className="h-screen flex">
-          <Timeline />
-        </ParallaxLayer>
-        {/* Nav */}
-        <ParallaxLayer factor={1} sticky={{ start: 0.84, end: 5.75 }}>
+        {/* navbar */}
+        <ParallaxLayer sticky={{ start: 0.84, end: 2 }} className="pointer-events-none">
           <Nav isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
         </ParallaxLayer>
-        {/* Project */}
-        <ParallaxLayer speed={1} offset={4} className="h-screen flex">
-          <Project />
+        {/* footr */}
+        <ParallaxLayer offset={2}>
+          <Footer />
         </ParallaxLayer>
-        {/* Blogs */}
-        <ParallaxLayer offset={5} className="h-screen flex">
-          <div className="flex flex-col items-center justify-center w-screen h-screen py-10 gap-20">
-            <h1 className="text-5xl font-bold mb-4 text-white">Blogs</h1>
-            <p className="text-gray-300 text-xl">
-              Blogs content goes here. Stay tuned for updates!
-            </p>
-          </div>
-        </ParallaxLayer>
-
-        {/* Contact */}
-        <ParallaxLayer offset={6} className="h-screen flex">
-          <Contact />
-        </ParallaxLayer>
-
-        {/* footer */}
-        <Footer />
       </Parallax>
     </>
   );

@@ -6,7 +6,7 @@
   height: 100%;
   pointer-events: none;
   overflow: hidden;
-  z-index: 10;
+  z-index: 100;
 }
 
 .snowflake {
