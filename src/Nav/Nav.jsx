@@ -1,5 +1,5 @@
 const Nav = ({ isOpen, setIsOpen }) => {
-  const base = `text-2xl font-medium transition-all duration-300 ${
+  const base = `text-[3em] font-medium transition-all duration-300 ${
     isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
   }`;
   return (
