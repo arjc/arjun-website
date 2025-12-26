@@ -45,10 +45,10 @@ function App() {
           </div>
           {/* desktop */}
           <div className="hidden lg:flex gap-10 mx-6">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
+            <a href="/">About</a>
+            <a href="/">Projects</a>
             <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a>
-            <a href="#contact">Contact</a>
+            <a href="/">Contact</a>
           </div>
           {/* hamburgr */}
           <a onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden mx-0 md:mx-4 cursor-pointer">
