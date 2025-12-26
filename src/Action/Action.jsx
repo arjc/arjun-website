@@ -7,8 +7,8 @@ const Action = () => (
     </p>
     <div className="flex flex-wrap justify-center gap-5">
       <a href="public/cv.pdf" className="px-7 py-3 border-2 border-white rounded-2xl">Download CV</a>
-      <a href="#contact" className="px-7 py-3 border-2 border-white rounded-2xl">Gallery</a>
-      <a href="#contact" className="px-7 py-3 border-3 border-white rounded-2xl">Contact</a>
+      <a href="/" className="px-7 py-3 border-2 border-white rounded-2xl">Gallery</a>
+      <a href="/" className="px-7 py-3 border-3 border-white rounded-2xl">Contact</a>
     </div>
   </div>
 );
