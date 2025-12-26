@@ -11,7 +11,7 @@ const Nav = ({ isOpen, setIsOpen }) => {
       }`}
     >
       <a
-        href="#about"
+        href="/"
         onClick={() => setIsOpen(false)}
         className={base}
         style={{ transitionDelay: isOpen ? "100ms" : "0ms" }}
@@ -19,7 +19,7 @@ const Nav = ({ isOpen, setIsOpen }) => {
         About
       </a>
       <a
-        href="#projects"
+        href="/"
         onClick={() => setIsOpen(false)}
         className={base}
         style={{ transitionDelay: isOpen ? "200ms" : "0ms" }}
@@ -37,7 +37,7 @@ const Nav = ({ isOpen, setIsOpen }) => {
         Blogs
       </a>
       <a
-        href="#contact"
+        href="/"
         onClick={() => setIsOpen(false)}
         className={base}
         style={{ transitionDelay: isOpen ? "300ms" : "0ms" }}
