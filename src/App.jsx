@@ -6,8 +6,10 @@ import Nav from "./Nav/Nav.jsx";
 import Cube from "./Cube/Cube.jsx";
 import Snow from "./Snow/Snow.jsx";
 import Dvd from "./Dvd/Dvd.tsx";
+import Fireworks from "./Fireworks/Fireworks.jsx";
 import Action from "./Action/Action.jsx";
 import faceImg from "./assets/images/face.webp";
+let dateObj = new Date();
 
 const isDate = ((month, start, end) => {
   const now = new Date();
@@ -56,7 +58,7 @@ function App() {
           </div>
           {/* desktop */}
           <div className="hidden lg:flex gap-10 mx-6">
-            <a href="/about">About</a>
+            {/* <a href="/about">About</a> */}
             <a href="/projects">Projects</a>
             {/* <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a> */}
             <a href="/contact">Contact</a>
@@ -73,13 +75,17 @@ function App() {
       {/* bakground */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
         <span className="text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0"
-          style={{ opacity: 0.25 * (1 - p) }}>arjc.me
+          style={{ opacity: 0.25 * (1 - p) }}>
+            { isDate(12, 30, 31) || isDate(1, 1, 5) ? `2 0 2 ${dateObj.getFullYear() - 2020}` : "arjc.me" }
         </span>
       </div>
       {/* navbar mob */}
       <Nav isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
       {/* spring =========================================================== */}
       <Parallax ref={parallaxRef} pages={5} style={{top: 0, left: 0}} config={{ mass: 1, tension: 170, friction: 26 }}>
+        
+        {isDate(1, 1, 5) ? <Fireworks className="absolute" /> : <></>}
+        
         
         {/* hero */}
         <ParallaxLayer speed={2} offset={0} factor={1}>
@@ -92,7 +98,7 @@ function App() {
         </ParallaxLayer>
 
         {/* footr */}
-        <ParallaxLayer speed={1} offset={4.75} factor={0.25}>
+        <ParallaxLayer speed={3} offset={4.75} factor={0.25}>
           <Footer />
         </ParallaxLayer>
         {/* spring =========================================================== */}

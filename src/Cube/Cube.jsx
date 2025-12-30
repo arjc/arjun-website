@@ -11,10 +11,10 @@ const Cube = () => {
         <div className="cube">
           <div className="cube-face front">{face}</div>
           <div className="cube-face back">{face}</div>
-          <div className="cube-face left rangu">{dev}</div>
-          <div className="cube-face right rangu">{dev}</div>
-          <div className="cube-face top rangu">{des}</div>
-          <div className="cube-face bottom rangu">{des}</div>
+          <div className="cube-face left">{dev}</div>
+          <div className="cube-face right">{dev}</div>
+          <div className="cube-face top">{des}</div>
+          <div className="cube-face bottom">{des}</div>
         </div>
       </div>
 

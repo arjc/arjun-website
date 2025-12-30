@@ -2,6 +2,8 @@ import "./Dvd.css";
 import { useState, useEffect } from "react";
 import faceImg from "../assets/images/face.webp";
 
+// let faceImg = "gay"
+
 const Dvd = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });

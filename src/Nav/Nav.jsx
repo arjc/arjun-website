@@ -10,19 +10,19 @@ const Nav = ({ isOpen, setIsOpen }) => {
           : "opacity-0 pointer-events-none"
       }`}
     >
-      <a
+      {/* <a
         href="/"
         onClick={() => setIsOpen(false)}
         className={base}
         style={{ transitionDelay: isOpen ? "100ms" : "0ms" }}
       >
         About
-      </a>
+      </a> */}
       <a
         href="/"
         onClick={() => setIsOpen(false)}
         className={base}
-        style={{ transitionDelay: isOpen ? "200ms" : "0ms" }}
+        style={{ transitionDelay: isOpen ? "100ms" : "0ms" }}
       >
         Projects
       </a>
