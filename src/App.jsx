@@ -9,6 +9,14 @@ import Dvd from "./Dvd/Dvd.tsx";
 import Action from "./Action/Action.jsx";
 import faceImg from "./assets/images/face.webp";
 
+const isDate = ((month, start, end) => {
+  const now = new Date();
+  const isCurrentMonth = now.getMonth() + 1 === month;
+  const isInDayRange = now.getDate() >= start && now.getDate() <= end;
+  return isCurrentMonth && isInDayRange ? true : false;
+});
+
+
 function App() {
   const parallaxRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -34,8 +42,9 @@ function App() {
 
   return (
     <>
-      <Snow />
-      <Dvd />
+    <Dvd className="h-screen w-screen" />
+    <div>
+      {isDate(12, 1, 31) && <Snow />}
       {/* overlau */}
       {/* <div className="fixed inset-0 bg-black pointer-events-none z-[-1]" style={{ opacity: p * 0.8 }} /> */}
       {/* navbar */}
@@ -47,10 +56,10 @@ function App() {
           </div>
           {/* desktop */}
           <div className="hidden lg:flex gap-10 mx-6">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a>
-            <a href="#contact">Contact</a>
+            <a href="/about">About</a>
+            <a href="/projects">Projects</a>
+            {/* <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a> */}
+            <a href="/contact">Contact</a>
           </div>
           {/* hamburgr */}
           <a onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden mx-0 md:mx-4 cursor-pointer">
@@ -64,15 +73,16 @@ function App() {
       {/* bakground */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
         <span className="text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0"
-          style={{ opacity: 0.25 * (1 - p) }}>arjc.me</span>
+          style={{ opacity: 0.25 * (1 - p) }}>arjc.me
+        </span>
       </div>
       {/* navbar mob */}
       <Nav isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
-      <Parallax ref={parallaxRef} className="z-10" pages={5} style={{top: 0, left: 0}} config={{ mass: 1, tension: 170, friction: 26 }}>
-        {/* spring =========================================================== */}
+      {/* spring =========================================================== */}
+      <Parallax ref={parallaxRef} pages={5} style={{top: 0, left: 0}} config={{ mass: 1, tension: 170, friction: 26 }}>
         
         {/* hero */}
-        <ParallaxLayer speed={2} offset={0.7} factor={1}>
+        <ParallaxLayer speed={2} offset={0} factor={1}>
           <Cube />
         </ParallaxLayer>
 
@@ -87,6 +97,7 @@ function App() {
         </ParallaxLayer>
         {/* spring =========================================================== */}
       </Parallax>
+    </div>
     </>
   );
 }
