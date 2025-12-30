@@ -1,5 +1,5 @@
 const Nav = ({ isOpen, setIsOpen }) => {
-  const base = `text-2xl font-medium transition-all duration-300 ${
+  const base = `text-[3em] font-medium transition-all duration-300 ${
     isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
   }`;
   return (
@@ -11,7 +11,7 @@ const Nav = ({ isOpen, setIsOpen }) => {
       }`}
     >
       <a
-        href="#about"
+        href="/"
         onClick={() => setIsOpen(false)}
         className={base}
         style={{ transitionDelay: isOpen ? "100ms" : "0ms" }}
@@ -19,7 +19,7 @@ const Nav = ({ isOpen, setIsOpen }) => {
         About
       </a>
       <a
-        href="#projects"
+        href="/"
         onClick={() => setIsOpen(false)}
         className={base}
         style={{ transitionDelay: isOpen ? "200ms" : "0ms" }}
@@ -27,7 +27,7 @@ const Nav = ({ isOpen, setIsOpen }) => {
         Projects
       </a>
       <a
-        href="#contact"
+        href="/"
         onClick={() => setIsOpen(false)}
         className={base}
         style={{ transitionDelay: isOpen ? "300ms" : "0ms" }}

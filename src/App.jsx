@@ -49,6 +49,7 @@ function App() {
           <div className="hidden lg:flex gap-10 mx-6">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a>
             <a href="#contact">Contact</a>
           </div>
           {/* hamburgr */}
