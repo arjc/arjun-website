@@ -5,6 +5,7 @@ import Footer from "./Footer/Footer.jsx";
 import Nav from "./Nav/Nav.jsx";
 import Cube from "./Cube/Cube.jsx";
 import Snow from "./Snow/Snow.jsx";
+import Dvd from "./DVD/Dvd.tsx";
 import Action from "./Action/Action.jsx";
 import faceImg from "./assets/images/face.webp";
 
@@ -34,6 +35,7 @@ function App() {
   return (
     <>
       <Snow />
+      <Dvd />
       {/* overlau */}
       {/* <div className="fixed inset-0 bg-black pointer-events-none z-[-1]" style={{ opacity: p * 0.8 }} /> */}
       {/* navbar */}
@@ -47,7 +49,6 @@ function App() {
           <div className="hidden lg:flex gap-10 mx-6">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
-            <a href="https://blogs.arjc.me" target="_blank" rel="noopener noreferrer">Blogs</a>
             <a href="#contact">Contact</a>
           </div>
           {/* hamburgr */}

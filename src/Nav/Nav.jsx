@@ -27,16 +27,6 @@ const Nav = ({ isOpen, setIsOpen }) => {
         Projects
       </a>
       <a
-        href="https://blogs.arjc.me"
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => setIsOpen(false)}
-        className={base}
-        style={{ transitionDelay: isOpen ? "250ms" : "0ms" }}
-      >
-        Blogs
-      </a>
-      <a
         href="#contact"
         onClick={() => setIsOpen(false)}
         className={base}

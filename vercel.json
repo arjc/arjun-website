@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/blogs",
+      "destination": "https://blogs.arjc.me",
+      "permanent": true
+    }
+  ]
+}
