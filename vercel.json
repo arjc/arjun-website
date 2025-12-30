@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/blogs",
+      "destination": "https://blogs.arjc.me",
+      "permanent": true
+    },
+    {
+      "source": "/music",
+      "destination": "https://music.arjc.me",
+      "permanent": true
+    }
+  ]
+}
