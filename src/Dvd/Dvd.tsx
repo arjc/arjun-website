@@ -1,4 +1,4 @@
-import "./Dvd.module.css";
+import "./Dvd.css";
 
 const Dvd = () => {
     return (
