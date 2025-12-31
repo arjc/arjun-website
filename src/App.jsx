@@ -74,9 +74,9 @@ function App() {
       </div>
       {/* bakground */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
-        <span className="text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0 text-nowrap"
+        <span className="text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0 text-nowrap text-center"
           style={{ opacity: 0.25 * (1 - p) }}>
-            { isDate(12, 30, 31) || isDate(1, 1, 5) ? `2 0 2 ${dateObj.getFullYear() - 2020}` : "arjc.me" }
+            { isDate(12, 31, 31) || isDate(1, 1, 2) ? `2 0 2 ${dateObj.getFullYear() - 2020}` : "arjc.me" }
         </span>
       </div>
       {/* navbar mob */}
