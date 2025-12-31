@@ -2,9 +2,9 @@ import "./Cube.css";
 import faceImg from "../assets/images/face.webp";
 
 const Cube = () => {
-  const face = <img className="h-10 sm:h-50 rounded-full" src={faceImg} alt="loading..." />;
-  const dev = <span className="bg-black p-1">DEVELOPER</span>;
-  const des = <span className="bg-black p-1">DESIGNER</span>;
+  const face = <img className="h-10 sm:h-50" src={faceImg} alt="loading..." />;
+  const dev = <span className="bg-black px-2 py-1">DEVELOPER</span>;
+  const des = <span className="bg-black px-2 py-1">DESIGNER</span>;
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen z-10">
       <div className="cube-container">
