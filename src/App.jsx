@@ -53,7 +53,7 @@ function App() {
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
         <div className="flex items-center justify-between px-5 sm:px-10 h-15 lg:h-25">
           <div className="flex items-center gap-2" onClick={() => parallaxRef.current.scrollTo(0)} style={{ cursor: "pointer" }}>
-            <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="me" />
+            <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="achu face logo" />
             <span className="text-4xl font-bold">arjc.me</span>
           </div>
           {/* desktop */}
@@ -76,7 +76,7 @@ function App() {
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
         <span className="m-0 text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0 text-nowrap text-center"
           style={{ opacity: 0.25 * (1 - p) }}>
-            { isDate(12, 31, 31) || isDate(1, 1, 2) ? `2 0 2 ${dateObj.getFullYear() - 2020}` : "arjc.me" }
+            { isDate(12, 31, 31) || isDate(1, 1, 1) ? `2 0 2 ${dateObj.getFullYear() - 2020}` : "arjc.me" }
         </span>
       </div>
       {/* navbar mob */}
@@ -84,7 +84,7 @@ function App() {
       {/* spring =========================================================== */}
       <Parallax ref={parallaxRef} pages={5} style={{top: 0, left: 0}} config={{ mass: 1, tension: 170, friction: 26 }}>
         
-        {isDate(1, 1, 5) ? <Fireworks className="absolute" /> : <></>}
+        {isDate(1, 1, 2) ? <Fireworks className="absolute" /> : <></>}
         
         
         {/* hero */}
