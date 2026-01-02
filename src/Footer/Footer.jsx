@@ -5,7 +5,7 @@ const Footer = () => (
       <div className="flex gap-4 font-1">
         <a href="/about">About</a>|<a href="/legal">Legal</a>|<a href="/privacy">Privacy</a>
       </div>
-      <div>&copy; 2023-{new Date().getFullYear()} Arjun M Liji
+      <div>&copy; 2023-{new Date().getFullYear()} Arjun M Liji </div>
     </div>
   </footer>
 );
