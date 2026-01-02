@@ -6,6 +6,7 @@ const Footer = () => (
         <a href="/about">About</a> <a href="/legal">Legal</a> <a href="/privacy">Privacy</a>
       </div>
       <div>&copy; 2023-{new Date().getFullYear()} Arjun M Liji </div>
+<img src="https://hitwebcounter.com/counter/counter.php?page=21466985&style=0001&nbdigits=8&type=page&initCount=0" border="0" />
     </div>
   </footer>
 );
