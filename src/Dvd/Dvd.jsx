@@ -2,7 +2,8 @@ import "./Dvd.css";
 import { useState, useEffect } from "react";
 import faceImg from "../assets/images/face.webp";
 
-// let faceImg = "gay"
+const colors = [36, 107, 203, 264, 310, 83, 352];
+
 
 const Dvd = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -18,22 +19,23 @@ const Dvd = () => {
             let newY = prev.y + velocity.vy;
             let newVx = velocity.vx;
             let newVy = velocity.vy;
-
             if (newX <= 0 || newX >= window.innerWidth - faceSize) {
                 newVx = -velocity.vx;
                 newX = Math.max(0, Math.min(window.innerWidth - faceSize, newX));
+                setHue(colors[Math.floor(Math.random() * colors.length)]);
             }
-
+            
             if (newY <= 0 || newY >= window.innerHeight - faceSize) {
                 newVy = -velocity.vy;
                 newY = Math.max(0, Math.min(window.innerHeight - faceSize, newY));
+                setHue(colors[Math.floor(Math.random() * colors.length)]);
             }
 
             setVelocity({ vx: newVx, vy: newVy });
             return { x: newX, y: newY };
         });
 
-        setHue((prev) => (prev + 2) % 360);
+        // setHue((prev) => (prev + 2) % 360);
     };
 
     useEffect(() => {
