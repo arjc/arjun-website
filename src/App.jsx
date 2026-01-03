@@ -5,7 +5,7 @@ import Footer from "./Footer/Footer.jsx";
 import Nav from "./Nav/Nav.jsx";
 import Cube from "./Cube/Cube.jsx";
 import Snow from "./Snow/Snow.jsx";
-import Dvd from "./Dvd/Dvd.tsx";
+import Dvd from "./Dvd/Dvd.jsx";
 import Fireworks from "./Fireworks/Fireworks.jsx";
 import Action from "./Action/Action.jsx";
 import faceImg from "./assets/images/face.webp";
