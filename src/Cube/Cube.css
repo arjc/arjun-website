@@ -17,6 +17,12 @@
   animation: rotateCubeAlt 12s ease-in-out infinite;
   will-change: transform;
   backface-visibility: visible;
+  transition: transform 0.1s ease-out;
+}
+
+.cube.mouse-follow {
+  animation: none;
+  transform: rotateX(var(--mouse-rotation-x, 0deg)) rotateY(var(--mouse-rotation-y, 0deg));
 }
 
 .cube-face {

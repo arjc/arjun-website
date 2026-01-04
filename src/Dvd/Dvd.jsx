@@ -2,17 +2,18 @@ import "./Dvd.css";
 import { useState, useEffect } from "react";
 import faceImg from "../assets/images/face.webp";
 
-const colors = [36, 107, 203, 264, 310, 83, 352];
+const colors = [36, 83, 107, 203, 264, 310, 352];
 
+let i = 1;
 
 const Dvd = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [hue, setHue] = useState(0);
+    const [hue, setHue] = useState(203);
     const [velocity, setVelocity] = useState({ vx: 5, vy: 5 });
 
-    const faceSize = 120;
 
+    const faceSize = 120;
     const updateMovement = () => {
         setPosition((prev) => {
             let newX = prev.x + velocity.vx;
@@ -22,15 +23,19 @@ const Dvd = () => {
             if (newX <= 0 || newX >= window.innerWidth - faceSize) {
                 newVx = -velocity.vx;
                 newX = Math.max(0, Math.min(window.innerWidth - faceSize, newX));
-                setHue(colors[Math.floor(Math.random() * colors.length)]);
+                // setHue(colors[Math.floor(Math.random() * colors.length)]);
+                i >= colors.length ? i = 1 : i += 1/2;
+                setHue(colors[Math.floor(i)]);
             }
             
             if (newY <= 0 || newY >= window.innerHeight - faceSize) {
                 newVy = -velocity.vy;
                 newY = Math.max(0, Math.min(window.innerHeight - faceSize, newY));
-                setHue(colors[Math.floor(Math.random() * colors.length)]);
+                // setHue(colors[Math.floor(Math.random() * colors.length)]);
+                i >= colors.length ? i = 1 : i += 1/2;
+                setHue(colors[Math.floor(i)]);
             }
-
+            
             setVelocity({ vx: newVx, vy: newVy });
             return { x: newX, y: newY };
         });

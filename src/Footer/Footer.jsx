@@ -8,7 +8,8 @@ const Footer = () => (
       <div>&copy; 2023-{new Date().getFullYear()} Arjun M Liji </div>
 <div className="flex flex-row items-center justify-center gap-2">
 U are part of
-<img src="https://hitwebcounter.com/counter/counter.php?page=21466989&style=0024&nbdigits=8&type=ip&initCount=0" border="0" />
+<img src="https://hitwebcounter.com/counter/counter.php?page=21466989&style=0024&nbdigits=8&type=ip&initCount=0"
+alt="failed to load" border="0" />
 visitors
 </div>
     </div>
