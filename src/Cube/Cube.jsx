@@ -33,8 +33,8 @@ const Cube = () => {
       const mouseY = e.clientY - centerY;
 
       // Calculate rotation based on mouse position
-      const rotX = (mouseY / window.innerHeight) * 230; // -10 to 10 degrees
-      const rotY = (mouseX / window.innerWidth) * 270; // -10 to 10 degrees
+      const rotX = (mouseY / window.innerHeight) * 120; // -10 to 10 degrees
+      const rotY = (mouseX / window.innerWidth) * 140; // -10 to 10 degrees
 
       setRotationX(-rotX);
       setRotationY(rotY);

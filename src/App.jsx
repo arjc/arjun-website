@@ -7,6 +7,7 @@ import Snow from "./Snow/Snow.jsx";
 import Dvd from "./Dvd/Dvd.jsx";
 import Fireworks from "./Fireworks/Fireworks.jsx";
 import Action from "./Action/Action.jsx";
+import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
 let dateObj = new Date();
 
@@ -45,7 +46,7 @@ function App() {
       {/* spring =========================================================== */}
       <Parallax ref={parallaxRef} pages={5} style={{top: 0, left: 0}} config={{ mass: 1, tension: 170, friction: 26 }}>
         
-        {<Fireworks className="absolute" /> || isDate(1, 1, 2) }
+        {isDate(1, 1, 2) ? <Fireworks className="absolute" /> : <></>}
         
         
         {/* hero */}
@@ -56,6 +57,10 @@ function App() {
         {/* action */}
         <ParallaxLayer speed={1} offset={1} factor={1}>
           <Action />
+        </ParallaxLayer>
+
+        <ParallaxLayer speed={1} offset={2} factor={1}>
+          <Photogrid />
         </ParallaxLayer>
 
         {/* footr */}
