@@ -5,9 +5,9 @@ import photo3 from "/gallery/mirror.jpg";
 const Photogrid = () => {
   return (
     <div className="grid grid-cols-3 gap-4">
-      <img src={photo2} alt="kakkoos" />
-      <img src={photo1} alt="kakkoos" />
-      <img src={photo3} alt="kannadi" />
+      {/* <img src={photo2} alt="kakkoos" /> */}
+      {/* <img src={photo1} alt="kakkoos" /> */}
+      {/* <img src={photo3} alt="kannadi" /> */}
     </div>
   );
 };
