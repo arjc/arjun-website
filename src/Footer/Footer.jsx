@@ -1,18 +1,32 @@
-const Footer = () => (
-  <footer className="absolute text-center p-15 mt-[485vh] bg-black bottom-0 w-screen text-white">
-    <div className="flex flex-col items-center gap-1">
+import { useLanguage } from "../context/LanguageContext";
+
+const Footer = () => {
+  const { isMalayalam } = useLanguage();
+  const currentYear = new Date().getFullYear();
+  
+  return (
+    <footer className="absolute text-center p-15 mt-[485vh] bg-black bottom-0 w-screen text-white">
+      <div className="flex flex-col items-center gap-1">
       <h1>arjc.me</h1>
-      <div className="flex gap-4 font-1">
-        <a href="/about">About</a> <a href="/legal">Legal</a> <a href="/privacy">Privacy</a>
+        <div className="flex gap-4 font-1">
+          <a href="https://arjunliji.free.nf">{isMalayalam ? "പുരാപതിപ്പ്" : "Legacy"}</a>
+          <a href="/legal">{isMalayalam ? "നിയമപരം" : "Legal"}</a>
+          <a href="/privacy">{isMalayalam ? "സ്വകാര്യത" : "Privacy"}</a>
+        </div>
+        <div className="inline-flex items-center justify-center gap-2 flex-wrap">
+          {isMalayalam ? "നിങ്ങൾ സന്ദർശകരുടെ" : "U r part of"}
+          <img src="https://hitwebcounter.com/counter/counter.php?page=21466989&style=0024&nbdigits=8&type=ip&initCount=0"
+            alt="failed to load" border="0" />
+          {isMalayalam ? "ഭാഗമാണ്" : "visitors"}
+          {/* {isMalayalam ? "നന്ദി" : "Thank you"} */}
+        </div>
+            <div className="opacity-60">
+              {isMalayalam 
+                ? `© 2023-${currentYear} അർജുൻ എം ലിജി`
+                : `© 2023-${currentYear} Arjun M Liji`}
+            </div>
       </div>
-      <div>&copy; 2023-{new Date().getFullYear()} Arjun M Liji </div>
-<div className="flex flex-row items-center justify-center gap-2">
-U are part of
-<img src="https://hitwebcounter.com/counter/counter.php?page=21466989&style=0024&nbdigits=8&type=ip&initCount=0"
-alt="failed to load" border="0" />
-visitors
-</div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 export default Footer;

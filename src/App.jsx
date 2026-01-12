@@ -9,6 +9,7 @@ import Fireworks from "./Fireworks/Fireworks.jsx";
 import Action from "./Action/Action.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
+import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 let dateObj = new Date();
 
 const isDate = ((month, start, end) => {
@@ -22,6 +23,16 @@ function App() {
   const parallaxRef = useRef(null);
 
   return (
+    <LanguageProvider>
+      <AppContent parallaxRef={parallaxRef} />
+    </LanguageProvider>
+  );
+}
+
+function AppContent({ parallaxRef }) {
+  const { isMalayalam, toggle } = useLanguage();
+
+  return (
     <>
     <Dvd className="h-screen w-screen" />
     <div>
@@ -30,8 +41,9 @@ function App() {
         <div className="flex items-center justify-between px-5 sm:px-10 h-15 lg:h-25">
           <div className="flex items-center gap-2" onClick={() => parallaxRef.current.scrollTo(0)} style={{ cursor: "pointer" }}>
             <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="achu face logo" />
-            <span className="text-4xl font-bold">arjc.me</span>
+            { isMalayalam ? <span className="text-4xl">അർജസി</span> : <span className="text-4xl font-bold">arjc.me</span> }
           </div>
+          <a onClick={toggle} className="cursor-pointer">{isMalayalam ? "English" : "മലയാളം"}</a>
         </div>
       </div>
       {/* bakground */}
@@ -40,7 +52,7 @@ function App() {
           style={{ opacity: 0.25 }}>
             { isDate(12, 31, 31) || isDate(1, 1, 2) ? `2 0 
             ${Math.floor((dateObj.getFullYear() - 2000) / 10)} 
-            ${dateObj.getFullYear() - 2020}` : "arjc.me" }
+            ${dateObj.getFullYear() - 2020}` : isMalayalam ? "അർജസി" : "arjc.me" }
         </span>
       </div>
       {/* spring =========================================================== */}
@@ -60,6 +72,10 @@ function App() {
         </ParallaxLayer>
 
         <ParallaxLayer speed={1} offset={2} factor={1}>
+          <Photogrid />
+        </ParallaxLayer>
+
+        <ParallaxLayer speed={1} offset={3} factor={1}>
           <Photogrid />
         </ParallaxLayer>
 
