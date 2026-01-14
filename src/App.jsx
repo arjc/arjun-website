@@ -85,12 +85,12 @@ function AppContent({ parallaxRef }) {
         </ParallaxLayer>
 
         <ParallaxLayer speed={1} offset={1} factor={1}>
-          <Photogrid />
+          {/* <Photogrid /> */}
         </ParallaxLayer>
 
         {/* gallery */}
         <ParallaxLayer speed={1} offset={1.99} factor={1}>
-          <Photogrid />
+          {/* <Photogrid /> */}
         </ParallaxLayer>
 
         {/* footer */}
