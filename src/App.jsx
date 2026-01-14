@@ -8,7 +8,7 @@ import Cube from "./Cube/Cube.jsx";
 import Action from "./Action/Action.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
-import Footer from "./Footer/footer.jsx";
+import Footer from "./Footer/Footer.jsx";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 let dateObj = new Date();
 
