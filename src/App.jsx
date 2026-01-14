@@ -1,7 +1,7 @@
 import "./App.css";
 import { useRef, useState, useEffect } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import Footer from "./Footer/Footer.jsx";
+import Footer from "./Footer/footer.jsx";
 import Cube from "./Cube/Cube.jsx";
 import Snow from "./Snow/Snow.jsx";
 import Dvd from "./Dvd/Dvd.jsx";
@@ -57,7 +57,7 @@ function AppContent({ parallaxRef }) {
             <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="achu face logo" />
             { isMalayalam ? <span className="text-4xl">അർജസി</span> : <span className="text-4xl font-bold">arjc.me</span> }
           </div>
-          <a onClick={toggle} className="cursor-pointer">{isMalayalam ? "English" : "മലയാളം"}</a>
+          <a onClick={toggle} className="cursor-pointer border-2 rounded-lg px-5 py-2">{isMalayalam ? "English" : "മലയാളം"}</a>
         </div>
       </div>
       {/* bakground */}
@@ -76,12 +76,12 @@ function AppContent({ parallaxRef }) {
         
         
         {/* hero */}
-        <ParallaxLayer speed={2} offset={0} factor={1}>
+        <ParallaxLayer speed={5} offset={0} factor={1}>
           <Cube />
         </ParallaxLayer>
 
         {/* action */}
-        <ParallaxLayer speed={1} offset={1} factor={1}>
+        <ParallaxLayer speed={1} offset={0.999} factor={1}>
           <Action />
         </ParallaxLayer>
 

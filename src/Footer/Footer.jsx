@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
         <div className="inline-flex items-center justify-center gap-2 flex-wrap">
           {isAdblockActive ? (
-            <div>Disable Ad block</div>
+            <div className="opacity-50">Disable Ad block</div>
           ) : (
             <>
               {isMalayalam ? "നിങ്ങൾ" : "U r part of"}

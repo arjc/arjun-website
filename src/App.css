@@ -33,14 +33,20 @@ a {
   font-size: clamp(1em, 3vw, 1.75em);
   font-weight: 500;
   color: #bfbfbf;
+  transition: all 0.25s ease;
+  border-style: dashed;
 }
 a:hover {
   color: #ffffff;
+  border-style: solid;
 }
 
 h1 {
-  font-size: clamp(1.5em, 5vw, 4em);
+  font-size: clamp(3em, 5vw, 4em);
   line-height: 1.1;
+  font-weight: 700;
+  text-decoration: underline wavy 4px #ffffff;
+  transition: all 0.25s ease;
 }
 
 p {
