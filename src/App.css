@@ -78,12 +78,12 @@ button:focus-visible {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey;
+  background: #0000;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #0000;
 }
 
 .rangu {

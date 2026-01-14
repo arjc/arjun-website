@@ -31,11 +31,25 @@ function App() {
 
 function AppContent({ parallaxRef }) {
   const { isMalayalam, toggle } = useLanguage();
+  const [scrollY, setScrollY] = useState(1);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current) {
+        const posY = containerRef.current.getBoundingClientRect().top;
+        setScrollY(window.pageYOffset - posY);
+        // console.log(window.pageYOffset - posY);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
     <Dvd className="h-screen w-screen" />
-    <div>
+    <div ref={containerRef}>
       {isDate(12, 1, 31) && <Snow />}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
         <div className="flex items-center justify-between px-5 sm:px-10 h-15 lg:h-25">
@@ -49,7 +63,7 @@ function AppContent({ parallaxRef }) {
       {/* bakground */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
         <span className="m-0 text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0 text-nowrap text-center"
-          style={{ opacity: 0.25 }}>
+          style={{ opacity: 0.25 * 1 / scrollY}}>
             { isDate(12, 31, 31) || isDate(1, 1, 2) ? `2 0 
             ${Math.floor((dateObj.getFullYear() - 2000) / 10)} 
             ${dateObj.getFullYear() - 2020}` : isMalayalam ? "അർജസി" : "arjc.me" }
