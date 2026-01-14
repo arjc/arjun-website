@@ -1,14 +1,14 @@
 import "./App.css";
 import { useRef, useState, useEffect } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import Footer from "./Footer/footer.jsx";
-import Cube from "./Cube/Cube.jsx";
 import Snow from "./Snow/Snow.jsx";
-import Dvd from "./Dvd/Dvd.jsx";
 import Fireworks from "./Fireworks/Fireworks.jsx";
+import Dvd from "./Dvd/Dvd.jsx";
+import Cube from "./Cube/Cube.jsx";
 import Action from "./Action/Action.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
+import Footer from "./Footer/footer.jsx";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 let dateObj = new Date();
 
@@ -74,27 +74,27 @@ function AppContent({ parallaxRef }) {
         
         {isDate(1, 1, 2) ? <Fireworks className="absolute" /> : <></>}
         
-        
         {/* hero */}
-        <ParallaxLayer speed={5} offset={0} factor={1}>
+        <ParallaxLayer speed={5} offset={0} factor={1} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <Cube />
         </ParallaxLayer>
 
         {/* action */}
-        <ParallaxLayer speed={1} offset={0.999} factor={1}>
-          <Action />
+        <ParallaxLayer speed={1} offset={0.99} factor={1}>
+          <Action parallaxRef={parallaxRef} />
         </ParallaxLayer>
 
-        <ParallaxLayer speed={1} offset={2} factor={1}>
+        <ParallaxLayer speed={1} offset={1} factor={1}>
           <Photogrid />
         </ParallaxLayer>
 
-        <ParallaxLayer speed={1} offset={3} factor={1}>
+        {/* gallery */}
+        <ParallaxLayer speed={1} offset={1.99} factor={1}>
           <Photogrid />
         </ParallaxLayer>
 
-        {/* footr */}
-        <ParallaxLayer speed={1} offset={4.76} factor={0.26}>
+        {/* footer */}
+        <ParallaxLayer speed={1} offset={4.5} factor={0.5}>
           <Footer />
         </ParallaxLayer>
         {/* spring =========================================================== */}
