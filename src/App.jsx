@@ -55,7 +55,7 @@ function AppContent({ parallaxRef }) {
         <div className="flex items-center justify-between px-5 sm:px-10 h-15 lg:h-25">
           <div className="flex items-center gap-2" onClick={() => parallaxRef.current.scrollTo(0)} style={{ cursor: "pointer" }}>
             <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="achu face logo" />
-            { isMalayalam ? <span className="text-4xl">അർജസി</span> : <span className="text-4xl font-bold">arjc.me</span> }
+            { isMalayalam ? <span className="text-4xl">അർജസ</span> : <span className="text-4xl font-bold">arjc.me</span> }
           </div>
           <a onClick={toggle} className="cursor-pointer border-2 rounded-lg px-5 py-2">{isMalayalam ? "English" : "മലയാളം"}</a>
         </div>
@@ -66,7 +66,7 @@ function AppContent({ parallaxRef }) {
           style={{ opacity: 0.25 * 1 / scrollY}}>
             { isDate(12, 31, 31) || isDate(1, 1, 2) ? `2 0 
             ${Math.floor((dateObj.getFullYear() - 2000) / 10)} 
-            ${dateObj.getFullYear() - 2020}` : isMalayalam ? "അർജസി" : "arjc.me" }
+            ${dateObj.getFullYear() - 2020}` : isMalayalam ? "അർജസ" : "arjc.me" }
         </span>
       </div>
       {/* spring =========================================================== */}
