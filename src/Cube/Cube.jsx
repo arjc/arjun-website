@@ -10,6 +10,7 @@ const Cube = () => {
   const [rotationX, setRotationX] = useState(Math.floor(Math.random() * 25));
   const [rotationY, setRotationY] = useState(Math.floor(Math.random() * 25));
   const [isMobile, setIsMobile] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const cubeRef = useRef(null);
 
   useEffect(() => {
@@ -55,16 +56,18 @@ const Cube = () => {
   }, [isMobile]);
 
   const face = <img className="h-10 sm:h-50" src={faceImg} alt="loading..." />;
-  const dev = <span className="bg-black px-2 py-1">{isMalayalam ? "ഉപജ്ഞാതാവ്" : "DEVELOPER"}</span>;
-  const des = <span className="bg-black px-2 py-1">{isMalayalam ? "ആലേഖകൻ" : "DESIGNER"}</span>;
+  const dev = <span className="bg-black px-2 py-1">{isMalayalam ? "ഡെവലപ്പർ" : "DEVELOPER"}</span>;
+  const des = <span className="bg-black px-2 py-1">{isMalayalam ? "ഡിസൈനർ" : "DESIGNER"}</span>;
 
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen z-10">
       <div
         className="cube-container"
         ref={cubeRef}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
         style={
-          !isMobile
+          !isMobile && isHovering
             ? {
                 "--mouse-rotation-x": `${rotationX}deg`,
                 "--mouse-rotation-y": `${rotationY}deg`,
@@ -72,17 +75,19 @@ const Cube = () => {
             : {}
         }
       >
-        <div className={`cube ${!isMobile ? "mouse-follow" : ""}`}>
+        <div className={`cube ${!isMobile || isHovering ? "mouse-follow" : ""}`}>
           <div className="cube-face front">{face}</div>
           <div className="cube-face back">{face}</div>
-          <div className="cube-face left">{dev}</div>
+          {/* left */}
+          <div className="cube-face left">{dev}</div> 
           <div className="cube-face right">{dev}</div>
+          {/* top */}
           <div className="cube-face top">{des}</div>
           <div className="cube-face bottom">{des}</div>
         </div>
       </div>
 
-      {/* arow */}
+      {/* arrow */}
       <div className="absolute animate-bounce bottom-15 flex opacity-35">
         <svg
           className="w-10 h-10"
