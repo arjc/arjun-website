@@ -54,10 +54,10 @@ a:hover {
 }
 
 h1 {
-  font-size: clamp(3em, 5vw, 4em);
+  font-size: clamp(2.5em, 5vw, 4em);
   line-height: 1.1;
   font-weight: 700;
-  text-decoration: underline wavy 4px #ffffff;
+  /* text-decoration: underline wavy 4px #ffffff; */
   transition: all 0.25s ease;
 }
 

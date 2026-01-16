@@ -14,7 +14,7 @@ const Footer = () => {
             {isMalayalam ? "പുരാപതിപ്പ്" : "Legacy"}
           </a>
           <a href="/legal">{isMalayalam ? "നിയമപരം" : "Legal"}</a>
-          <a href="/privacy">{isMalayalam ? "സ്വകാര്യത" : "Privacy"}</a>
+          <a href="/privacy">{isMalayalam ? "സ്വകാര്യം" : "Privacy"}</a>
         </div>
         <div className="inline-flex items-center justify-center gap-2 flex-wrap">
           {isAdblockActive ? (
