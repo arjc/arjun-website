@@ -9,11 +9,37 @@ const Contact = () => {
         <span
           className="inline-block font-extrabold text-black px-1 py-3 text-6xl sm:text-8xl leading-normal whitespace-nowrap animate-marquee font-des"
           style={{
-            animation: "marquee 100s ease-in-out infinite alternate",
+            animation: "marquee 16s ease-in-out infinite alternate",
           }}
         >
-          {isMalayalam ? "നമസ്കാരം! ഞാൻ അർജുൻ ലിജി ~ " : "Hello! Arjun Here ~ "}
-
+          {isMalayalam ? (
+            <>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം ~ </span>
+              <span>സന്വര്ക്കം</span>
+            </>
+          ) : (
+            <>
+              <span>Contact ~ </span>
+              <span>Call ~ </span>
+              <span>Reachout ~ </span>
+              <span>Collab ~ </span>
+              <span>Get in TOUCH ~ </span>
+              <span>Commission ~ </span>
+              <span>Talk ~ </span>
+              <span>Hang Out ~ </span>
+              <span>Meet ~ </span>
+              <span>Greet ~ </span>
+              <span>Contact</span>
+            </>
+          )}
         </span>
       </div>
     </div>
