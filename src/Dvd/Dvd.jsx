@@ -44,13 +44,21 @@ const Dvd = () => {
     };
 
     useEffect(() => {
-        const handleBlur = () => setIsVisible(true);
-        const handleMouseMove = () => setIsVisible(false);
+        let blurTimeout;
+        
+        const handleBlur = () => {
+            blurTimeout = setTimeout(() => setIsVisible(true), 10000);
+        };
+        const handleMouseMove = () => {
+            clearTimeout(blurTimeout);
+            setIsVisible(false);
+        };
 
         window.addEventListener("blur", handleBlur);
         window.addEventListener("mousemove", handleMouseMove);
 
         return () => {
+            clearTimeout(blurTimeout);
             window.removeEventListener("blur", handleBlur);
             window.removeEventListener("mousemove", handleMouseMove);
         };
@@ -66,11 +74,12 @@ const Dvd = () => {
 
     return (
         <div
-            className="fixed inset-0 pointer-events-none bg-black"
+            className={`fixed inset-0 bg-black ${isVisible ? 'pointer-events-auto cursor-pointer' : 'pointer-events-none'}`}
             style={{
                 opacity: isVisible ? 1 : 0,
                 zIndex: 999,
             }}
+            onClick={() => setIsVisible(false)}
         >
             <img
                 src={faceImg}

@@ -34,12 +34,12 @@ const Action = ({ parallaxRef }) => {
           }
         }
       `}</style>
-      <p className="w-screen sm:w-[70vw] text-8xl">
+      <p className="w-[90vw] sm:w-[70vw] text-[2em] opacity-60">
         {isMalayalam 
           ? "നമസ്കാരം! എന്റെ പേര് അർജുൻ എം ലിജി (18), എനിക്ക് സംഗീതം, കമ്പ്യൂട്ടർ തുടങ്ങിയവ വളരെയധികം ഇഷ്ടമാണ്. എന്റെ വെബ്‌സൈറ്റിലേക്ക് വന്നതിനു നന്ദി."
           : `My name is Arjun M Liji, I am a ${new Date().getFullYear() - 2007} year old guy who has a deep love for computers and music. Thank you for visiting my website.`}
       </p>
-      <div className="flex flex-col flex-wrap justify-center gap-5 px-10 sm:flex-row text-xl sm:text-lg">
+      <div className="flex flex-col flex-wrap justify-center gap-5 px-10 sm:flex-row text-xl sm:text-lg major-mono-display-bold">
         <a href="https://dev.arjc.me" className="px-3 py-1 border-y sm:border-5 sm:rounded-2xl w-screen sm:w-auto ">
           {isMalayalam ? "ഡെവ് പോർട്ട്ഫോളിയോ" : "Developer Portfolio"}
         </a>

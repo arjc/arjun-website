@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  font-family: "Jetbrains Mono", "Manjari", monospace;
-  line-height: 1.5;
+    font-family: "Zalando Sans Expanded", "Manjari", monospace;
 
+  line-height: 1.5;
   /* color-scheme: dark; */
   color: #ffffffde;
   background-color: #000000;
@@ -32,6 +32,12 @@
 .major-mono-display-regular {
   font-family: "Major Mono Display", monospace;
   font-weight: 400;
+  font-style: normal;
+}
+
+.major-mono-display-bold {
+  font-family: "Major Mono Display", monospace;
+  font-weight: 900;
   font-style: normal;
 }
 
