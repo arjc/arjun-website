@@ -185,14 +185,18 @@ export default function Wall() {
   return (
     <div className="w-full min-h-[102vh] bg-black px-4 py-10">
       <div className="max-w-[80vw] mx-auto">
-        <h1 className="inline-block text-center text-6xl sm:text-4xl font-des font-bold text-center mb-4 gap-3 tracking-[1ch]">
+        <h1 className="flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 sm:tracking-[1ch]">
+          <div>
           {isMalayalam ? "മെസ്സേജ് മതിൽ" : "Vachakam Wall"} ~ {' '}
+          <span className="opacity-60 text-2xl tracking-normal py-2">(beta)</span>
+          </div>
+
           <span
             onClick={toggleMute}
-            className="text-6xl cursor-pointer hover:opacity-70 transition-all"
+            className="text-2xl sm:text-4xl cursor-pointer hover:opacity-70 transition-all border-3 border-dashed rounded-full py-2 px-5 my-2 tracking-normal font-dev"
             title={isMuted ? "Unmute notifications" : "Mute notifications"}
           >
-            {isMuted ? "🔇" : "🔊"}
+            {isMuted ? "🔇 muted" : "🔊 unmuted"}
           </span>
         </h1>
         
@@ -230,12 +234,12 @@ export default function Wall() {
             placeholder={isMalayalam ? "..." : "Say something..."}
             className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 font-para focus:outline-none focus:border-white/50 transition-all"
           />
-          <button
+          <span
             onClick={send}
-            className="px-6 py-3 bg-white! text-black font-dev font-bold rounded-xl hover:text-white hover:bg-black! transition-all"
+            className="px-6 py-3 bg-white! text-black font-dev font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"
           >
             Send
-          </button>
+          </span>
         </div>
       </div>
     </div>
