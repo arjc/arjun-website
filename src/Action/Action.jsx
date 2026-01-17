@@ -10,7 +10,7 @@ const Action = ({ parallaxRef }) => {
   };
 
   return (
-    <div className="flex flex-col  items-center text-center w-screen h-[103vh] gap-10 bg-black pb-10">
+    <div className="flex flex-col  items-center text-center w-screen h-[101vh] gap-10 bg-black pb-10">
       <div className="w-screen bg-white overflow-hidden">
         <span
           className="inline-block font-extrabold text-black px-1 py-3 text-6xl sm:text-8xl leading-normal whitespace-nowrap animate-marquee font-des"
@@ -34,9 +34,9 @@ const Action = ({ parallaxRef }) => {
           }
         }
       `}</style>
-      <p className="w-[90vw] sm:w-[70vw] text-4xl sm:text-5xl opacity-60 font-para my-20">
+      <p className="w-[90vw] sm:w-[70vw] text-4xl sm:text-5xl opacity-60 font-para sm:my-20 my-10">
         {isMalayalam ? (
-          <div className="tracking-widest">
+          <div className="tracking-wider sm:tracking-widest">
             <span>
               നമസ്കാരം! എന്റെ പേര് അർജുൻ എം ലിജി ({new Date().getFullYear() - 2007}), എനിക്ക് സംഗീതം,
               കമ്പ്യൂട്ടർ തുടങ്ങിയവ വളരെയധികം ഇഷ്ടമാണ്.
