@@ -83,57 +83,25 @@ export default function Wall() {
   const isFirstLoad = useRef(true);
   const prevMessageCount = useRef(0);
 
-  // Generate user name based on IP address
+  // Generate user name on first visit (stored in localStorage forever)
   useEffect(() => {
-    const generateNameFromIP = async () => {
-      // If already have a name in localStorage, don't regenerate
-      if (localStorage.getItem("wallUserName")) {
-        return;
-      }
+    // If already have a name in localStorage, don't regenerate
+    if (localStorage.getItem("wallUserName") && localStorage.getItem("wallUserColor")) {
+      return;
+    }
 
-      try {
-        // Fetch user's IP address
-        const response = await fetch("https://api.ipify.org?format=json");
-        const data = await response.json();
-        const ip = data.ip;
-
-        // Create a simple hash from IP to get consistent indices
-        let hash = 0;
-        for (let i = 0; i < ip.length; i++) {
-          hash = ((hash << 5) - hash) + ip.charCodeAt(i);
-          hash = hash & hash; // Convert to 32bit integer
-        }
-        hash = Math.abs(hash);
-
-        // Pick prefix, suffix, number (1-8), and color based on hash
-        const prefixIndex = hash % namePrefix.length;
-        const suffixIndex = Math.floor(hash / namePrefix.length) % nameSuffix.length;
-        const userNumber = (hash % 8) + 1; // Number from 1 to 8
-        const colorIndex = hash % colours.length;
-        const generatedName = `${namePrefix[prefixIndex]} ${nameSuffix[suffixIndex]} ${userNumber}`;
-        const generatedColor = colours[colorIndex];
-
-        // Store in localStorage and state
-        localStorage.setItem("wallUserName", generatedName);
-        localStorage.setItem("wallUserColor", generatedColor);
-        setUserName(generatedName);
-        setUserColor(generatedColor);
-      } catch (error) {
-        // Fallback: generate random name if IP fetch fails
-        const randomPrefix = namePrefix[Math.floor(Math.random() * namePrefix.length)];
-        const randomSuffix = nameSuffix[Math.floor(Math.random() * nameSuffix.length)];
-        const randomNumber = Math.floor(Math.random() * 8) + 1;
-        const randomColorIndex = Math.floor(Math.random() * colours.length);
-        const fallbackName = `${randomPrefix} ${randomSuffix} ${randomNumber}`;
-        const fallbackColor = colours[randomColorIndex];
-        localStorage.setItem("wallUserName", fallbackName);
-        localStorage.setItem("wallUserColor", fallbackColor);
-        setUserName(fallbackName);
-        setUserColor(fallbackColor);
-      }
-    };
-
-    generateNameFromIP();
+    // Generate random name and color for first-time users
+    const randomPrefix = namePrefix[Math.floor(Math.random() * namePrefix.length)];
+    const randomSuffix = nameSuffix[Math.floor(Math.random() * nameSuffix.length)];
+    const randomNumber = Math.floor(Math.random() * 8) + 1;
+    const randomColorIndex = Math.floor(Math.random() * colours.length);
+    const generatedName = `${randomPrefix} ${randomSuffix} ${randomNumber}`;
+    const generatedColor = colours[randomColorIndex];
+    
+    localStorage.setItem("wallUserName", generatedName);
+    localStorage.setItem("wallUserColor", generatedColor);
+    setUserName(generatedName);
+    setUserColor(generatedColor);
   }, []);
 
   // Initialize audio - preload for mobile compatibility
@@ -217,8 +185,8 @@ export default function Wall() {
   return (
     <div className="w-full min-h-[102vh] bg-black px-4 py-10">
       <div className="max-w-[80vw] mx-auto">
-        <h1 className="inline-block text-6xl sm:text-4xl font-des font-bold text-center mb-4 gap-3 tracking-[1ch]">
-          {isMalayalam ? "മെസ്സേജ് മതിൽ" : "Vachakam Wall"}
+        <h1 className="inline-block text-center text-6xl sm:text-4xl font-des font-bold text-center mb-4 gap-3 tracking-[1ch]">
+          {isMalayalam ? "മെസ്സേജ് മതിൽ" : "Vachakam Wall"} ~ {' '}
           <span
             onClick={toggleMute}
             className="text-6xl cursor-pointer hover:opacity-70 transition-all"
@@ -227,13 +195,10 @@ export default function Wall() {
             {isMuted ? "🔇" : "🔊"}
           </span>
         </h1>
-        <span className="text-green-500 font-para text-3xl animate-pulse">
-          🟢 {isMalayalam ? "തത്സമയം" : "live chat"}
-        </span>
-
+        
         <div
           ref={chatContainerRef}
-          className="flex flex-col h-150 overflow-y-auto border-4 border-dashed border-[#aaa] rounded-xl p-4 my-6"
+          className="flex flex-col h-120 overflow-y-auto border-4 border-dashed border-[#aaa] rounded-xl p-4 my-6"
         >
           <span>Oldest message (17th January 2026)</span>
           {messages.length === 0 ? (
