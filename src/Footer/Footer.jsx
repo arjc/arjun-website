@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="absolute text-center p-15 mt-[485vh] bg-black bottom-0 w-screen text-white">
       <div className="flex flex-col items-center gap-1">
-        <h1>arjc.me</h1>
+        <h1 className="font-dev">{isMalayalam ?  <>അർജസ<span className="text-2xl opacity-60">(arjc.me)</span></> : "arjc.me"}</h1>
         <div className="flex gap-4 font-1">
           <a href="https://arjunliji.free.nf">
             {isMalayalam ? "പുരാപതിപ്പ്" : "Legacy"}

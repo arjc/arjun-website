@@ -53,16 +53,16 @@ function AppContent({ parallaxRef }) {
       {isDate(12, 1, 31) && <Snow />}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
         <div className="flex items-center justify-between px-5 sm:px-10 h-15 lg:h-25">
-          <div className="flex items-center gap-2" onClick={() => parallaxRef.current.scrollTo(0)} style={{ cursor: "pointer" }}>
+          <div className="flex items-center gap-2 font-dev" onClick={() => parallaxRef.current.scrollTo(0)} style={{ cursor: "pointer" }}>
             <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="achu face logo" />
-            { isMalayalam ? <span className="text-4xl">അർജസ</span> : <span className="text-4xl font-bold jetbrains-mono-light">arjc.me</span> }
+            { isMalayalam ? <span className="text-4xl">അർജസ</span> : <span className="text-4xl font-bold">arjc.me</span> }
           </div>
           <a onClick={toggle} className="cursor-pointer">{isMalayalam ? "English" : "മലയാളം"}</a>
         </div>
       </div>
       {/* bakground */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
-        <span className="m-0 text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0 text-nowrap text-center jetbrains-mono"
+        <span className="m-0 text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0 text-nowrap text-center font-dev"
           style={{ opacity: 0.25 * 1 / scrollY}}>
             { isDate(12, 31, 31) || isDate(1, 1, 2) ? `2 0 
             ${Math.floor((dateObj.getFullYear() - 2000) / 10)} 
