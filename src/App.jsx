@@ -6,6 +6,7 @@ import Fireworks from "./Fireworks/Fireworks.jsx";
 import Dvd from "./Dvd/Dvd.jsx";
 import Cube from "./Cube/Cube.jsx";
 import Action from "./Action/Action.jsx";
+import Wall from "./Wall/Wall.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
 import Contact from "./Contact/Contact.jsx";
@@ -91,7 +92,7 @@ function AppContent({ parallaxRef }) {
 
         {/* gallery */}
         <ParallaxLayer speed={1} offset={1.99} factor={1}>
-          <Photogrid />
+          <Wall />
         </ParallaxLayer>
         
         {/* sample shit */}

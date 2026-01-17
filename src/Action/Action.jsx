@@ -24,7 +24,7 @@ const Action = ({ parallaxRef }) => {
           {isMalayalam ? "അർജുൻ ലിജി " : "And development ~ "}
         </span>
       </div>
-      <p className="w-[90vw] sm:w-[70vw] text-4xl sm:text-5xl opacity-60 font-para sm:my-20 my-10">
+      <p className="w-[90vw] sm:w-[70vw] text-4xl sm:text-5xl opacity-60 font-para my-10 2xl:px-20 2xl:leading-normal">
         {isMalayalam ? (
           <div className="tracking-wider sm:tracking-widest">
             <span>
