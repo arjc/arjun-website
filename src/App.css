@@ -43,17 +43,16 @@
   font-style: normal;
 }
 
-
 ::selection {
-    background: #fff;
-    color: #000;
-    text-shadow: none;
+  background: #fff;
+  color: #000;
+  text-shadow: none;
 }
 
 ::-moz-selection {
-    background: #000;
-    color: #fff;
-    text-shadow: none;
+  background: #000;
+  color: #fff;
+  text-shadow: none;
 }
 
 body {
@@ -132,6 +131,15 @@ button:focus-visible {
   animation: rangmiranga 5s infinite;
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(calc(-100% + 100vw));
+  }
+}
+
 @keyframes rangmiranga {
   from {
     filter: hue-rotate(0deg);
@@ -140,4 +148,3 @@ button:focus-visible {
     filter: hue-rotate(-360deg);
   }
 }
-

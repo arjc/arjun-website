@@ -8,6 +8,7 @@ import Cube from "./Cube/Cube.jsx";
 import Action from "./Action/Action.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
+import Contact from "./Contact/Contact.jsx";
 import Footer from "./Footer/Footer.jsx";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 let dateObj = new Date();
@@ -107,7 +108,7 @@ function AppContent({ parallaxRef }) {
         </ParallaxLayer>
 
         <ParallaxLayer speed={1} offset={3.99} factor={1}>
-          <Photogrid />
+          <Contact />
         </ParallaxLayer>
 
         {/* footer */}

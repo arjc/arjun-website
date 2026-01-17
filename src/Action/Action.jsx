@@ -24,16 +24,6 @@ const Action = ({ parallaxRef }) => {
           {isMalayalam ? "അർജുൻ ലിജി " : "And development ~ "}
         </span>
       </div>
-      <style>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(calc(-100% + 100vw));
-          }
-        }
-      `}</style>
       <p className="w-[90vw] sm:w-[70vw] text-4xl sm:text-5xl opacity-60 font-para sm:my-20 my-10">
         {isMalayalam ? (
           <div className="tracking-wider sm:tracking-widest">
@@ -58,19 +48,19 @@ const Action = ({ parallaxRef }) => {
           href="https://dev.arjc.me"
           className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto "
         >
-          {isMalayalam ? "ഡെവ് പോർട്ട്ഫോളിയോ" : "Dev Portfolio"}
+          {isMalayalam ? <><span className="font-bold">ഡെ</span><span className="font-dev">വ് പോർട്ട്ഫോളിയോ</span></> : "Dev Portfolio"}
         </a>
         <a
           href="https://blogs.arjc.me"
           className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto "
         >
-          {isMalayalam ? "പത്രം" : "Blog"}
+          {isMalayalam ? <><span className="font-bold">പ</span><span className="font-dev">ത്രം</span></> : "Blog"}
         </a>
         <a
           href="https://music.arjc.me"
           className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto "
         >
-          {isMalayalam ? "സംഗീതകൃതികൾ" : "Music and works"}
+          {isMalayalam ? <><span className="font-bold">സം</span><span className="font-dev">ഗീതകൃതികൾ</span></> : "Music and works"}
         </a>
         {/* <a href="/cv.pdf" className="px-3 py-1 border-y sm:border-5 sm:rounded-2xl w-screen sm:w-auto ">
           {isMalayalam ? "സി.വി" : "Download CV"}
@@ -79,13 +69,13 @@ const Action = ({ parallaxRef }) => {
           onClick={() => scrollTo(2)}
           className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto cursor-pointer"
         >
-          {isMalayalam ? "ചിത്രങ്ങൾ" : "Gallery"}
+          {isMalayalam ? <><span className="font-bold">ചി</span><span className="font-dev">ത്രങ്ങൾ</span></> : "Gallery"}
         </a>
         <a
           onClick={() => scrollTo(4)}
           className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto cursor-pointer"
         >
-          {isMalayalam ? "സന്വര്ക്കം" : "Contact"}
+          {isMalayalam ? <> <span className="font-bold">സ</span><span className="font-dev">ന്വര്ക്കം</span></> : "Contact"}
         </a>
       </div>
     </div>
