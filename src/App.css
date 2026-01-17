@@ -89,10 +89,6 @@ h1 {
   transition: all 0.25s ease;
 }
 
-p {
-  font-size: clamp(1em, 3vw, 1.75em);
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
