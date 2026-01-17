@@ -204,24 +204,48 @@ export default function Wall() {
           ref={chatContainerRef}
           className="flex flex-col h-120 overflow-y-auto border-4 border-dashed border-[#aaa] rounded-xl p-4 my-6"
         >
-          <span>Oldest message (17th January 2026)</span>
           {messages.length === 0 ? (
             <p className="text-center text-white/50 font-para">
               No posts here!
             </p>
           ) : (
-            messages.map((m) => (
-              <div
-                key={m.id}
-                className="flex flex-col mb-3 p-3 rounded-lg"
-                style={{ backgroundColor: m.color ? `${m.color}30` : 'rgba(255,255,255,0.1)' }}
-              >
-                <span className="font-dev" style={{ color: m.color || '#aaa' }}>{m.name}:</span>{" "}
-                <p className="font-para text-white">{m.text}</p>
-              </div>
-            ))
+            messages.map((m, index) => {
+              // Get the date of this message
+              const messageDate = m.time?.toDate ? m.time.toDate() : new Date();
+              const messageDateStr = messageDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+              
+              // Get the date of the previous message (if exists)
+              const prevMessage = index > 0 ? messages[index - 1] : null;
+              const prevDate = prevMessage?.time?.toDate ? prevMessage.time.toDate() : null;
+              const prevDateStr = prevDate ? prevDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : null;
+              
+              // Show date separator if this is the first message or if the date changed
+              const showDateSeparator = index === 0 || messageDateStr !== prevDateStr;
+              
+              // Format time as HH:MM
+              const timeStr = messageDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+              
+              return (
+                <div key={m.id}>
+                  {showDateSeparator && (
+                    <div className="text-center text-white/50 font-para my-4">
+                      = {messageDateStr} =
+                    </div>
+                  )}
+                  <div
+                    className="flex flex-col mb-3 p-3 rounded-lg"
+                    style={{ backgroundColor: m.color ? `${m.color}30` : 'rgba(255,255,255,0.1)' }}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="font-dev" style={{ color: m.color || '#aaa' }}>{m.name}:</span>
+                      <span className="text-white/50 text-xs font-dev">{timeStr}</span>
+                    </div>
+                    <p className="font-para text-white">{m.text}</p>
+                  </div>
+                </div>
+              );
+            })
           )}
-          <span>Latest message ({new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })})</span>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -236,7 +260,7 @@ export default function Wall() {
           />
           <span
             onClick={send}
-            className="px-6 py-3 bg-white! text-black font-dev font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"
+            className="px-6 py-3 bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"
           >
             Send
           </span>
