@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  font-family: "JetBrains Mono", "Noto Sans Malayalam", monospace;
+  font-family: "Jetbrains Mono", "Manjari", monospace;
   line-height: 1.5;
-  font-weight: 400;
 
   /* color-scheme: dark; */
   color: #ffffffde;
@@ -14,6 +13,53 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+.jetbrains-mono-light {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.jetbrains-mono-regular {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.major-mono-display-regular {
+  font-family: "Major Mono Display", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zalando-sans-expanded-light {
+  font-family: "Zalando Sans Expanded", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.manjari-thin {
+  font-family: "Manjari", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.manjari-regular {
+  font-family: "Manjari", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.manjari-bold {
+  font-family: "Manjari", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 ::selection {
     background: #fff;
