@@ -64,7 +64,33 @@ const nameSuffix = [
 
 // Notification sound URL (a pleasant notification chime)
 const NOTIFICATION_SOUND_URL =
-  "https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3";
+  "https://assets.mixkit.co/active_storage/sfx/1434/1434-preview.mp3";
+
+const curseWords = [
+  "fuck", "shit", "ass", "bitch", "damn", "bastard", "dick", "cock",
+  "pussy", "asshole", "bullshit", "motherfucker", "fucker", "fucking", "nigger",
+  "nigga", "cunt", "whore", "slut", "fag", "faggot",
+  "myr", "myrr", "myrrr", "myre", "kundan", "pari", "kunna", "polaydi",  
+  "thendi", "poor", "poori", "poorimon", "avaratham",
+  "avarathi", "koothachi", "umb", "uumb", "uuumb", "umbb", "thantha"
+];
+
+// Filter function to censor curse words and links
+const filterMessage = (message) => {
+  let filtered = message;
+  
+  // Replace curse words with asterisks (case-insensitive)
+  curseWords.forEach((word) => {
+    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+    filtered = filtered.replace(regex, '*'.repeat(word.length));
+  });
+  
+  // Replace URLs/links with asterisks
+  const urlRegex = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|([a-zA-Z0-9-]+\.(com|org|net|io|co|me|info|biz|xyz|app|dev|ai)[^\s]*)/gi;
+  filtered = filtered.replace(urlRegex, (match) => '*'.repeat(match.length));
+  
+  return filtered;
+};
 
 export default function Wall() {
   const { isMalayalam } = useLanguage();
@@ -173,10 +199,11 @@ export default function Wall() {
 
   const send = async () => {
     if (!text) return;
+    const filteredText = filterMessage(text);
     await addDoc(collection(db, "messages"), {
       name: userName || "Anonymous",
       color: userColor || "#ffffff",
-      text,
+      text: filteredText,
       time: serverTimestamp(),
     });
     setText("");
