@@ -1,13 +1,24 @@
 import { useLanguage } from "../context/LanguageContext";
 
+// Route definitions matching App.jsx
+const scrollToPath = {
+  1.1: '/wall',
+  1.5: '/wall',
+  2: '/gallery',
+  3: '/contact',
+  3.5: '/contact',
+};
+
 const Action = ({ parallaxRef }) => {
   const { isMalayalam } = useLanguage();
 
-  const scrollTo = (page, smPage) => {
-    if (parallaxRef?.current)
-      smScreen
-        ? parallaxRef.current.scrollTo(smPage)
-        : parallaxRef.current.scrollTo(page);
+  const scrollTo = (page) => {
+    if (parallaxRef?.current) {
+      parallaxRef.current.scrollTo(page);
+      // Update URL based on scroll position
+      const path = scrollToPath[page] || '/';
+      window.history.pushState({}, '', path);
+    }
   };
 
   return (

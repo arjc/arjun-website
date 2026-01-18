@@ -31,10 +31,41 @@ function App() {
   );
 }
 
+// Route definitions: path -> scroll position
+const routes = {
+  '/': 0,
+  '/wall': 1.05,
+  '/gallery': 2,
+  '/contact': 3,
+  '/footer': 4.5,
+};
+
 function AppContent({ parallaxRef }) {
   const { isMalayalam, toggle } = useLanguage();
   const [scrollY, setScrollY] = useState(1);
   const containerRef = useRef(null);
+
+  // Handle URL-based navigation on mount
+  useEffect(() => {
+    const path = window.location.pathname;
+    const scrollPosition = routes[path];
+    
+    if (scrollPosition !== undefined && parallaxRef.current) {
+      // Small delay to ensure parallax is ready
+      setTimeout(() => {
+        parallaxRef.current.scrollTo(scrollPosition);
+      }, 100);
+    }
+  }, [parallaxRef]);
+
+  // Helper function to navigate and update URL
+  const navigateTo = (path) => {
+    const scrollPosition = routes[path];
+    if (scrollPosition !== undefined && parallaxRef.current) {
+      parallaxRef.current.scrollTo(scrollPosition);
+      window.history.pushState({}, '', path);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +86,7 @@ function AppContent({ parallaxRef }) {
       {isDate(12, 1, 31) && <Snow />}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
         <div className="flex items-center justify-between px-5 sm:px-10 h-15 lg:h-25">
-          <div className="flex items-center gap-2 font-dev" onClick={() => parallaxRef.current.scrollTo(0)} style={{ cursor: "pointer" }}>
+          <div className="flex items-center gap-2 font-dev" onClick={() => navigateTo('/')} style={{ cursor: "pointer" }}>
             <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="achu face logo" />
             { isMalayalam ? <span className="text-4xl">അർജസ</span> : <span className="text-4xl font-bold">arjc.me</span> }
           </div>

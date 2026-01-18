@@ -11,5 +11,11 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    { "source": "/wall", "destination": "/" },
+    { "source": "/gallery", "destination": "/" },
+    { "source": "/contact", "destination": "/" },
+    { "source": "/footer", "destination": "/" }
+  ],
   "cleanUrls": true
 }
