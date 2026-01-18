@@ -41,6 +41,14 @@ const Contact = () => {
             </>
           )}
         </span>
+        </div>
+        <div>
+          <div className="max-w-4xl mx-auto text-center py-10 px-5">
+            Email:
+            <ul>
+              <li><a href="mailto:support@arjc.me">support@arjc.me</a></li>
+            </ul>
+          </div>
       </div>
     </div>
   );

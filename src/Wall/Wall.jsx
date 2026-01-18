@@ -30,7 +30,7 @@ const namePrefix = [
   "Gopan",
   "Sreekuttan",
   "Ambady",
-  "Chuchudu"
+  "Chuchudu",
 ];
 
 const colours = [
@@ -41,7 +41,7 @@ const colours = [
   "#457b9d", // Blue
   "#9b5de5", // Violet
   "#f72585", // Pink
-  "#4cc9f0"  // Cyan
+  "#4cc9f0", // Cyan
 ];
 
 const nameSuffix = [
@@ -58,37 +58,74 @@ const nameSuffix = [
   "Machu",
   "Ikka",
   "Ikkaka",
-  "Kuttan"
+  "Kuttan",
 ];
-
 
 // Notification sound URL (a pleasant notification chime)
 const NOTIFICATION_SOUND_URL =
   "https://assets.mixkit.co/active_storage/sfx/1434/1434-preview.mp3";
 
 const curseWords = [
-  "fuck", "shit", "ass", "bitch", "bastard", "dick", "cock",
-  "pussy", "asshole", "bullshit", "motherfucker", "fucker", "fucking", "nigger",
-  "nigga", "cunt", "whore", "slut", "fag", "faggot", "rape", "raped", "reping",
-  "myr", "myrr", "myrrr", "myre", "kundan", "pari", "kunna", "polaydi",  
-  "thendi", "poor", "poori", "poorimon", "avaratham",
-  "avarathi", "koothachi", "umb", "uumb", "uuumb", "umbb", "thantha"
+  "fuck",
+  "shit",
+  "ass",
+  "bitch",
+  "bastard",
+  "dick",
+  "cock",
+  "pussy",
+  "asshole",
+  "bullshit",
+  "motherfucker",
+  "fucker",
+  "fucking",
+  "nigger",
+  "nigga",
+  "cunt",
+  "whore",
+  "slut",
+  "fag",
+  "faggot",
+  "rape",
+  "raped",
+  "reping",
+  "myr",
+  "myrr",
+  "myrrr",
+  "myre",
+  "kundan",
+  "pari",
+  "kunna",
+  "polaydi",
+  "thendi",
+  "poor",
+  "poori",
+  "poorimon",
+  "avaratham",
+  "avarathi",
+  "koothachi",
+  "umb",
+  "uumb",
+  "uuumb",
+  "umbb",
+  "thantha",
 ];
 
 // Filter function to censor curse words and links
 const filterMessage = (message) => {
   let filtered = message;
-  
+
   // Replace curse words with asterisks (case-insensitive)
   curseWords.forEach((word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    filtered = filtered.replace(regex, '*'.repeat(word.length));
+    const regex = new RegExp(`\\b${word}\\b`, "gi");
+    filtered = filtered.replace(regex, "*".repeat(word.length));
   });
-  
+
   // Replace URLs/links with asterisks
-  const urlRegex = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|([a-zA-Z0-9-]+\.(com|org|net|io|co|me|info|biz|xyz|app|dev|ai)[^\s]*)/gi;
-  filtered = filtered.replace(urlRegex, (match) => '*'.repeat(match.length));
-  
+  const urlRegex =
+    /(https?:\/\/[^\s]+)|(www\.[^\s]+)|([a-zA-Z0-9-]+\.(com|org|net|io|co|me|info|biz|xyz|app|dev|ai)[^\s]*)/gi;
+  filtered = filtered.replace(urlRegex, (match) => "*".repeat(match.length));
+
   return filtered;
 };
 
@@ -112,18 +149,23 @@ export default function Wall() {
   // Generate user name on first visit (stored in localStorage forever)
   useEffect(() => {
     // If already have a name in localStorage, don't regenerate
-    if (localStorage.getItem("wallUserName") && localStorage.getItem("wallUserColor")) {
+    if (
+      localStorage.getItem("wallUserName") &&
+      localStorage.getItem("wallUserColor")
+    ) {
       return;
     }
 
     // Generate random name and color for first-time users
-    const randomPrefix = namePrefix[Math.floor(Math.random() * namePrefix.length)];
-    const randomSuffix = nameSuffix[Math.floor(Math.random() * nameSuffix.length)];
+    const randomPrefix =
+      namePrefix[Math.floor(Math.random() * namePrefix.length)];
+    const randomSuffix =
+      nameSuffix[Math.floor(Math.random() * nameSuffix.length)];
     const randomNumber = Math.floor(Math.random() * 8) + 1;
     const randomColorIndex = Math.floor(Math.random() * colours.length);
     const generatedName = `${randomPrefix} ${randomSuffix} ${randomNumber}`;
     const generatedColor = colours[randomColorIndex];
-    
+
     localStorage.setItem("wallUserName", generatedName);
     localStorage.setItem("wallUserColor", generatedColor);
     setUserName(generatedName);
@@ -210,23 +252,17 @@ export default function Wall() {
   };
 
   return (
-    <div className="w-full min-h-[102vh] bg-black px-4 py-10">
+    <div className="w-full bg-black px-4 py-50">
       <div className="max-w-[80vw] mx-auto">
         <h1 className="flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 sm:tracking-[1ch]">
           <div>
-          {isMalayalam ? "മെസ്സേജ് മതിൽ" : "Vachakam Wall"} ~ {' '}
-          <span className="opacity-60 text-2xl tracking-normal py-2">(beta)</span>
+            {isMalayalam ? "മെസ്സേജ് മതിൽ" : "Vachakam Wall"} ~{" "}
+            <span className="opacity-60 text-2xl tracking-normal py-2">
+              (beta)
+            </span>
           </div>
-
-          <span
-            onClick={toggleMute}
-            className="text-2xl sm:text-4xl cursor-pointer hover:opacity-70 transition-all border-3 border-dashed rounded-full py-2 px-5 my-2 tracking-normal font-dev"
-            title={isMuted ? "Unmute notifications" : "Mute notifications"}
-          >
-            {isMuted ? "🔇 muted" : "🔊 unmuted"}
-          </span>
         </h1>
-        
+
         <div
           ref={chatContainerRef}
           className="flex flex-col h-120 overflow-y-auto border-4 border-dashed border-[#aaa] rounded-xl p-4 my-6"
@@ -239,19 +275,35 @@ export default function Wall() {
             messages.map((m, index) => {
               // Get the date of this message
               const messageDate = m.time?.toDate ? m.time.toDate() : new Date();
-              const messageDateStr = messageDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-              
+              const messageDateStr = messageDate.toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              });
+
               // Get the date of the previous message (if exists)
               const prevMessage = index > 0 ? messages[index - 1] : null;
-              const prevDate = prevMessage?.time?.toDate ? prevMessage.time.toDate() : null;
-              const prevDateStr = prevDate ? prevDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : null;
-              
+              const prevDate = prevMessage?.time?.toDate
+                ? prevMessage.time.toDate()
+                : null;
+              const prevDateStr = prevDate
+                ? prevDate.toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })
+                : null;
+
               // Show date separator if this is the first message or if the date changed
-              const showDateSeparator = index === 0 || messageDateStr !== prevDateStr;
-              
+              const showDateSeparator =
+                index === 0 || messageDateStr !== prevDateStr;
+
               // Format time as HH:MM
-              const timeStr = messageDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-              
+              const timeStr = messageDate.toLocaleTimeString("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+
               return (
                 <div key={m.id}>
                   {showDateSeparator && (
@@ -261,11 +313,22 @@ export default function Wall() {
                   )}
                   <div
                     className="flex flex-col mb-3 p-3 rounded-lg"
-                    style={{ backgroundColor: m.color ? `${m.color}30` : 'rgba(255,255,255,0.1)' }}
+                    style={{
+                      backgroundColor: m.color
+                        ? `${m.color}30`
+                        : "rgba(255,255,255,0.1)",
+                    }}
                   >
                     <div className="flex justify-between items-center">
-                      <span className="font-dev" style={{ color: m.color || '#aaa' }}>{m.name}:</span>
-                      <span className="text-white/50 text-xs font-dev">{timeStr}</span>
+                      <span
+                        className="font-dev"
+                        style={{ color: m.color || "#aaa" }}
+                      >
+                        {m.name}:
+                      </span>
+                      <span className="text-white/50 text-xs font-dev">
+                        {timeStr}
+                      </span>
                     </div>
                     <p className="font-para text-white">{m.text}</p>
                   </div>
@@ -277,7 +340,10 @@ export default function Wall() {
 
         <div className="flex flex-col gap-3">
           <span className="text-white/70 font-dev text-sm">
-            {isMalayalam ? "നിങ്ങൾ:" : "Sending as:"} <span className="text-white font-bold">{userName || "Loading..."}</span>
+            {isMalayalam ? "നിങ്ങൾ:" : "Sending as:"}{" "}
+            <span className="text-white font-bold">
+              {userName || "Loading..."}
+            </span>
           </span>
           <input
             value={text}
@@ -285,12 +351,21 @@ export default function Wall() {
             placeholder={isMalayalam ? "..." : "Say something..."}
             className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 font-para focus:outline-none focus:border-white/50 transition-all"
           />
-          <span
-            onClick={send}
-            className="px-6 py-3 bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"
-          >
-            Send
-          </span>
+          <div className="flex items-center justify-between">
+            <span
+              onClick={toggleMute}
+              className="text-xl sm:text-2xl cursor-pointer hover:opacity-70 transition-all border-3 border-dashed rounded-full py-2 px-5 my-2 tracking-normal font-dev"
+              title={isMuted ? "Unmute notifications" : "Mute notifications"}
+            >
+              {isMuted ? "🔇 Notifs" : "🔊 Notifs"}
+            </span>
+            <span
+              onClick={send}
+              className="px-6 py-3 w-max bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"
+            >
+              Send
+            </span>
+          </div>
         </div>
       </div>
     </div>

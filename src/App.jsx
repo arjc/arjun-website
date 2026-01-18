@@ -82,33 +82,13 @@ function AppContent({ parallaxRef }) {
         </ParallaxLayer>
 
         {/* action */}
-        <ParallaxLayer speed={1} offset={0.999} factor={1}>
+        <ParallaxLayer speed={1} offset={0.9999} factor={5}>
           <Action parallaxRef={parallaxRef} />
-        </ParallaxLayer>
-
-        <ParallaxLayer speed={1} offset={1} factor={1}>
-          <Photogrid />
-        </ParallaxLayer>
-
-        {/* gallery */}
-        <ParallaxLayer speed={1} offset={1.99} factor={1}>
           <Wall />
-        </ParallaxLayer>
-        
-        {/* sample shit */}
-        <ParallaxLayer speed={1} offset={2} factor={1}>
           <Photogrid />
-        </ParallaxLayer>
-
-        <ParallaxLayer speed={1} offset={2.99} factor={1}>
           <Photogrid />
-        </ParallaxLayer>
-
-        <ParallaxLayer speed={1} offset={3} factor={1}>
           <Photogrid />
-        </ParallaxLayer>
-
-        <ParallaxLayer speed={1} offset={3.99} factor={1}>
+          <Photogrid />
           <Contact />
         </ParallaxLayer>
 

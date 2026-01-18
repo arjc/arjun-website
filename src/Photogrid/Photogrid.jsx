@@ -10,6 +10,8 @@ const Photogrid = () => {
       <img src={photo3} alt="mirror" /> */}
       <span className="text-6xl sm:text-8xl font-des">
         WORK IN PROGRESS
+        <br />
+        check again later machu!!!
       </span>
     </div>
   );
