@@ -115,13 +115,13 @@ button:focus-visible {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 1px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #1a1a1a;
-  border: dashed 1px #313131;
+  border: dashed 5px #ffffff;
 }
 
 /* Handle */

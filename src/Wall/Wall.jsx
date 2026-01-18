@@ -40,14 +40,14 @@ const namePrefix = [
 ];
 
 const colours = [
-  "#e63946", // Red
-  "#f4a261", // Orange
-  "#e9c46a", // Yellow
-  "#2a9d8f", // Green/Teal
-  "#457b9d", // Blue
-  "#9b5de5", // Violet
-  "#f72585", // Pink
-  "#4cc9f0", // Cyan
+  "#e63946",
+  "#f4a261",
+  "#e9c46a",
+  "#2a9d8f",
+  "#457b9d",
+  "#9b5de5",
+  "#f72585",
+  "#4cc9f0",
 ];
 
 const nameSuffix = [
@@ -68,7 +68,7 @@ const nameSuffix = [
 ];
 
 const NOTIFICATION_SOUND_URL = Notif;
-const MESSAGES_PER_PAGE = 20;
+const MESSAGES_PER_PAGE = 10;
 
 const curseWords = [
   "fuck",
@@ -119,8 +119,8 @@ const curseWords = [
   "penis",
   "vagina",
   "thayoli",
-  "Poora",
-  "Kunne",
+  "poora",
+  "kunne",
   "oombe"
 
 ];
@@ -144,6 +144,7 @@ const filterMessage = (message) => {
 };
 
 export default function Wall() {
+  
   const { isMalayalam } = useLanguage();
 
   const [messages, setMessages] = useState([]);

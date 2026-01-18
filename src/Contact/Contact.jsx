@@ -43,6 +43,7 @@ const Contact = () => {
         </span>
         </div>
         <div>
+          
           <div className="max-w-4xl mx-auto text-center py-10 px-5">
             Email:
             <ul>
