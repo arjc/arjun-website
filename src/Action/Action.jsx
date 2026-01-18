@@ -3,10 +3,11 @@ import { useLanguage } from "../context/LanguageContext";
 const Action = ({ parallaxRef }) => {
   const { isMalayalam } = useLanguage();
 
-  const scrollTo = (page) => {
-    if (parallaxRef?.current) {
-      parallaxRef.current.scrollTo(page);
-    }
+  const scrollTo = (page, smPage) => {
+    if (parallaxRef?.current)
+      smScreen
+        ? parallaxRef.current.scrollTo(smPage)
+        : parallaxRef.current.scrollTo(page);
   };
 
   return (
@@ -27,7 +28,7 @@ const Action = ({ parallaxRef }) => {
             {isMalayalam ? "അർജുൻ ലിജി " : "And development ~ "}
           </span>
         </div>
-        <p className="w-[90vw] sm:w-[70vw] text-4xl sm:text-5xl opacity-60 font-para 2xl:px-20 2xl:leading-normal">
+        <p className="w-[90vw] sm:w-[70vw] text-4xl sm:text-5xl opacity-60 font-para my-20 2xl:px-20 2xl:leading-normal">
           {isMalayalam ? (
             <div className="tracking-wider sm:tracking-widest">
               <span>
@@ -92,7 +93,7 @@ const Action = ({ parallaxRef }) => {
           {isMalayalam ? "സി.വി" : "Download CV"}
         </a> */}
         <a
-          onClick={() => scrollTo(0.87)}
+          onClick={() => scrollTo(1.1)}
           className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto cursor-pointer"
         >
           {isMalayalam ? (

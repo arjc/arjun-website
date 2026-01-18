@@ -9,6 +9,8 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
+import Notif from "../assets/audio/notif.ogg";
+
 import { useLanguage } from "../context/LanguageContext";
 
 const namePrefix = [
@@ -61,9 +63,7 @@ const nameSuffix = [
   "Kuttan",
 ];
 
-// Notification sound URL (a pleasant notification chime)
-const NOTIFICATION_SOUND_URL =
-  "https://assets.mixkit.co/active_storage/sfx/1434/1434-preview.mp3";
+const NOTIFICATION_SOUND_URL = Notif;
 
 const curseWords = [
   "fuck",
@@ -256,7 +256,7 @@ export default function Wall() {
       <div className="max-w-[80vw] mx-auto">
         <h1 className="flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 sm:tracking-[1ch]">
           <div>
-            {isMalayalam ? "മെസ്സേജ് മതിൽ" : "Vachakam Wall"} ~{" "}
+            {isMalayalam ? "മെസ്സേജ് മതിൽ" : "VACHAKAM WALL"} ~{" "}
             <span className="opacity-60 text-2xl tracking-normal py-2">
               (beta)
             </span>
