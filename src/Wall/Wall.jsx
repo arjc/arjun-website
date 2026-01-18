@@ -144,7 +144,7 @@ const filterMessage = (message) => {
 };
 
 export default function Wall() {
-  
+
   const { isMalayalam } = useLanguage();
 
   const [messages, setMessages] = useState([]);
@@ -342,9 +342,9 @@ export default function Wall() {
   };
 
   return (
-    <div className="relative w-full bg-black px-4 py-20 box-border overflow-hidden">
-      <div className="max-w-[80vw] mx-auto h-full flex flex-col overflow-hidden">
-        <h1 className="flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 sm:tracking-[1ch]">
+    <div className="relative w-screen bg-black py-20 box-border overflow-hidden">
+      <div className="mx-auto h-full flex flex-col overflow-hidden">
+        <h1 className="mx-5 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 sm:tracking-[1ch]">
           <div>
             {isMalayalam ? "മെസ്സേജ് മതിൽ" : "VACHAKAM WALL"} ~{" "}
             <span className="opacity-60 text-2xl tracking-normal py-2">
@@ -356,18 +356,18 @@ export default function Wall() {
         <div
           ref={chatContainerRef}
           onScroll={handleScroll}
-          className="flex flex-col h-120 overflow-y-auto overflow-x-hidden border-4 border-dashed border-[#aaa] rounded-xl p-4 my-6"
+          className="flex flex-col h-120 overflow-y-auto overflow-x-hidden border-y-3 border-dashed border-y-[#aaa] px-5 md:px-10 py-5 my-6"
         >
           {/* Loading indicator at top */}
           {isLoadingMore && (
             <div className="text-center text-white/50 font-para py-4">
-              {isMalayalam ? "കൂടുതൽ ലോഡ് ചെയ്യുന്നു..." : "Loading more..."}
+              {isMalayalam ? "ഒരു നിമിഷം ക്ഷമിക്കു..." : "Loading more..."}
             </div>
           )}
           {/* No more messages indicator */}
           {!hasMoreMessages && messages.length > 0 && (
             <div className="text-center text-white/30 font-para py-4 text-sm">
-              {isMalayalam ? "ഇത് തുടക്കമാണ്" : "~ Beginning of messages ~"}
+              {isMalayalam ? "തുടക്കo" : "~ This is where it all started ~"}
             </div>
           )}
           {messages.length === 0 ? (
@@ -431,7 +431,7 @@ export default function Wall() {
           )}
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 mx-6">
           <span className="text-white/70 font-dev text-md">
             {isMalayalam ? "നിങ്ങളുടെ പേര്:" : "Sending as:"}{" "}
             <span className="text-white font-bold">
