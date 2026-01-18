@@ -67,9 +67,9 @@ const NOTIFICATION_SOUND_URL =
   "https://assets.mixkit.co/active_storage/sfx/1434/1434-preview.mp3";
 
 const curseWords = [
-  "fuck", "shit", "ass", "bitch", "damn", "bastard", "dick", "cock",
+  "fuck", "shit", "ass", "bitch", "bastard", "dick", "cock",
   "pussy", "asshole", "bullshit", "motherfucker", "fucker", "fucking", "nigger",
-  "nigga", "cunt", "whore", "slut", "fag", "faggot",
+  "nigga", "cunt", "whore", "slut", "fag", "faggot", "rape", "raped", "reping",
   "myr", "myrr", "myrrr", "myre", "kundan", "pari", "kunna", "polaydi",  
   "thendi", "poor", "poori", "poorimon", "avaratham",
   "avarathi", "koothachi", "umb", "uumb", "uuumb", "umbb", "thantha"
