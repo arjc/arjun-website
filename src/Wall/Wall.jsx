@@ -339,8 +339,8 @@ export default function Wall() {
         </div>
 
         <div className="flex flex-col gap-3">
-          <span className="text-white/70 font-dev text-sm">
-            {isMalayalam ? "നിങ്ങൾ:" : "Sending as:"}{" "}
+          <span className="text-white/70 font-dev text-md">
+            {isMalayalam ? "നിങ്ങളുടെ പേര്:" : "Sending as:"}{" "}
             <span className="text-white font-bold">
               {userName || "Loading..."}
             </span>
@@ -348,7 +348,7 @@ export default function Wall() {
           <input
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder={isMalayalam ? "..." : "Say something..."}
+            placeholder={isMalayalam ? "എന്തെലും പറയൂ..." : "Say something..."}
             className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 font-para focus:outline-none focus:border-white/50 transition-all"
           />
           <div className="flex items-center justify-between">
@@ -357,13 +357,13 @@ export default function Wall() {
               className="text-xl sm:text-2xl cursor-pointer hover:opacity-70 transition-all border-3 border-dashed rounded-full py-2 px-5 my-2 tracking-normal font-dev"
               title={isMuted ? "Unmute notifications" : "Mute notifications"}
             >
-              {isMuted ? "🔇 Notifs" : "🔊 Notifs"}
+              {isMuted ? (isMalayalam ? "🔇 നോട്ടിഫിക്ഷൻ" : "🔇 Notification") : (isMalayalam ? "🔊 നോട്ടിഫിക്ഷൻ" : "🔊 Notification")}
             </span>
             <span
               onClick={send}
               className="px-6 py-3 w-max bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"
             >
-              Send
+              {isMalayalam ? "അയയ്ക്കു" : "SEND"}
             </span>
           </div>
         </div>
