@@ -121,6 +121,7 @@ const curseWords = [
   "thayoli",
   "Poora",
   "Kunne",
+  "oombe"
 
 ];
 
