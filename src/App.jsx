@@ -35,9 +35,10 @@ function App() {
 // Route definitions: path -> scroll position
 const routes = {
   '/': 0,
-  '/wall': 1.05,
+  '/home': 0.45,
+  '/wall': 1,
   '/gallery': 2,
-  '/contact': 3,
+  '/contact': 3.2,
   '/footer': 4.5,
 };
 

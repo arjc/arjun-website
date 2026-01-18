@@ -9,12 +9,12 @@ const Gallery = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-screen min-h-screen bg-black text-white px-5 py-20">
-      <div>
+      <div style={{width: '90vw'}}>
         <h1 className="font-des text-6xl md:text-8xl md:tracking-[1ch]">
           {isMalayalam ? "ചിത്രങ്ങൾ ~" : "GALLERY ~"}
         </h1>
       </div>
-      <div className="flex flex-col sm:flex-row gap-1 mt-10">
+      <div className="flex flex-col sm:flex-row gap-1 mt-20">
         <div
           className="grid grid-cols-4 gap-1 w-full max-w-4xl"
           style={{ gridTemplateRows: "200px 120px 120px 120px" }}
