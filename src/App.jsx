@@ -113,7 +113,7 @@ function AppContent({ parallaxRef }) {
         </ParallaxLayer>
 
         {/* action */}
-        <ParallaxLayer speed={1} offset={0.9999} factor={5}>
+        <ParallaxLayer speed={1} offset={0.9999} factor={6}>
           <Action parallaxRef={parallaxRef} />
           <Wall />
           <Photogrid />

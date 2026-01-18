@@ -104,6 +104,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.sbar-hide {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.sbar-hide::-webkit-scrollbar {
+  display: none !important;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -112,6 +121,7 @@ button:focus-visible {
 /* Track */
 ::-webkit-scrollbar-track {
   background: #1a1a1a;
+  border: dashed 1px #313131;
 }
 
 /* Handle */

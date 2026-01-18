@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 // Route definitions matching App.jsx
@@ -9,8 +10,38 @@ const scrollToPath = {
   3.5: '/contact',
 };
 
+const glyphs = [
+  "==>",
+  "<==",
+  "==>",
+  "<==",
+  ":::",
+  "\\\\\\///",
+  "***",
+  "~~ ~~",
+  "!==",
+  "</>",
+  "...",
+  "###",
+  "",
+  "$$$",
+  "/(O_O)\\",
+  "\\(*0*)/",
+  "/(O_O)\\",
+  "\\(*0*)/",
+];
+
 const Action = ({ parallaxRef }) => {
   const { isMalayalam } = useLanguage();
+  const [glyphIndex, setGlyphIndex] = useState(0);
+
+  // Sequential glyph cycling
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlyphIndex((prev) => (prev + 1) % glyphs.length);
+    }, 800);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollTo = (page) => {
     if (parallaxRef?.current) {
@@ -22,7 +53,7 @@ const Action = ({ parallaxRef }) => {
   };
 
   return (
-    <div className="flex flex-col items-center text-center w-screen gap-10 bg-black">
+    <div className="flex flex-col items-center text-center w-screen gap-10 bg-black" style={{height: '900px'}}>
       <div className="flex flex-col items-center justify-evenly gap-3">
         <div className="w-screen bg-white overflow-hidden">
           <span
@@ -145,6 +176,9 @@ const Action = ({ parallaxRef }) => {
           )}
         </a>
       </div>
+      <span className="hidden text-[7em] font-dev sm:block transition-all duration-300">
+        {glyphs[glyphIndex]}
+      </span>
     </div>
   );
 };

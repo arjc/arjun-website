@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { db } from "../firebase";
 import {
   collection,
@@ -7,6 +7,10 @@ import {
   query,
   orderBy,
   serverTimestamp,
+  limit,
+  limitToLast,
+  getDocs,
+  endBefore,
 } from "firebase/firestore";
 
 import Notif from "../assets/audio/notif.ogg";
@@ -64,6 +68,7 @@ const nameSuffix = [
 ];
 
 const NOTIFICATION_SOUND_URL = Notif;
+const MESSAGES_PER_PAGE = 20;
 
 const curseWords = [
   "fuck",
@@ -109,6 +114,14 @@ const curseWords = [
   "uuumb",
   "umbb",
   "thantha",
+  "kunnna",
+  "andi",
+  "penis",
+  "vagina",
+  "thayoli",
+  "Poora",
+  "Kunne",
+
 ];
 
 // Filter function to censor curse words and links
@@ -141,6 +154,9 @@ export default function Wall() {
   });
   const [text, setText] = useState("");
   const [isMuted, setIsMuted] = useState(true); // Always start muted
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [hasMoreMessages, setHasMoreMessages] = useState(true);
+  const [oldestDoc, setOldestDoc] = useState(null);
   const audioRef = useRef(null);
   const chatContainerRef = useRef(null);
   const isFirstLoad = useRef(true);
@@ -192,14 +208,24 @@ export default function Wall() {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "messages"), orderBy("time"));
+    // Listen only to the last 20 messages for real-time updates
+    const q = query(
+      collection(db, "messages"),
+      orderBy("time"),
+      limitToLast(MESSAGES_PER_PAGE)
+    );
     const unsub = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
+        _doc: snapshot.docs[0], // Store the first doc for pagination
       }));
 
-      // Play sound only for new messages (not on initial load, and only if unmuted)
+      // Set the oldest document for loading more
+      if (snapshot.docs.length > 0) {
+        setOldestDoc(snapshot.docs[0]);
+      }
+
       if (
         !isFirstLoad.current &&
         data.length > prevMessageCount.current &&
@@ -218,11 +244,73 @@ export default function Wall() {
 
       isFirstLoad.current = false;
       prevMessageCount.current = data.length;
-      setMessages(data);
+      setMessages((prev) => {
+        // Merge with existing older messages
+        const existingIds = new Set(data.map((m) => m.id));
+        const olderMessages = prev.filter((m) => !existingIds.has(m.id));
+        return [...olderMessages, ...data];
+      });
     });
 
     return () => unsub();
   }, [isMuted]);
+
+  // Load more messages when scrolling to top
+  const loadMoreMessages = useCallback(async () => {
+    if (isLoadingMore || !hasMoreMessages || !oldestDoc) return;
+
+    setIsLoadingMore(true);
+    try {
+      const q = query(
+        collection(db, "messages"),
+        orderBy("time"),
+        endBefore(oldestDoc),
+        limitToLast(MESSAGES_PER_PAGE)
+      );
+
+      const snapshot = await getDocs(q);
+      const olderData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      if (olderData.length === 0) {
+        setHasMoreMessages(false);
+      } else {
+        // Update oldest doc for next pagination
+        setOldestDoc(snapshot.docs[0]);
+        
+        // Preserve scroll position
+        const container = chatContainerRef.current;
+        const prevScrollHeight = container?.scrollHeight || 0;
+
+        setMessages((prev) => [...olderData, ...prev]);
+
+        // Restore scroll position after adding older messages
+        setTimeout(() => {
+          if (container) {
+            const newScrollHeight = container.scrollHeight;
+            container.scrollTop = newScrollHeight - prevScrollHeight;
+          }
+        }, 50);
+      }
+    } catch (error) {
+      console.error("Error loading more messages:", error);
+    } finally {
+      setIsLoadingMore(false);
+    }
+  }, [isLoadingMore, hasMoreMessages, oldestDoc]);
+
+  // Handle scroll to detect when user reaches top
+  const handleScroll = useCallback(() => {
+    const container = chatContainerRef.current;
+    if (!container) return;
+
+    // If scrolled to top (with a small threshold), load more
+    if (container.scrollTop < 50 && hasMoreMessages && !isLoadingMore) {
+      loadMoreMessages();
+    }
+  }, [loadMoreMessages, hasMoreMessages, isLoadingMore]);
 
   // Toggle mute - play sound when unmuting to confirm it works
   const toggleMute = () => {
@@ -252,8 +340,8 @@ export default function Wall() {
   };
 
   return (
-    <div className="w-full bg-black px-4 py-50">
-      <div className="max-w-[80vw] mx-auto">
+    <div className="relative w-full bg-black px-4 py-20 box-border overflow-hidden">
+      <div className="max-w-[80vw] mx-auto h-full flex flex-col overflow-hidden">
         <h1 className="flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 sm:tracking-[1ch]">
           <div>
             {isMalayalam ? "മെസ്സേജ് മതിൽ" : "VACHAKAM WALL"} ~{" "}
@@ -265,11 +353,24 @@ export default function Wall() {
 
         <div
           ref={chatContainerRef}
-          className="flex flex-col h-120 overflow-y-auto border-4 border-dashed border-[#aaa] rounded-xl p-4 my-6"
+          onScroll={handleScroll}
+          className="flex flex-col h-120 overflow-y-auto overflow-x-hidden border-4 border-dashed border-[#aaa] rounded-xl p-4 my-6"
         >
+          {/* Loading indicator at top */}
+          {isLoadingMore && (
+            <div className="text-center text-white/50 font-para py-4">
+              {isMalayalam ? "കൂടുതൽ ലോഡ് ചെയ്യുന്നു..." : "Loading more..."}
+            </div>
+          )}
+          {/* No more messages indicator */}
+          {!hasMoreMessages && messages.length > 0 && (
+            <div className="text-center text-white/30 font-para py-4 text-sm">
+              {isMalayalam ? "ഇത് തുടക്കമാണ്" : "~ Beginning of messages ~"}
+            </div>
+          )}
           {messages.length === 0 ? (
             <p className="text-center text-white/50 font-para">
-              No posts here!
+              {isMalayalam ? "ഒരു നിമിഷം ക്ഷമിക്കു..." : "Looking 4 messages..."}
             </p>
           ) : (
             messages.map((m, index) => {
@@ -305,32 +406,22 @@ export default function Wall() {
               });
 
               return (
-                <div key={m.id}>
+                <div key={m.id} className="sbar-hide">
                   {showDateSeparator && (
                     <div className="text-center text-white/50 font-para my-4">
                       = {messageDateStr} =
                     </div>
                   )}
-                  <div
-                    className="flex flex-col mb-3 p-3 rounded-lg"
-                    style={{
-                      backgroundColor: m.color
-                        ? `${m.color}30`
-                        : "rgba(255,255,255,0.1)",
-                    }}
-                  >
-                    <div className="flex justify-between items-center">
-                      <span
-                        className="font-dev"
-                        style={{ color: m.color || "#aaa" }}
-                      >
+                  <div className="flex items-start gap-2 mb-2 py-1 w-full min-w-0">
+                    <span className="font-para flex-1 min-w-0" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
+                      <span className="font-bold font-dev" style={{ color: m.color || "#aaa" }}>
                         {m.name}:
-                      </span>
-                      <span className="text-white/50 text-xs font-dev">
-                        {timeStr}
-                      </span>
-                    </div>
-                    <p className="font-para text-white">{m.text}</p>
+                      </span>{" "}
+                      <span className="text-white">{m.text}</span>
+                    </span>
+                    <span className="text-white/50 text-xs font-dev shrink-0">
+                      {timeStr}
+                    </span>
                   </div>
                 </div>
               );
@@ -342,7 +433,7 @@ export default function Wall() {
           <span className="text-white/70 font-dev text-md">
             {isMalayalam ? "നിങ്ങളുടെ പേര്:" : "Sending as:"}{" "}
             <span className="text-white font-bold">
-              {userName || "Loading..."}
+              {userName || "getting name pls wait..."}
             </span>
           </span>
           <input
