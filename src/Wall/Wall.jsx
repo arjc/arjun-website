@@ -412,9 +412,9 @@ export default function Wall() {
                       = {messageDateStr} =
                     </div>
                   )}
-                  <div className="flex items-start gap-2 mb-2 py-1 w-full min-w-0">
-                    <span className="font-para flex-1 min-w-0" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
-                      <span className="font-bold font-dev" style={{ color: m.color || "#aaa" }}>
+                  <div className="flex items-center gap-2 mb-2 py-1 w-full min-w-0">
+                    <span className="font-para flex-1 min-w-0 border-r-2 border-[#333f]" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
+                      <span className="font-bold font-dev " style={{ color: m.color || "#aaa" }}>
                         {m.name}:
                       </span>{" "}
                       <span className="text-white">{m.text}</span>
