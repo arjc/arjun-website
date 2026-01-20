@@ -41,15 +41,28 @@ const Contact = () => {
             </>
           )}
         </span>
+      </div>
+      <div className="text-[#111] text-des">
+
+        <div className="max-w-4xl mx-auto text-center py-10 px-5">
+          Linkedin:
+          <ul>
+            <li>
+              <a href="https://www.linkedin.com/in/arjc">
+                www.
+                <span className="text-blue-300">linkedin</span>
+                .com/in/
+                <span className="text-white">arjc</span>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div>
-          
-          <div className="max-w-4xl mx-auto text-center py-10 px-5">
-            Email:
-            <ul>
-              <li><a href="mailto:support@arjc.me">support@arjc.me</a></li>
-            </ul>
-          </div>
+        <div className="max-w-4xl mx-auto text-center py-10 px-5">
+          Email:
+          <ul>
+            <li><a href="mailto:support@arjc.me">support@<span className="text-white">arjc.me</span></a></li>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -17,5 +17,8 @@
     { "source": "/contact", "destination": "/" },
     { "source": "/footer", "destination": "/" }
   ],
-  "cleanUrls": true
+  "cleanUrls": true,
+  "errorPages": {
+    "404": "/404.html"
+  }
 }
