@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
-// Route definitions matching App.jsx
 const scrollToPath = {
   1.1: '/wall',
   1.5: '/wall',
@@ -14,31 +13,43 @@ const glyphs = [
   "==>",
   "<==",
   "==>",
-  "<==",
+  ":::",
+  "...",
   ":::",
   "\\\\\\///",
+  "///\\\\\\",
+  "\\\\\\///",
   "***",
+  "**",
+  "***",
+  "<~~ ~~>",
   "~~ ~~",
+  "~~> <~~",
+  "!==",
+  "===",
   "!==",
   "</>",
-  "...",
+  "< >",
+  "</>",
+  "#=#",
   "###",
-  "",
-  "$$$",
+  "#=#",
+  "==",
+  "===",
+  "==",
   "/(O_O)\\",
   "\\(*0*)/",
   "/(O_O)\\",
-  "\\(*0*)/",
+  "/(O.O)\\",
 ];
 
 const Action = ({ parallaxRef }) => {
   const { isMalayalam } = useLanguage();
-  const [glyphIndex, setGlyphIndex] = useState(0);
+  const [pussy, setpussy] = useState(0);
 
-  // Sequential glyph cycling
   useEffect(() => {
     const interval = setInterval(() => {
-      setGlyphIndex((prev) => (prev + 1) % glyphs.length);
+      setpussy((prev) => (prev + 1) % glyphs.length);
     }, 800);
     return () => clearInterval(interval);
   }, []);
@@ -46,7 +57,6 @@ const Action = ({ parallaxRef }) => {
   const scrollTo = (page) => {
     if (parallaxRef?.current) {
       parallaxRef.current.scrollTo(page);
-      // Update URL based on scroll position
       const path = scrollToPath[page] || '/';
       window.history.pushState({}, '', path);
     }
@@ -70,7 +80,7 @@ const Action = ({ parallaxRef }) => {
             {isMalayalam ? "അർജുൻ ലിജി " : "And development ~ "}
           </span>
         </div>
-        <p className="w-[90vw] sm:w-[70vw] text-4xl sm:text-5xl opacity-60 font-para my-20 2xl:px-20 2xl:leading-normal">
+        <p className="w-[90vw] sm:w-[75vw] text-3xl sm:text-5xl opacity-60 font-para mt-10 md:mt-20 2xl:px-20 2xl:leading-normal">
           {isMalayalam ? (
             <div className="tracking-wider sm:tracking-widest">
               <span>
@@ -131,9 +141,6 @@ const Action = ({ parallaxRef }) => {
             "Music and works"
           )}
         </a>
-        {/* <a href="/cv.pdf" className="px-3 py-1 border-y sm:border-5 sm:rounded-2xl w-screen sm:w-auto ">
-          {isMalayalam ? "സി.വി" : "Download CV"}
-        </a> */}
         <a
           onClick={() => scrollTo(1.1)}
           className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto cursor-pointer"
@@ -176,8 +183,8 @@ const Action = ({ parallaxRef }) => {
           )}
         </a>
       </div>
-      <span className="hidden text-[7em] font-dev sm:block transition-all duration-300">
-        {glyphs[glyphIndex]}
+      <span className="hidden md:text-[4em] lg:text-[7em] font-dev md:block transition-all duration-300">
+        {glyphs[pussy]}
       </span>
     </div>
   );

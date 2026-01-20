@@ -125,17 +125,14 @@ const curseWords = [
 
 ];
 
-// Filter function to censor curse words and links
 const filterMessage = (message) => {
   let filtered = message;
 
-  // Replace curse words with asterisks (case-insensitive)
   curseWords.forEach((word) => {
     const regex = new RegExp(`\\b${word}\\b`, "gi");
     filtered = filtered.replace(regex, "*".repeat(word.length));
   });
 
-  // Replace URLs/links with asterisks
   const urlRegex =
     /(https?:\/\/[^\s]+)|(www\.[^\s]+)|([a-zA-Z0-9-]+\.(com|org|net|io|co|me|info|biz|xyz|app|dev|ai)[^\s]*)/gi;
   filtered = filtered.replace(urlRegex, (match) => "*".repeat(match.length));
@@ -155,7 +152,7 @@ export default function Wall() {
     return localStorage.getItem("wallUserColor") || "";
   });
   const [text, setText] = useState("");
-  const [isMuted, setIsMuted] = useState(true); // Always start muted
+  const [isMuted, setIsMuted] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasMoreMessages, setHasMoreMessages] = useState(true);
   const [oldestDoc, setOldestDoc] = useState(null);
@@ -164,9 +161,7 @@ export default function Wall() {
   const isFirstLoad = useRef(true);
   const prevMessageCount = useRef(0);
 
-  // Generate user name on first visit (stored in localStorage forever)
   useEffect(() => {
-    // If already have a name in localStorage, don't regenerate
     if (
       localStorage.getItem("wallUserName") &&
       localStorage.getItem("wallUserColor")
@@ -174,7 +169,6 @@ export default function Wall() {
       return;
     }
 
-    // Generate random name and color for first-time users
     const randomPrefix =
       namePrefix[Math.floor(Math.random() * namePrefix.length)];
     const randomSuffix =
@@ -190,27 +184,22 @@ export default function Wall() {
     setUserColor(generatedColor);
   }, []);
 
-  // Initialize audio - preload for mobile compatibility
   useEffect(() => {
     audioRef.current = new Audio(NOTIFICATION_SOUND_URL);
     audioRef.current.volume = 0.5;
     audioRef.current.preload = "auto";
-    // Load the audio to prepare it for playback
     audioRef.current.load();
   }, []);
 
-  // Play notification sound (works on all devices after user interaction)
   const playNotificationSound = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(() => {
-        // Ignore autoplay errors
       });
     }
   };
 
   useEffect(() => {
-    // Listen only to the last 20 messages for real-time updates
     const q = query(
       collection(db, "messages"),
       orderBy("time"),
@@ -220,10 +209,9 @@ export default function Wall() {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
-        _doc: snapshot.docs[0], // Store the first doc for pagination
+        _doc: snapshot.docs[0],
       }));
 
-      // Set the oldest document for loading more
       if (snapshot.docs.length > 0) {
         setOldestDoc(snapshot.docs[0]);
       }
@@ -236,7 +224,6 @@ export default function Wall() {
         playNotificationSound();
       }
 
-      // Auto scroll to bottom when new message appears or on initial load
       setTimeout(() => {
         if (chatContainerRef.current) {
           chatContainerRef.current.scrollTop =
@@ -247,7 +234,6 @@ export default function Wall() {
       isFirstLoad.current = false;
       prevMessageCount.current = data.length;
       setMessages((prev) => {
-        // Merge with existing older messages
         const existingIds = new Set(data.map((m) => m.id));
         const olderMessages = prev.filter((m) => !existingIds.has(m.id));
         return [...olderMessages, ...data];
@@ -257,7 +243,6 @@ export default function Wall() {
     return () => unsub();
   }, [isMuted]);
 
-  // Load more messages when scrolling to top
   const loadMoreMessages = useCallback(async () => {
     if (isLoadingMore || !hasMoreMessages || !oldestDoc) return;
 
@@ -279,16 +264,13 @@ export default function Wall() {
       if (olderData.length === 0) {
         setHasMoreMessages(false);
       } else {
-        // Update oldest doc for next pagination
         setOldestDoc(snapshot.docs[0]);
         
-        // Preserve scroll position
         const container = chatContainerRef.current;
         const prevScrollHeight = container?.scrollHeight || 0;
 
         setMessages((prev) => [...olderData, ...prev]);
 
-        // Restore scroll position after adding older messages
         setTimeout(() => {
           if (container) {
             const newScrollHeight = container.scrollHeight;
@@ -303,26 +285,21 @@ export default function Wall() {
     }
   }, [isLoadingMore, hasMoreMessages, oldestDoc]);
 
-  // Handle scroll to detect when user reaches top
   const handleScroll = useCallback(() => {
     const container = chatContainerRef.current;
     if (!container) return;
 
-    // If scrolled to top (with a small threshold), load more
     if (container.scrollTop < 50 && hasMoreMessages && !isLoadingMore) {
       loadMoreMessages();
     }
   }, [loadMoreMessages, hasMoreMessages, isLoadingMore]);
 
-  // Toggle mute - play sound when unmuting to confirm it works
   const toggleMute = () => {
     setIsMuted((prev) => {
       const newValue = !prev;
-      // Play a notification sound when unmuting to confirm audio is working
       if (!newValue && audioRef.current) {
         audioRef.current.currentTime = 0;
         audioRef.current.play().catch(() => {
-          // Ignore errors
         });
       }
       return newValue;
@@ -344,7 +321,7 @@ export default function Wall() {
   return (
     <div className="relative w-screen bg-black py-20 box-border overflow-hidden">
       <div className="mx-auto h-full flex flex-col overflow-hidden">
-        <h1 className="mx-5 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 sm:tracking-[1ch]">
+        <h1 className="mx-5 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 md:tracking-[1ch]">
           <div>
             {isMalayalam ? "മെസ്സേജ് മതിൽ" : "VACHAKAM WALL"} ~{" "}
             <span className="opacity-60 text-2xl tracking-normal py-2">
@@ -358,13 +335,11 @@ export default function Wall() {
           onScroll={handleScroll}
           className="flex flex-col h-120 overflow-y-auto overflow-x-hidden border-y-3 border-dashed border-y-[#aaa] px-5 md:px-10 py-5 my-6"
         >
-          {/* Loading indicator at top */}
           {isLoadingMore && (
             <div className="text-center text-white/50 font-para py-4">
               {isMalayalam ? "ഒരു നിമിഷം ക്ഷമിക്കു..." : "Loading more..."}
             </div>
           )}
-          {/* No more messages indicator */}
           {!hasMoreMessages && messages.length > 0 && (
             <div className="text-center text-white/30 font-para py-4 text-sm">
               {isMalayalam ? "തുടക്കo" : "~ This is where it all started ~"}
@@ -376,7 +351,6 @@ export default function Wall() {
             </p>
           ) : (
             messages.map((m, index) => {
-              // Get the date of this message
               const messageDate = m.time?.toDate ? m.time.toDate() : new Date();
               const messageDateStr = messageDate.toLocaleDateString("en-GB", {
                 day: "numeric",
@@ -384,7 +358,6 @@ export default function Wall() {
                 year: "numeric",
               });
 
-              // Get the date of the previous message (if exists)
               const prevMessage = index > 0 ? messages[index - 1] : null;
               const prevDate = prevMessage?.time?.toDate
                 ? prevMessage.time.toDate()
@@ -397,11 +370,9 @@ export default function Wall() {
                   })
                 : null;
 
-              // Show date separator if this is the first message or if the date changed
               const showDateSeparator =
                 index === 0 || messageDateStr !== prevDateStr;
 
-              // Format time as HH:MM
               const timeStr = messageDate.toLocaleTimeString("en-GB", {
                 hour: "2-digit",
                 minute: "2-digit",

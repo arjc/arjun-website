@@ -78,16 +78,13 @@ const Cube = () => {
         <div className={`cube ${!isMobile || isHovering ? "mouse-follow" : ""}`}>
           <div className="cube-face front">{face}</div>
           <div className="cube-face back">{face}</div>
-          {/* left */}
           <div className="cube-face left">{dev}</div> 
           <div className="cube-face right">{dev}</div>
-          {/* top */}
           <div className="cube-face top">{des}</div>
           <div className="cube-face bottom">{des}</div>
         </div>
       </div>
 
-      {/* arrow */}
       <div className="absolute animate-bounce bottom-15 flex opacity-35">
         <svg
           className="w-10 h-10"

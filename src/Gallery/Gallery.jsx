@@ -35,7 +35,6 @@ const Gallery = () => {
             />
           </div>
 
-          {/* mirror self */}
           <div className="col-span-1 row-span-2 overflow-hidden rounded-sm">
             <img
               src={na}

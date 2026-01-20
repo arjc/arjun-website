@@ -22,7 +22,6 @@ const Dvd = () => {
       if (newX <= 0 || newX >= window.innerWidth - faceSize) {
         newVx = -velocity.vx;
         newX = Math.max(0, Math.min(window.innerWidth - faceSize, newX));
-        // setHue(colors[Math.floor(Math.random() * colors.length)]);
         i >= colors.length ? (i = 1) : (i += 1 / 2);
         setHue(colors[Math.floor(i)]);
       }
@@ -30,7 +29,6 @@ const Dvd = () => {
       if (newY <= 0 || newY >= window.innerHeight - faceSize) {
         newVy = -velocity.vy;
         newY = Math.max(0, Math.min(window.innerHeight - faceSize, newY));
-        // setHue(colors[Math.floor(Math.random() * colors.length)]);
         i >= colors.length ? (i = 1) : (i += 1 / 2);
         setHue(colors[Math.floor(i)]);
       }
@@ -38,8 +36,6 @@ const Dvd = () => {
       setVelocity({ vx: newVx, vy: newVy });
       return { x: newX, y: newY };
     });
-
-    // setHue((prev) => (prev + 2) % 360);
   };
 
   useEffect(() => {
@@ -93,7 +89,6 @@ const Dvd = () => {
           height: `${faceSize}px`,
           filter: `hue-rotate(${hue}deg)`,
           pointerEvents: "none",
-          // maxHeight: "50px",
         }}
       />
       <div className="text-white text-center mt-4">[Screensaver] interact to dismiss</div>

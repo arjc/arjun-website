@@ -30,7 +30,6 @@ const Footer = () => {
               {isMalayalam ? "സന്ദർശകരുടെ ഭാഗമാണ്" : "visitors"}
             </>
           )}
-          {/* {isMalayalam ? "നന്ദി" : "Thank you"} */}
         </div>
         <div className="opacity-60">
           {isMalayalam

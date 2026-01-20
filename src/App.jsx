@@ -7,6 +7,7 @@ import Dvd from "./Dvd/Dvd.jsx";
 import Cube from "./Cube/Cube.jsx";
 import Action from "./Action/Action.jsx";
 import Wall from "./Wall/Wall.jsx";
+import Featured from "./Featured/Featured.jsx";
 import Gallery from "./Gallery/Gallery.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
@@ -32,7 +33,6 @@ function App() {
   );
 }
 
-// Route definitions: path -> scroll position
 const routes = {
   '/': 0,
   '/home': 0.45,
@@ -47,20 +47,17 @@ function AppContent({ parallaxRef }) {
   const [scrollY, setScrollY] = useState(1);
   const containerRef = useRef(null);
 
-  // Handle URL-based navigation on mount
   useEffect(() => {
     const path = window.location.pathname;
     const scrollPosition = routes[path];
     
     if (scrollPosition !== undefined && parallaxRef.current) {
-      // Small delay to ensure parallax is ready
       setTimeout(() => {
         parallaxRef.current.scrollTo(scrollPosition);
       }, 100);
     }
   }, [parallaxRef]);
 
-  // Helper function to navigate and update URL
   const navigateTo = (path) => {
     const scrollPosition = routes[path];
     if (scrollPosition !== undefined && parallaxRef.current) {
@@ -74,7 +71,6 @@ function AppContent({ parallaxRef }) {
       if (containerRef.current) {
         const posY = containerRef.current.getBoundingClientRect().top;
         setScrollY(window.pageYOffset - posY);
-        // console.log(window.pageYOffset - posY);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -95,7 +91,6 @@ function AppContent({ parallaxRef }) {
           <a onClick={toggle} className="cursor-pointer">{isMalayalam ? "English" : "മലയാളം"}</a>
         </div>
       </div>
-      {/* bakground */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
         <span className="m-0 text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0 text-nowrap text-center font-dev"
           style={{ opacity: 0.25 * 1 / scrollY}}>
@@ -104,31 +99,26 @@ function AppContent({ parallaxRef }) {
             ${dateObj.getFullYear() - 2020}` : isMalayalam ? "അർജസ" : "arjc.me" }
         </span>
       </div>
-      {/* spring =========================================================== */}
       <Parallax ref={parallaxRef} pages={5} style={{top: 0, left: 0}} config={{ mass: 1, tension: 170, friction: 26 }}>
         
         {isDate(1, 1, 2) ? <Fireworks className="absolute" /> : <></>}
         
-        {/* hero */}
         <ParallaxLayer speed={5} offset={0} factor={1} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <Cube />
         </ParallaxLayer>
 
-        {/* action */}
         <ParallaxLayer speed={1} offset={0.9999} factor={6}>
           <Action parallaxRef={parallaxRef} />
           <Wall />
-          <Photogrid />
+          <Featured />
           <Gallery />
           <Photogrid />
           <Contact />
         </ParallaxLayer>
 
-        {/* footer */}
         <ParallaxLayer speed={1} offset={4.5} factor={0.5}>
           <Footer />
         </ParallaxLayer>
-        {/* spring =========================================================== */}
       </Parallax>
     </div>
     </>
