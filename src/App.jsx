@@ -13,6 +13,7 @@ import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
 import Contact from "./Contact/Contact.jsx";
 import Footer from "./Footer/Footer.jsx";
+import NotFound from "./Pages/NotFound.jsx";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 let dateObj = new Date();
 
@@ -45,16 +46,22 @@ const routes = {
 function AppContent({ parallaxRef }) {
   const { isMalayalam, toggle } = useLanguage();
   const [scrollY, setScrollY] = useState(1);
+  const [is404, setIs404] = useState(false);
   const containerRef = useRef(null);
 
   useEffect(() => {
     const path = window.location.pathname;
     const scrollPosition = routes[path];
 
-    if (scrollPosition !== undefined && parallaxRef.current) {
-      setTimeout(() => {
-        parallaxRef.current.scrollTo(scrollPosition);
-      }, 100);
+    if (scrollPosition !== undefined) {
+      setIs404(false);
+      if (parallaxRef.current) {
+        setTimeout(() => {
+          parallaxRef.current.scrollTo(scrollPosition);
+        }, 100);
+      }
+    } else {
+      setIs404(true);
     }
   }, [parallaxRef]);
 
@@ -76,6 +83,10 @@ function AppContent({ parallaxRef }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (is404) {
+    return <NotFound />;
+  }
 
   return (
     <>
