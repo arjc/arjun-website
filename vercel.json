@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "redirects": [
     {
       "source": "/blogs",
@@ -15,10 +17,7 @@
     { "source": "/wall", "destination": "/" },
     { "source": "/gallery", "destination": "/" },
     { "source": "/contact", "destination": "/" },
-    { "source": "/footer", "destination": "/" }
-  ],
-  "cleanUrls": true,
-  "errorPages": {
-    "404": "/404.html"
-  }
+    { "source": "/footer", "destination": "/" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
