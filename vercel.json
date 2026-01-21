@@ -18,10 +18,5 @@
     { "source": "/gallery", "destination": "/" },
     { "source": "/contact", "destination": "/" },
     { "source": "/footer", "destination": "/" }
-  ],
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "errorPages": {
-    "404": "/404.html"
-  }
+  ]
 }
