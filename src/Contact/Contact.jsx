@@ -42,15 +42,88 @@ const Contact = () => {
           )}
         </span>
       </div>
-      <div className="text-[#111] text-des">
-
+      <div className="text-des flex flex-col sm:flex-row items-center justify-evenly gap-10 w-screen py-15">
+        <div>
+          <div className="max-w-4xl mx-auto text-center py-10 px-5">
+            Youtube:
+            <ul>
+              <li>
+                <a href="https://www.youtube.com/@arjcyt">
+                  www.
+                  <span className="text-[#ff0000]">youtube</span>
+                  .com/@
+                  <span className="text-white">arjc</span>yt
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="max-w-4xl mx-auto text-center py-10 px-5">
+            Github:
+            <ul>
+              <li>
+                <a href="https://www.github.com/arjc">
+                  www.
+                  <span className="text-[#fafbfc]">github</span>
+                  .com/
+                  <span className="text-white">arjc</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="max-w-4xl mx-auto text-center py-10 px-5">
+            Linkedin:
+            <ul>
+              <li>
+                <a href="https://www.linkedin.com/in/arjc">
+                  www.
+                  <span className="text-[#0a66c2]">linkedin</span>
+                  .com/in/
+                  <span className="text-white">arjc</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="max-w-4xl mx-auto text-center py-10 px-5">
+            Email:
+            <ul>
+              <li><a href="mailto:support@arjc.me">arjun@<span className="text-white">arjc.me</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+                  <div className="max-w-4xl mx-auto text-center py-10 px-5">
+          Youtube:
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/@arjcyt">
+                www.
+                <span className="text-[#ff0000]">youtube</span>
+                .com/@
+                <span className="text-white">arjc</span>yt
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="max-w-4xl mx-auto text-center py-10 px-5">
+          Github:
+          <ul>
+            <li>
+              <a href="https://www.github.com/arjc">
+                www.
+                <span className="text-[#fafbfc]">github</span>
+                .com/
+                <span className="text-white">arjc</span>
+              </a>
+            </li>
+          </ul>
+        </div>
         <div className="max-w-4xl mx-auto text-center py-10 px-5">
           Linkedin:
           <ul>
             <li>
               <a href="https://www.linkedin.com/in/arjc">
                 www.
-                <span className="text-blue-300">linkedin</span>
+                <span className="text-[#0a66c2]">linkedin</span>
                 .com/in/
                 <span className="text-white">arjc</span>
               </a>
@@ -60,8 +133,9 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto text-center py-10 px-5">
           Email:
           <ul>
-            <li><a href="mailto:support@arjc.me">support@<span className="text-white">arjc.me</span></a></li>
+            <li><a href="mailto:support@arjc.me">arjun@<span className="text-white">arjc.me</span></a></li>
           </ul>
+        </div>
         </div>
       </div>
     </div>
