@@ -177,7 +177,7 @@ const Action = ({ parallaxRef }) => {
           )}
         </a>
       </div>
-      <span className="hidden md:text-[4em] lg:text-[7em] font-dev md:block transition-all duration-300">
+      <span className="hidden md:text-[2em] lg:text-[3em] font-dev md:block transition-all duration-300">
         {glyphs[pussy]}
       </span>
     </div>
