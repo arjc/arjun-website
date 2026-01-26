@@ -42,100 +42,101 @@ const Contact = () => {
           )}
         </span>
       </div>
-      <div className="text-des flex flex-col sm:flex-row items-center justify-evenly gap-10 w-screen py-15">
-        <div>
-          <div className="max-w-4xl mx-auto text-center py-10 px-5">
-            Youtube:
-            <ul>
-              <li>
-                <a href="https://www.youtube.com/@arjcyt">
-                  www.
-                  <span className="text-[#ff0000]">youtube</span>
-                  .com/@
-                  <span className="text-white">arjc</span>yt
-                </a>
-              </li>
-            </ul>
+      <div className="flex gap-5 flex-col sm:flex-row justify-evenly w-screen px-5 ">
+        <div className="my-25 text-[1.5em]">
+          <h1 className="font-des">
+            {isMalayalam ? '' : 'SOCIAL LINKS'}
+          </h1>
+          <h1 className="font-dev">~~&gt;</h1>
+        </div>
+        <div className="text-des flex flex-col lg:flex-row items-center lg:gap-40 sm:py-10 text-[2.2em] sm:text-[1em]">
+          {/* i am too lazy to use grid to i made it like this */}
+          <div>
+            <div className="max-w-4xl mx-auto py-10 px-5">
+              Youtube:
+              <ul>
+                <li>
+                  <a href="https://www.youtube.com/@arjcyt">
+                    www.
+                    <span className="text-[#ff0000]">youtube</span>
+                    .com/@
+                    <span className="text-white">arjc</span>yt
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="max-w-4xl mx-auto py-10 px-5">
+              Github:
+              <ul>
+                <li>
+                  <a href="https://www.github.com/arjc">
+                    www.
+                    <span className="text-[#fafbfc]">github</span>
+                    .com/
+                    <span className="text-white">arjc</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="max-w-4xl mx-auto py-10 px-5">
+              Linkedin:
+              <ul>
+                <li>
+                  <a href="https://www.linkedin.com/in/arjc">
+                    www.
+                    <span className="text-[#0a66c2]">linkedin</span>
+                    .com/in/
+                    <span className="text-white">arjc</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="max-w-4xl mx-auto text-center py-10 px-5">
-            Github:
-            <ul>
-              <li>
-                <a href="https://www.github.com/arjc">
-                  www.
-                  <span className="text-[#fafbfc]">github</span>
-                  .com/
-                  <span className="text-white">arjc</span>
-                </a>
-              </li>
-            </ul>
+          <div>
+            <div className="max-w-4xl mx-auto py-10 px-5">
+              Insta:
+              <ul>
+                <li>
+                  <a href="https://www.instagram.com/arjcig">
+                    www.
+                    <span style={{ background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)', backgroundClip: 'text', color: 'transparent' }}>
+                      instagram
+                    </span>
+                    .com/
+                    <span className="text-white">arjc</span>ig
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="max-w-4xl mx-auto py-10 px-5">
+              Discord:
+              <ul>
+                <li>
+                  <a href="https://discordapp.com/">
+                    www.
+                    <span className="text-[#7289da]">discord</span>
+                    .com/
+                    <span className="text-white">arjc</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="max-w-4xl mx-auto py-10 px-5">
+              LeetCode:
+              <ul>
+                <li>
+                  <a href="https://leetcode.com/u/arjc/">
+                    www.
+                    <span className="text-[#FFA116]">leetcode</span>
+                    .com/u/
+                    <span className="text-white">arjc</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
           </div>
-          <div className="max-w-4xl mx-auto text-center py-10 px-5">
-            Linkedin:
-            <ul>
-              <li>
-                <a href="https://www.linkedin.com/in/arjc">
-                  www.
-                  <span className="text-[#0a66c2]">linkedin</span>
-                  .com/in/
-                  <span className="text-white">arjc</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="max-w-4xl mx-auto text-center py-10 px-5">
-            Email:
-            <ul>
-              <li><a href="mailto:support@arjc.me">arjun@<span className="text-white">arjc.me</span></a></li>
-            </ul>
-          </div>
-        </div>
-        <div>
-                  <div className="max-w-4xl mx-auto text-center py-10 px-5">
-          Youtube:
-          <ul>
-            <li>
-              <a href="https://www.youtube.com/@arjcyt">
-                www.
-                <span className="text-[#ff0000]">youtube</span>
-                .com/@
-                <span className="text-white">arjc</span>yt
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="max-w-4xl mx-auto text-center py-10 px-5">
-          Github:
-          <ul>
-            <li>
-              <a href="https://www.github.com/arjc">
-                www.
-                <span className="text-[#fafbfc]">github</span>
-                .com/
-                <span className="text-white">arjc</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="max-w-4xl mx-auto text-center py-10 px-5">
-          Linkedin:
-          <ul>
-            <li>
-              <a href="https://www.linkedin.com/in/arjc">
-                www.
-                <span className="text-[#0a66c2]">linkedin</span>
-                .com/in/
-                <span className="text-white">arjc</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="max-w-4xl mx-auto text-center py-10 px-5">
-          Email:
-          <ul>
-            <li><a href="mailto:support@arjc.me">arjun@<span className="text-white">arjc.me</span></a></li>
-          </ul>
-        </div>
+
         </div>
       </div>
     </div>

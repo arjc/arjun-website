@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 const scrollToPath = {
-  1.1: '/wall',
-  1.5: '/wall',
   2: '/gallery',
   3: '/contact',
-  3.5: '/contact',
+  3.5: '/comment',
 };
 
 const glyphs = [
@@ -37,10 +35,6 @@ const glyphs = [
   "==",
   "===",
   "==",
-  "/(O_O)\\",
-  "\\(*0*)/",
-  "/(O_O)\\",
-  "/(O.O)\\",
 ];
 
 const Action = ({ parallaxRef }) => {

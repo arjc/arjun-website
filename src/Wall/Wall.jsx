@@ -321,12 +321,12 @@ export default function Wall() {
   return (
     <div className="relative w-screen bg-black py-20 box-border overflow-hidden">
       <div className="mx-auto h-full flex flex-col overflow-hidden">
-        <h1 className="mx-5 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3 md:tracking-[1ch]">
-          <div>
-            {isMalayalam ? "മെസ്സേജ് മതിൽ" : "VACHAKAM WALL"} ~{" "}
-            <span className="opacity-60 text-2xl tracking-normal py-2">
-              (beta)
-            </span>
+        <h1 className="mx-5 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3">
+          <div className="flex">
+            <div className={`${isMalayalam ? 'tracking-[0.2ch]' : 'tracking-[0.5ch]'} sm:tracking-[1ch] md:tracking-[2ch] lg:tracking-[3ch] xl:tracking-[4ch]`}>
+              {isMalayalam ? "അഭിപ്രായം പറയൂ" : "COMMENTS"}
+            </div>
+            <span className="font-dev">~~&gt;</span>
           </div>
         </h1>
 
@@ -406,8 +406,9 @@ export default function Wall() {
           <span className="text-white/70 font-dev text-md">
             {isMalayalam ? "നിങ്ങളുടെ പേര്:" : "Sending as:"}{" "}
             <span className="text-white font-bold">
-              {userName || "getting name pls wait..."}
+              {userName || "getting name pls wait..."}{" *"}
             </span>
+            <br />
           </span>
           <input
             value={text}
@@ -430,6 +431,12 @@ export default function Wall() {
               {isMalayalam ? "അയയ്ക്കു" : "SEND"}
             </span>
           </div>
+            <span className="text-sm mt-5">
+              Does'nt collect IP information... just make sure to be respectfull...
+            </span>
+            <span className="text-sm opacity-50">
+              *just a random name, to prevent missuse ;)
+            </span>
         </div>
       </div>
     </div>

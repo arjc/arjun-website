@@ -6,12 +6,12 @@ import Fireworks from "./Fireworks/Fireworks.jsx";
 import Dvd from "./Dvd/Dvd.jsx";
 import Cube from "./Cube/Cube.jsx";
 import Action from "./Action/Action.jsx";
-import Wall from "./Wall/Wall.jsx";
 import Featured from "./Featured/Featured.jsx";
 import Gallery from "./Gallery/Gallery.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
 import faceImg from "./assets/images/face.webp";
 import Contact from "./Contact/Contact.jsx";
+import Wall from "./Wall/Wall.jsx";
 import Footer from "./Footer/Footer.jsx";
 import NotFound from "./Pages/NotFound.jsx";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
@@ -37,10 +37,9 @@ function App() {
 const routes = {
   '/': 0,
   '/home': 0.45,
-  '/wall': 1,
   '/gallery': 2,
-  '/contact': 3.2,
-  '/footer': 4.5,
+  '/contact': 2,
+  '/comment': 3.2,
 };
 
 function AppContent({ parallaxRef }) {
@@ -120,11 +119,11 @@ function AppContent({ parallaxRef }) {
 
           <ParallaxLayer speed={1} offset={0.9999} factor={6}>
             <Action parallaxRef={parallaxRef} />
-            <Wall />
             <Featured />
             <Gallery />
             <Photogrid />
             <Contact />
+            <Wall />
           </ParallaxLayer>
 
           <ParallaxLayer speed={1} offset={4.5} factor={0.5}>
