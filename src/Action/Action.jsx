@@ -30,7 +30,7 @@ const Action = ({ scrollToSection }) => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full bg-[#0a0a0a] py-20 sm:py-28 px-6 sm:px-10 lg:px-16">
+    <div className="flex flex-col items-center w-full bg-black py-20 sm:py-28 px-6 sm:px-10 lg:px-16">
 
       {/* --- dashed separator art --- */}
       <div className="w-full max-w-4xl mb-16 sm:mb-20">

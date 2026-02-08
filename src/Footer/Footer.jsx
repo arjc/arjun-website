@@ -6,7 +6,7 @@ const Footer = () => {
   const isAdblockActive = window.isAdblockActive;
 
   return (
-    <footer className="bg-[#0a0a0a] px-6 sm:px-10 lg:px-16 pt-16 pb-12">
+    <footer className="bg-black px-6 sm:px-10 lg:px-16 pt-16 pb-12">
       <div className="max-w-4xl mx-auto">
         <hr className="dash-sep mb-10" />
 

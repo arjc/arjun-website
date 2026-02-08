@@ -116,7 +116,7 @@ function AppContent() {
         {isDate(1, 1, 2) && <Fireworks className="absolute" />}
 
         {/* --- navbar --- */}
-        <div className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-dashed border-[#222]">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-black/85 backdrop-blur-md border-b border-dashed border-[#333]">
           <div className="flex items-center justify-between px-6 sm:px-10 lg:px-16 h-14 sm:h-16 max-w-6xl mx-auto">
 
             {/* left: logo */}
@@ -143,14 +143,14 @@ function AppContent() {
                   <s.icon />
                 </a>
               ))}
-            <button
-              onClick={toggle}
-              className="flex items-center gap-2 px-3 py-1.5 border border-dashed border-[#444] rounded-sm text-[#666] hover:text-white hover:border-[#666] transition-all duration-300 text-xs font-dev"
-              title="Toggle language"
-            >
-              <GlobeIcon />
-              <span>{isMalayalam ? "mal" : "eng"}</span>
-            </button>
+              <button
+                onClick={toggle}
+                className="flex items-center gap-2 px-3 py-1.5 border border-dashed border-[#444] rounded-sm text-[#666] hover:text-white hover:border-[#666] transition-all duration-300 text-xs font-dev"
+                title="Toggle language"
+              >
+                <GlobeIcon />
+                <span>{isMalayalam ? "mal" : "eng"}</span>
+              </button>
             </div>
 
             {/* mobile: hamburger */}
@@ -165,7 +165,7 @@ function AppContent() {
 
           {/* mobile dropdown */}
           {menuOpen && (
-            <div className="sm:hidden border-t border-dashed border-[#222] bg-[#0a0a0a]/95 backdrop-blur-md px-6 py-4 font-dev text-xs tracking-wider">
+            <div className="sm:hidden border-t border-dashed border-[#222] bg-black/95 backdrop-blur-md px-6 py-4 font-dev text-xs tracking-wider">
               <div className="flex flex-col gap-3 mb-4">
                 {navLinks.map((link) => (
                   <a key={link.label} href={link.url} className="text-[#777] hover:text-white border-none py-1 transition-all duration-300" onClick={() => setMenuOpen(false)}>

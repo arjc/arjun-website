@@ -20,7 +20,7 @@ const Gallery = () => {
   const { isMalayalam } = useLanguage();
 
   return (
-    <div className="bg-[#0a0a0a] px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
+    <div className="bg-black px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
       <div className="max-w-5xl mx-auto">
         {/* header */}
         <div className="flex items-center gap-4 mb-14">

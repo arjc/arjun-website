@@ -56,8 +56,8 @@ const Cube = () => {
   }, [isMobile]);
 
   const face = <img className="h-12 sm:h-24 lg:h-28 opacity-80" src={faceImg} alt="loading..." />;
-  const dev = <span className="bg-[#0a0a0a] px-2 py-1 font-dev text-xs sm:text-sm tracking-[0.2em] text-[#888]">{isMalayalam ? "ഡെവലപ്പർ" : "developer"}</span>;
-  const des = <span className="bg-[#0a0a0a] px-2 py-1 font-des text-xs sm:text-sm tracking-[0.3ch] text-[#888]">{isMalayalam ? "ഡിസൈനർ" : "designer"}</span>;
+  const dev = <span className="bg-black px-2 py-1 font-dev text-xs sm:text-sm tracking-[0.2em] text-[#aaa]">{isMalayalam ? "ഡെവലപ്പർ" : "developer"}</span>;
+  const des = <span className="bg-black px-2 py-1 font-des text-xs sm:text-sm tracking-[0.3ch] text-[#aaa]">{isMalayalam ? "ഡിസൈനർ" : "designer"}</span>;
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen z-10 gap-10">
