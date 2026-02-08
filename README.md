@@ -12,6 +12,12 @@ Except this time, its gonna be
 - custom domain instead of free.nf
 - non-ai look and more personality and creativity
 
+# Preview
+![preview screenshot of arjc.me screenshot](https://github.com/arjc/arjun-website/blob/main/public/images/preview.png)
+
+# Mobile
+![mobile Responsivity of arjc.me screenshot](https://github.com/arjc/arjun-website/blob/main/public/images/mobile.jpg)
+
 ## Package commands (npm)
 
 ### 1.Vite:-
