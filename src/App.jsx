@@ -54,6 +54,7 @@ const navLinks = [
   { label: "dev", url: "https://dev.arjc.me" },
   { label: "music", url: "https://music.arjc.me" },
   { label: "blog", url: "https://blogs.arjc.me" },
+  { label: "contact", url: "#contact" },
 ];
 
 function App() {
@@ -208,6 +209,7 @@ function AppContent() {
             <Gallery />
           </div>
           <Photogrid />
+          <div id="contact"></div>
           <div id="section-contact">
             <Contact />
           </div>
