@@ -6,35 +6,54 @@ const Footer = () => {
   const isAdblockActive = window.isAdblockActive;
 
   return (
-    <footer className="absolute text-center p-15 mt-[485vh] bg-black bottom-0 w-screen text-white">
-      <div className="flex flex-col items-center gap-1">
-        <h1 className="font-dev">{isMalayalam ?  <>അർജസ<span className="text-2xl opacity-60">(arjc.me)</span></> : "arjc.me"}</h1>
-        <div className="flex gap-4 font-1">
-          <a href="https://arjunliji.free.nf">
-            {isMalayalam ? "പുരാപതിപ്പ്" : "Legacy"}
-          </a>
-          <a href="/legal">{isMalayalam ? "നിയമപരം" : "Legal"}</a>
-          <a href="/privacy">{isMalayalam ? "സ്വകാര്യം" : "Privacy"}</a>
-        </div>
-        <div className="inline-flex items-center justify-center gap-2 flex-wrap">
-          {isAdblockActive ? (
-            <div className="opacity-50">Disable Ad block</div>
-          ) : (
-            <>
-              {isMalayalam ? "നിങ്ങൾ" : "U r part of"}
-              <img
-                src="https://hitwebcounter.com/counter/counter.php?page=21466989&style=0024&nbdigits=8&type=ip&initCount=0"
-                alt="failed to load"
-                border="0"
-              />
-              {isMalayalam ? "സന്ദർശകരുടെ ഭാഗമാണ്" : "visitors"}
-            </>
-          )}
-        </div>
-        <div className="opacity-60">
-          {isMalayalam
-            ? `© 2023-${currentYear} അർജുൻ എം ലിജി`
-            : `© 2023-${currentYear} Arjun M Liji`}
+    <footer className="bg-[#0a0a0a] px-6 sm:px-10 lg:px-16 pt-16 pb-12">
+      <div className="max-w-4xl mx-auto">
+        <hr className="dash-sep mb-10" />
+
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          {/* left - identity */}
+          <div className="flex flex-col gap-2">
+            <span className="font-dev text-sm text-[#666] tracking-widest">
+              {isMalayalam ? "അർജസ" : "arjc.me"}
+            </span>
+            <span className="font-dev text-[10px] text-[#333]">
+              {isMalayalam
+                ? `© ${currentYear} അർജുൻ എം ലിജി`
+                : `© ${currentYear} arjun m liji`}
+            </span>
+          </div>
+
+          {/* middle - links */}
+          <div className="flex gap-6 font-dev text-xs">
+            <a href="https://arjunliji.free.nf" className="text-[#444] hover:text-[#888] border-b border-dashed border-[#222] hover:border-[#555] pb-0.5 transition-all duration-300">
+              {isMalayalam ? "പുരാപതിപ്പ്" : "legacy"}
+            </a>
+            <a href="/legal" className="text-[#444] hover:text-[#888] border-b border-dashed border-[#222] hover:border-[#555] pb-0.5 transition-all duration-300">
+              {isMalayalam ? "നിയമപരം" : "legal"}
+            </a>
+            <a href="/privacy" className="text-[#444] hover:text-[#888] border-b border-dashed border-[#222] hover:border-[#555] pb-0.5 transition-all duration-300">
+              {isMalayalam ? "സ്വകാര്യം" : "privacy"}
+            </a>
+          </div>
+
+          {/* right - visitor count */}
+          <div className="flex items-center gap-2">
+            {isAdblockActive ? (
+              <span className="font-dev text-[10px] text-[#333]">~</span>
+            ) : (
+              <>
+                <span className="font-dev text-[10px] text-[#444]">
+                  {isMalayalam ? "സന്ദർശകർ" : "visitors"}
+                </span>
+                <img
+                  src="https://hitwebcounter.com/counter/counter.php?page=21466989&style=0024&nbdigits=8&type=ip&initCount=0"
+                  alt=""
+                  border="0"
+                  className="h-3 opacity-50"
+                />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </footer>

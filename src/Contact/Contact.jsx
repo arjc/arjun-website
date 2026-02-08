@@ -1,142 +1,62 @@
 import { useLanguage } from "../context/LanguageContext";
 
+const links = [
+  { label: "youtube", handle: "@arjcyt", url: "https://www.youtube.com/@arjcyt", color: "#ff0000" },
+  { label: "github", handle: "arjc", url: "https://www.github.com/arjc", color: "#e8e8e8" },
+  { label: "linkedin", handle: "arjc", url: "https://www.linkedin.com/in/arjc", color: "#0a66c2" },
+  { label: "instagram", handle: "arjcig", url: "https://www.instagram.com/arjcig", color: "#e1306c" },
+  { label: "discord", handle: "arjc", url: "https://discordapp.com/", color: "#7289da" },
+  { label: "leetcode", handle: "arjc", url: "https://leetcode.com/u/arjc/", color: "#FFA116" },
+];
+
 const Contact = () => {
   const { isMalayalam } = useLanguage();
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen min-h-screen bg-black text-white px-5 py-20">
-      <div className="w-screen bg-white overflow-hidden">
-        <span
-          className="inline-block font-extrabold text-black px-1 py-3 text-6xl sm:text-8xl leading-normal whitespace-nowrap animate-marquee font-des"
-          style={{
-            animation: "marquee 16s ease-in-out infinite alternate",
-          }}
-        >
-          {isMalayalam ? (
-            <>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം ~ </span>
-              <span>സന്വര്ക്കം</span>
-            </>
-          ) : (
-            <>
-              <span>Contact ~ </span>
-              <span>Call ~ </span>
-              <span>Reachout ~ </span>
-              <span>Collab ~ </span>
-              <span>Get in TOUCH ~ </span>
-              <span>Commission ~ </span>
-              <span>Talk ~ </span>
-              <span>Hang Out ~ </span>
-              <span>Meet ~ </span>
-              <span>Greet ~ </span>
-              <span>Contact</span>
-            </>
-          )}
-        </span>
-      </div>
-      <div className="flex gap-5 flex-col sm:flex-row justify-evenly w-screen px-5 ">
-        <div className="my-25 text-[1.5em]">
-          <h1 className="font-des">
-            {isMalayalam ? '' : 'SOCIAL LINKS'}
+    <div className="bg-[#0a0a0a] px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
+      <div className="max-w-4xl mx-auto">
+        {/* header */}
+        <div className="flex items-center gap-4 mb-16">
+          <h1 className="font-des text-sm sm:text-base tracking-[0.2em] text-[#666] uppercase shrink-0">
+            {isMalayalam ? "സന്വര്ക്കം" : "contact"}
           </h1>
-          <h1 className="font-dev">~~&gt;</h1>
+          <hr className="dash-sep flex-1" />
         </div>
-        <div className="text-des flex flex-col lg:flex-row items-center lg:gap-40 sm:py-10 text-[2.2em] sm:text-[1em]">
-          {/* i am too lazy to use grid to i made it like this */}
-          <div>
-            <div className="max-w-4xl mx-auto py-10 px-5">
-              Youtube:
-              <ul>
-                <li>
-                  <a href="https://www.youtube.com/@arjcyt">
-                    www.
-                    <span className="text-[#ff0000]">youtube</span>
-                    .com/@
-                    <span className="text-white">arjc</span>yt
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="max-w-4xl mx-auto py-10 px-5">
-              Github:
-              <ul>
-                <li>
-                  <a href="https://www.github.com/arjc">
-                    www.
-                    <span className="text-[#fafbfc]">github</span>
-                    .com/
-                    <span className="text-white">arjc</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="max-w-4xl mx-auto py-10 px-5">
-              Linkedin:
-              <ul>
-                <li>
-                  <a href="https://www.linkedin.com/in/arjc">
-                    www.
-                    <span className="text-[#0a66c2]">linkedin</span>
-                    .com/in/
-                    <span className="text-white">arjc</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <div className="max-w-4xl mx-auto py-10 px-5">
-              Insta:
-              <ul>
-                <li>
-                  <a href="https://www.instagram.com/arjcig">
-                    www.
-                    <span style={{ background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)', backgroundClip: 'text', color: 'transparent' }}>
-                      instagram
-                    </span>
-                    .com/
-                    <span className="text-white">arjc</span>ig
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="max-w-4xl mx-auto py-10 px-5">
-              Discord:
-              <ul>
-                <li>
-                  <a href="https://discordapp.com/">
-                    www.
-                    <span className="text-[#7289da]">discord</span>
-                    .com/
-                    <span className="text-white">arjc</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="max-w-4xl mx-auto py-10 px-5">
-              LeetCode:
-              <ul>
-                <li>
-                  <a href="https://leetcode.com/u/arjc/">
-                    www.
-                    <span className="text-[#FFA116]">leetcode</span>
-                    .com/u/
-                    <span className="text-white">arjc</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
 
-          </div>
+        {/* reach out message */}
+        <div className="mb-14 max-w-xl">
+          <p className="font-para text-sm sm:text-base text-[#888] leading-loose">
+            {isMalayalam
+              ? "എന്നെ ബന്ധപ്പെടാൻ ചുവടെയുള്ള ലിങ്കുകൾ ഉപയോഗിക്കുക. സന്ദേശങ്ങൾ, സഹകരണം, അല്ലെങ്കിൽ ഒരു ഹലോ."
+              : "feel free to reach out. for messages, collaborations, or just to say hello. i'm always happy to connect."
+            }
+          </p>
+        </div>
 
+        {/* social links */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-0">
+          {links.map((link, i) => (
+            <a
+              key={i}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between py-5 border-b border-dashed border-[#1a1a1a] hover:border-[#444] transition-all duration-400"
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className="w-1.5 h-1.5 rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ backgroundColor: link.color }}
+                />
+                <span className="font-dev text-sm text-[#777] group-hover:text-white transition-colors duration-300">
+                  {link.label}
+                </span>
+              </div>
+              <span className="font-dev text-xs text-[#444] group-hover:text-[#888] transition-colors duration-300">
+                {link.handle}
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </div>

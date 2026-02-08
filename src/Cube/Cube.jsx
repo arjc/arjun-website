@@ -55,12 +55,12 @@ const Cube = () => {
     };
   }, [isMobile]);
 
-  const face = <img className="h-10 sm:h-50" src={faceImg} alt="loading..." />;
-  const dev = <span className="bg-black px-2 py-1 font-head">{isMalayalam ? "ഡെവലപ്പർ" : "DEVELOPER"}</span>;
-  const des = <span className="bg-black px-2 py-1 font-des tracking-[0.3ch]">{isMalayalam ? "ഡിസൈനർ" : "DESIGNER"}</span>;
+  const face = <img className="h-12 sm:h-24 lg:h-28 opacity-80" src={faceImg} alt="loading..." />;
+  const dev = <span className="bg-[#0a0a0a] px-2 py-1 font-dev text-xs sm:text-sm tracking-[0.2em] text-[#888]">{isMalayalam ? "ഡെവലപ്പർ" : "developer"}</span>;
+  const des = <span className="bg-[#0a0a0a] px-2 py-1 font-des text-xs sm:text-sm tracking-[0.3ch] text-[#888]">{isMalayalam ? "ഡിസൈനർ" : "designer"}</span>;
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen z-10">
+    <div className="flex flex-col items-center justify-center w-full h-screen z-10 gap-10">
       <div
         className="cube-container"
         ref={cubeRef}
@@ -69,36 +69,30 @@ const Cube = () => {
         style={
           !isMobile
             ? {
-                "--mouse-rotation-x": `${rotationX}deg`,
-                "--mouse-rotation-y": `${rotationY}deg`,
-              }
+              "--mouse-rotation-x": `${rotationX}deg`,
+              "--mouse-rotation-y": `${rotationY}deg`,
+            }
             : {}
         }
       >
         <div className={`cube ${!isMobile || isHovering ? "mouse-follow" : ""}`}>
           <div className="cube-face front">{face}</div>
           <div className="cube-face back">{face}</div>
-          <div className="cube-face left">{dev}</div> 
+          <div className="cube-face left">{dev}</div>
           <div className="cube-face right">{dev}</div>
           <div className="cube-face top">{des}</div>
           <div className="cube-face bottom">{des}</div>
         </div>
       </div>
 
-      <div className="absolute animate-bounce bottom-15 flex opacity-35">
-        <svg
-          className="w-10 h-10"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
+      {/* quiet tagline */}
+      <div className="flex flex-col items-center gap-3 font-dev text-[#555] text-xs sm:text-sm tracking-[0.3em]">
+        <span>{isMalayalam ? "സംഗീതം · കോഡ് · ശാന്തി" : "music · code · relax"}</span>
+      </div>
+
+      <div className="absolute bottom-16 flex flex-col items-center gap-2 opacity-25">
+        <span className="font-dev text-xs tracking-widest text-[#666]">{isMalayalam ? "താഴേക്ക്" : "scroll"}</span>
+        <span className="font-dev text-sm animate-bounce">|</span>
       </div>
     </div>
   );

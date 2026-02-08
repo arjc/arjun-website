@@ -1,9 +1,10 @@
 .cube-container {
-  width: 300px;
-  height: 300px;
-  perspective: 800px;
-  margin: 10px auto;
+  width: min(240px, 45vw);
+  height: min(240px, 45vw);
+  perspective: 700px;
+  margin: 0 auto;
 }
+
 .jibesh {
   -webkit-filter: invert(100%);
   filter: invert(100%);
@@ -14,10 +15,10 @@
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  animation: rotateCubeAlt 12s ease-in-out infinite;
+  animation: rotateCubeAlt 18s ease-in-out infinite;
   will-change: transform;
   backface-visibility: visible;
-  transition: transform 0.1s ease-out;
+  transition: transform 0.15s ease-out;
 }
 
 .cube.mouse-follow {
@@ -27,18 +28,23 @@
 
 .cube-face {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: min(240px, 45vw);
+  height: min(240px, 45vw);
   background: transparent;
-  border: 1px solid #fff;
+  border: 1px dashed #444;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.75em;
-  color: #fff;
+  font-size: 1em;
+  color: #ccc;
   backface-visibility: visible;
   will-change: transform;
+  transition: border-color 0.4s ease;
+}
+
+.cube-face:hover {
+  border-color: #888;
 }
 
 .cube-face:active {
@@ -46,107 +52,104 @@
 }
 
 .cube-face.front {
-  transform: rotateY(0) translateZ(150px);
+  transform: rotateY(0) translateZ(calc(min(240px, 45vw) / 2));
 }
 
 .cube-face.back {
-  transform: rotateY(180deg) translateZ(150px);
+  transform: rotateY(180deg) translateZ(calc(min(240px, 45vw) / 2));
 }
 
 .cube-face.right {
-  transform: rotateY(90deg) translateZ(150px);
+  transform: rotateY(90deg) translateZ(calc(min(240px, 45vw) / 2));
 }
 
 .cube-face.left {
-  transform: rotateY(-90deg) translateZ(150px);
+  transform: rotateY(-90deg) translateZ(calc(min(240px, 45vw) / 2));
 }
 
 .cube-face.top {
-  transform: rotateX(90deg) translateZ(150px);
+  transform: rotateX(90deg) translateZ(calc(min(240px, 45vw) / 2));
 }
 
 .cube-face.bottom {
-  transform: rotateX(-90deg) translateZ(150px);
+  transform: rotateX(-90deg) translateZ(calc(min(240px, 45vw) / 2));
 }
 
 @media screen and (max-width: 780px) {
   .cube-container {
-    width: 150px;
-    height: 150px;
-    perspective: 800px;
-    margin: 10px auto;
+    width: 140px;
+    height: 140px;
+    perspective: 600px;
   }
 
   .cube-face {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    font-size: 1em;
+    width: 140px;
+    height: 140px;
+    font-size: 0.8em;
   }
 
   .cube-face img {
-    height: 7.5em;
+    height: 5em;
   }
 
   .cube-face.front {
-    transform: rotateY(0) translateZ(75px);
+    transform: rotateY(0) translateZ(70px);
   }
 
   .cube-face.back {
-    transform: rotateY(180deg) translateZ(75px);
+    transform: rotateY(180deg) translateZ(70px);
   }
 
   .cube-face.right {
-    transform: rotateY(90deg) translateZ(75px);
+    transform: rotateY(90deg) translateZ(70px);
   }
 
   .cube-face.left {
-    transform: rotateY(-90deg) translateZ(75px);
+    transform: rotateY(-90deg) translateZ(70px);
   }
 
   .cube-face.top {
-    transform: rotateX(90deg) translateZ(75px);
+    transform: rotateX(90deg) translateZ(70px);
   }
 
   .cube-face.bottom {
-    transform: rotateX(-90deg) translateZ(75px);
+    transform: rotateX(-90deg) translateZ(70px);
   }
 }
 
 @keyframes rotateCubeAlt {
-  /* Front face */
   0% {
     transform: rotateX(-8deg) rotateY(12deg);
   }
-  /* Right face (DEVELOPER) */
+
   12.5% {
     transform: rotateY(-78deg) rotateX(-10deg);
   }
-  /* Front face */
+
   25% {
     transform: rotateX(-8deg) rotateY(12deg);
   }
-  /* Top face (DESIGNER) */
+
   37.5% {
     transform: rotateX(-80deg) rotateY(15deg);
   }
-  /* Front face */
+
   50% {
     transform: rotateX(-8deg) rotateY(12deg);
   }
-  /* Left face (DEVELOPER) */
+
   62.5% {
     transform: rotateY(95deg) rotateX(-10deg);
   }
-  /* Front face */
+
   75% {
     transform: rotateX(-8deg) rotateY(12deg);
   }
-  /* Bottom face (DESIGNER) */
+
   87.5% {
     transform: rotateX(100deg) rotateY(15deg);
   }
-  /* Back to front face */
+
   100% {
     transform: rotateX(-8deg) rotateY(12deg);
   }

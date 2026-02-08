@@ -4,121 +4,59 @@ import na from "/gallery/na.webp";
 import nss from "/gallery/nss.jpg";
 import train from "/gallery/train.jpg";
 
+const photos = [
+  { src: na, alt: "photograph", span: "col-span-2 row-span-2" },
+  { src: na, alt: "photograph", span: "col-span-1 row-span-1" },
+  { src: train, alt: "train journey", span: "col-span-1 row-span-2" },
+  { src: nss, alt: "nss camp", span: "col-span-2 row-span-1" },
+  { src: na, alt: "photograph", span: "col-span-1 row-span-1" },
+  { src: na, alt: "photograph", span: "col-span-1 row-span-1" },
+  { src: na, alt: "photograph", span: "col-span-2 row-span-1" },
+  { src: na, alt: "photograph", span: "col-span-1 row-span-1" },
+  { src: na, alt: "photograph", span: "col-span-1 row-span-1" },
+];
+
 const Gallery = () => {
   const { isMalayalam } = useLanguage();
 
   return (
-    <div className="flex flex-col sm:flex-row justify-center w-screen min-h-screen bg-black text-white px-5 py-20">
-      <div style={{width: '90vw'}}>
-        <h1 className="font-des text-6xl md:text-8xl md:tracking-[1ch]">
-          {isMalayalam ? "ചിത്രങ്ങൾ" : "GALLERY"}
-        </h1>
-        <h1 className="font-dev">~~&gt;</h1>
-      </div>
-      <div className="flex flex-col sm:flex-row gap-1 mt-20 sm:mt-0">
-        <div
-          className="grid grid-cols-4 gap-1 w-full max-w-4xl"
-          style={{ gridTemplateRows: "200px 120px 120px 120px" }}
-        >
-          <div className="col-span-2 row-span-1 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="kakkoos"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="col-span-2 row-span-1 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="kannadi"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="col-span-1 row-span-2 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="photo"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-
-          <div className="col-span-2 row-span-2 overflow-hidden rounded-sm">
-            <img
-              src={nss}
-              alt="photo"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="col-span-1 row-span-2 overflow-hidden rounded-sm">
-            <img
-              src={train}
-              alt="photo"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="col-span-3 row-span-1 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="photo"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="col-span-1 row-span-1 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="photo"
-              className="w-full h-full object-cover"
-            />
-          </div>
+    <div className="bg-[#0a0a0a] px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
+      <div className="max-w-5xl mx-auto">
+        {/* header */}
+        <div className="flex items-center gap-4 mb-14">
+          <h1 className="font-des text-sm sm:text-base tracking-[0.2em] text-[#666] uppercase shrink-0">
+            {isMalayalam ? "ചിത്രങ്ങൾ" : "gallery"}
+          </h1>
+          <hr className="dash-sep flex-1" />
         </div>
-        <div
-          className="grid grid-cols-4 gap-1 w-full max-w-4xl"
-          style={{ gridTemplateRows: "120px 120px 120px 200px" }}
-        >
-          <div className="col-span-3 row-span-1 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="kakkoos"
-              className="w-full h-full object-cover"
-            />
-          </div>
 
-          <div className="col-span-1 row-span-3 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="no"
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* photo grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 auto-rows-[minmax(100px,1fr)] gap-3 sm:gap-4">
+          {photos.map((photo, i) => (
+            <div
+              key={i}
+              className={`${photo.span} group relative overflow-hidden border border-dashed border-[#222] hover:border-[#555] transition-all duration-500`}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                loading="lazy"
+              />
+              {/* dashed corner accents on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-dashed border-white/30" />
+                <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-dashed border-white/30" />
+              </div>
+            </div>
+          ))}
+        </div>
 
-          <div className="col-span-2 row-span-2 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="photo"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="col-span-1 row-span-2 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="photo"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="col-span-4 row-span-1 overflow-hidden rounded-sm">
-            <img
-              src={na}
-              alt="photo"
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* quiet caption */}
+        <div className="mt-8 text-center">
+          <span className="font-dev text-xs text-[#444] tracking-widest">
+            {isMalayalam ? "· · · കൂടുതൽ ഉടൻ · · ·" : "· · · more coming soon · · ·"}
+          </span>
         </div>
       </div>
     </div>

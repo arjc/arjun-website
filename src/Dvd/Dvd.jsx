@@ -69,9 +69,8 @@ const Dvd = () => {
 
   return (
     <div
-      className={`fixed inset-0 bg-black ${
-        isVisible ? "pointer-events-auto cursor-pointer" : "pointer-events-none"
-      }`}
+      className={`fixed inset-0 bg-black ${isVisible ? "pointer-events-auto cursor-pointer" : "pointer-events-none"
+        }`}
       style={{
         opacity: isVisible ? 1 : 0,
         zIndex: 999,
@@ -91,7 +90,7 @@ const Dvd = () => {
           pointerEvents: "none",
         }}
       />
-      <div className="text-white text-center mt-4">[Screensaver] interact to dismiss</div>
+      <div className="text-[#555] text-center mt-4 font-dev text-xs tracking-widest">[screensaver] interact to dismiss</div>
     </div>
   );
 };

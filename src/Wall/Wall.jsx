@@ -265,7 +265,7 @@ export default function Wall() {
         setHasMoreMessages(false);
       } else {
         setOldestDoc(snapshot.docs[0]);
-        
+
         const container = chatContainerRef.current;
         const prevScrollHeight = container?.scrollHeight || 0;
 
@@ -319,124 +319,126 @@ export default function Wall() {
   };
 
   return (
-    <div className="relative w-screen bg-black py-20 box-border overflow-hidden">
-      <div className="mx-auto h-full flex flex-col overflow-hidden">
-        <h1 className="mx-5 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3">
-          <div className="flex">
-            <div className={`${isMalayalam ? 'tracking-[0.2ch]' : 'tracking-[0.5ch]'} sm:tracking-[1ch] md:tracking-[2ch] lg:tracking-[3ch] xl:tracking-[4ch]`}>
-              {isMalayalam ? "അഭിപ്രായം പറയൂ" : "COMMENTS"}
-            </div>
-            <span className="font-dev">~~&gt;</span>
-          </div>
-        </h1>
-
-        <div
-          ref={chatContainerRef}
-          onScroll={handleScroll}
-          className="flex flex-col h-120 overflow-y-auto overflow-x-hidden border-y-3 border-dashed border-y-[#aaa] px-5 md:px-10 py-5 my-6"
-        >
-          {isLoadingMore && (
-            <div className="text-center text-white/50 font-para py-4">
-              {isMalayalam ? "ഒരു നിമിഷം ക്ഷമിക്കു..." : "Loading more..."}
-            </div>
-          )}
-          {!hasMoreMessages && messages.length > 0 && (
-            <div className="text-center text-white/30 font-para py-4 text-sm">
-              {isMalayalam ? "തുടക്കo" : "~ This is where it all started ~"}
-            </div>
-          )}
-          {messages.length === 0 ? (
-            <p className="text-center text-white/50 font-para">
-              {isMalayalam ? "ഒരു നിമിഷം ക്ഷമിക്കു..." : "Looking 4 messages..."}
-            </p>
-          ) : (
-            messages.map((m, index) => {
-              const messageDate = m.time?.toDate ? m.time.toDate() : new Date();
-              const messageDateStr = messageDate.toLocaleDateString("en-GB", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              });
-
-              const prevMessage = index > 0 ? messages[index - 1] : null;
-              const prevDate = prevMessage?.time?.toDate
-                ? prevMessage.time.toDate()
-                : null;
-              const prevDateStr = prevDate
-                ? prevDate.toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })
-                : null;
-
-              const showDateSeparator =
-                index === 0 || messageDateStr !== prevDateStr;
-
-              const timeStr = messageDate.toLocaleTimeString("en-GB", {
-                hour: "2-digit",
-                minute: "2-digit",
-              });
-
-              return (
-                <div key={m.id} className="sbar-hide">
-                  {showDateSeparator && (
-                    <div className="text-center text-white/50 font-para my-4">
-                      = {messageDateStr} =
-                    </div>
-                  )}
-                  <div className="flex items-center gap-2 mb-2 py-1 w-full min-w-0">
-                    <span className="font-para flex-1 min-w-0 border-r-2 border-[#333f]" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
-                      <span className="font-bold font-dev " style={{ color: m.color || "#aaa" }}>
-                        {m.name}:
-                      </span>{" "}
-                      <span className="text-white">{m.text}</span>
-                    </span>
-                    <span className="text-white/50 text-xs font-dev shrink-0">
-                      {timeStr}
-                    </span>
-                  </div>
-                </div>
-              );
-            })
-          )}
+    <div className="bg-[#0a0a0a] px-6 sm:px-10 lg:px-16 py-20 sm:py-28 overflow-hidden">
+      <div className="max-w-3xl mx-auto">
+        {/* header */}
+        <div className="flex items-center gap-4 mb-12">
+          <h1 className="font-des text-sm sm:text-base tracking-[0.2em] text-[#666] uppercase shrink-0">
+            {isMalayalam ? "അഭിപ്രായം പറയൂ" : "guestbook"}
+          </h1>
+          <hr className="dash-sep flex-1" />
         </div>
 
-        <div className="flex flex-col gap-3 mx-6">
-          <span className="text-white/70 font-dev text-md">
-            {isMalayalam ? "നിങ്ങളുടെ പേര്:" : "Sending as:"}{" "}
-            <span className="text-white font-bold">
-              {userName || "getting name pls wait..."}{" *"}
+        {/* message area */}
+        <div className="border border-dashed border-[#222] p-4 sm:p-6 mb-8">
+          <div
+            ref={chatContainerRef}
+            onScroll={handleScroll}
+            className="flex flex-col h-72 sm:h-80 lg:h-96 overflow-y-auto overflow-x-hidden sbar-hide"
+          >
+            {isLoadingMore && (
+              <div className="text-center text-[#555] font-dev py-4 text-xs">
+                {isMalayalam ? "ഒരു നിമിഷം..." : "loading..."}
+              </div>
+            )}
+            {!hasMoreMessages && messages.length > 0 && (
+              <div className="text-center text-[#333] font-dev py-4 text-xs tracking-widest">
+                {isMalayalam ? "- - - തുടക്കo - - -" : "- - - the beginning - - -"}
+              </div>
+            )}
+            {messages.length === 0 ? (
+              <p className="text-center text-[#555] font-dev text-xs py-8 tracking-widest">
+                {isMalayalam ? "· · ·" : "· · ·"}
+              </p>
+            ) : (
+              messages.map((m, index) => {
+                const messageDate = m.time?.toDate ? m.time.toDate() : new Date();
+                const messageDateStr = messageDate.toLocaleDateString("en-GB", {
+                  day: "numeric",
+                  month: "short",
+                });
+
+                const prevMessage = index > 0 ? messages[index - 1] : null;
+                const prevDate = prevMessage?.time?.toDate
+                  ? prevMessage.time.toDate()
+                  : null;
+                const prevDateStr = prevDate
+                  ? prevDate.toLocaleDateString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                  })
+                  : null;
+
+                const showDateSeparator =
+                  index === 0 || messageDateStr !== prevDateStr;
+
+                const timeStr = messageDate.toLocaleTimeString("en-GB", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                });
+
+                return (
+                  <div key={m.id}>
+                    {showDateSeparator && (
+                      <div className="flex items-center gap-3 my-5">
+                        <hr className="dash-sep flex-1" />
+                        <span className="font-dev text-[10px] text-[#555] tracking-wider shrink-0">{messageDateStr}</span>
+                        <hr className="dash-sep flex-1" />
+                      </div>
+                    )}
+                    <div className="flex items-start gap-3 mb-3 py-1">
+                      <span className="font-dev text-xs text-[#444] shrink-0 mt-0.5 w-10 text-right">{timeStr}</span>
+                      <span className="w-px h-4 bg-[#222] shrink-0 mt-0.5" />
+                      <div className="flex-1 min-w-0" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
+                        <span className="font-dev text-xs" style={{ color: m.color || "#888" }}>
+                          {m.name}
+                        </span>
+                        <span className="font-para text-sm text-[#ccc] ml-2">{m.text}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+
+        {/* input area */}
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-2">
+            <span className="font-dev text-xs text-[#555]">
+              {isMalayalam ? "അയയ്ക്കുന്നത്:" : "as:"}
             </span>
-            <br />
-          </span>
-          <input
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder={isMalayalam ? "എന്തെലും പറയൂ..." : "Say something..."}
-            className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 font-para focus:outline-none focus:border-white/50 transition-all"
-          />
+            <span className="font-dev text-xs text-[#888]">
+              {userName || "..."}
+            </span>
+          </div>
+          <div className="flex gap-3">
+            <input
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && send()}
+              placeholder={isMalayalam ? "എന്തെലും പറയൂ..." : "say something..."}
+              className="flex-1 px-4 py-3 bg-transparent border border-dashed border-[#333] text-[#ccc] placeholder-[#444] font-dev text-sm focus:outline-none focus:border-[#666] transition-all duration-300"
+            />
+            <button
+              onClick={send}
+              className="px-5 py-3 font-dev text-xs tracking-widest border border-dashed border-[#444] text-[#888] hover:text-white hover:border-white transition-all duration-300"
+            >
+              {isMalayalam ? "→" : "→"}
+            </button>
+          </div>
           <div className="flex items-center justify-between">
             <span
               onClick={toggleMute}
-              className="text-xl sm:text-2xl cursor-pointer hover:opacity-70 transition-all border-3 border-dashed rounded-full py-2 px-5 my-2 tracking-normal font-dev"
-              title={isMuted ? "Unmute notifications" : "Mute notifications"}
+              className="font-dev text-xs text-[#444] cursor-pointer hover:text-[#888] transition-colors duration-300 border-b border-dashed border-transparent hover:border-[#444] pb-0.5"
             >
-              {isMuted ? (isMalayalam ? "🔇 നോട്ടിഫിക്ഷൻ" : "🔇 Notification") : (isMalayalam ? "🔊 നോട്ടിഫിക്ഷൻ" : "🔊 Notification")}
+              {isMuted ? "🔇" : "🔊"} {isMalayalam ? "നോട്ടിഫിക്ഷൻ" : "notifications"}
             </span>
-            <span
-              onClick={send}
-              className="px-6 py-3 w-max bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"
-            >
-              {isMalayalam ? "അയയ്ക്കു" : "SEND"}
+            <span className="font-dev text-[10px] text-[#333]">
+              *{isMalayalam ? "ക്രമരഹിത പേര്" : "random name for privacy"}
             </span>
           </div>
-            <span className="text-sm mt-5">
-              Does'nt collect IP information... just make sure to be respectfull...
-            </span>
-            <span className="text-sm opacity-50">
-              *just a random name, to prevent missuse ;)
-            </span>
         </div>
       </div>
     </div>
