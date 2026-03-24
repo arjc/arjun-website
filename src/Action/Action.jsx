@@ -55,8 +55,7 @@ const Action = ({ scrollToSection }) => {
           ) : (
             <span>
               my name is arjun m liji. i'm {new Date().getFullYear() - 2007} and i have a deep love
-              for computers and music. this is my little corner of the internet.
-              thank you for being here.
+              for computers and music. see all my works, projects and music. thank you for visiting...
             </span>
           )}
         </p>
