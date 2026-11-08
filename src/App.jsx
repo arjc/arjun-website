@@ -133,7 +133,7 @@ function AppContent({ parallaxRef }) {
             <Wall />
           </ParallaxLayer>
 
-          <ParallaxLayer speed={1} offset={window.innerWidth >= 768 ? 4 : 5} factor={0.5}>
+          <ParallaxLayer speed={1} offset={window.innerWidth >= 768 ? 4.5 : 5} factor={0.5}>
             <Footer />
           </ParallaxLayer>
         </Parallax>
