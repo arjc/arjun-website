@@ -57,7 +57,7 @@ const Action = ({ parallaxRef }) => {
   };
 
   return (
-    <div className="flex flex-col items-center text-center w-screen gap-10 bg-black" style={{height: '900px'}}>
+    <div className="flex flex-col items-center text-center w-screen gap-10 bg-black pb-100">
       <div className="flex flex-col items-center justify-evenly gap-3">
         <div className="w-screen bg-white overflow-hidden">
           <span
@@ -98,7 +98,7 @@ const Action = ({ parallaxRef }) => {
       <div className="flex flex-col flex-wrap sm:flex-row justify-center items-baseline gap-5 text-4xl sm:text-5xl leading-normal font-des">
         <a
           href="https://dev.arjc.me"
-          className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto "
+          className="px-3 py-1 underline decoration-wavy underline-offset-5 w-screen sm:w-auto "
         >
           {isMalayalam ? (
             <>
@@ -111,7 +111,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           href="https://blogs.arjc.me"
-          className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto "
+          className="px-3 py-1 border-6 border-dashed! rounded-bl-4xl rounded-tr-4xl w-screen sm:w-auto "
         >
           {isMalayalam ? (
             <>
@@ -124,7 +124,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           href="https://music.arjc.me"
-          className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto "
+          className="px-3 py-1 overline w-screen sm:w-auto "
         >
           {isMalayalam ? (
             <>
@@ -137,7 +137,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           onClick={() => scrollTo(1.1)}
-          className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto cursor-pointer"
+          className="px-3 py-1 border-7 border-double! rounded-r-4xl w-screen sm:w-auto cursor-pointer"
         >
           {isMalayalam ? (
             <>
@@ -151,7 +151,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           onClick={() => scrollTo(2)}
-          className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto cursor-pointer"
+          className="px-3 py-1 overline decoration-wavy underline-offset-5 w-screen sm:w-auto cursor-pointer"
         >
           {isMalayalam ? (
             <>
@@ -164,7 +164,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           onClick={() => scrollTo(3.5)}
-          className="px-3 py-1 border-y sm:border-4 sm:rounded-2xl w-screen sm:w-auto cursor-pointer"
+          className="px-3 py-1 border-6 border-dotted! w-screen sm:w-auto cursor-pointer"
         >
           {isMalayalam ? (
             <>

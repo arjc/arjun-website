@@ -8,7 +8,9 @@ const Gallery = () => {
   const { isMalayalam } = useLanguage();
 
   return (
-    <div className="flex flex-col sm:flex-row justify-center w-screen min-h-screen bg-black text-white px-5 py-20">
+    <div className="flex flex-col sm:flex-row justify-center w-screen min-h-screen bg-black text-white px-5 pt-20 
+    ">
+    {/* -my-10 md:-my-68 lg:-my-110"> */}
       <div style={{width: '90vw'}}>
         <h1 className="font-des text-6xl md:text-8xl md:tracking-[1ch]">
           {isMalayalam ? "ചിത്രങ്ങൾ" : "GALLERY"}

@@ -91,11 +91,14 @@ function AppContent({ parallaxRef }) {
     <>
       <Dvd className="h-screen w-screen z-1000" />
       <div ref={containerRef}>
-        {isDate(12, 1, 31) && <Snow />}
+        {/* // November half */}
+        {isDate(11, 15, 31) && <Snow />}
+        {/* // December full  */}
+        {isDate(12, 1, 31) && <Snow />} 
         <div className="fixed top-0 left-0 right-0 z-50 bg-black w-full">
           <div className="flex items-center justify-between px-5 sm:px-10 h-15 lg:h-25">
             <div className="flex items-center gap-2 font-dev" onClick={() => navigateTo('/')} style={{ cursor: "pointer" }}>
-              <img className="h-14 lg:h-20 rounded-full" src={faceImg} alt="achu face logo" />
+              <img className="h-10 lg:h-12 rounded-full" src={faceImg} alt="achu face logo" />
               {isMalayalam ? <span className="text-4xl">അർജസ</span> : <span className="text-4xl font-bold">arjc.me</span>}
             </div>
             <a onClick={toggle} className="cursor-pointer">{isMalayalam ? "English" : "മലയാളം"}</a>
@@ -105,11 +108,11 @@ function AppContent({ parallaxRef }) {
           <span className="m-0 text-[12vh] font-bold lg:text-[15em] rotate-90 lg:rotate-0 text-nowrap text-center font-dev"
             style={{ opacity: 0.25 * 1 / scrollY }}>
             {isDate(12, 31, 31) || isDate(1, 1, 2) ? `2 0 
-            ${Math.floor((dateObj.getFullYear() - 2000) / 10)} 
+            ${Math.floor((dateObj.getFullYear() - 2000) / 10)}   // NEW YEAR
             ${dateObj.getFullYear() - 2020}` : isMalayalam ? "അർജസ" : "arjc.me"}
           </span>
         </div>
-        <Parallax ref={parallaxRef} pages={5} style={{ top: 0, left: 0 }} config={{ mass: 1, tension: 170, friction: 26 }}>
+        <Parallax ref={parallaxRef} pages={window.innerWidth >= 768 ? 5 : 5.74} style={{ top: 0, left: 0 }} config={{ mass: 1, tension: 170, friction: 26 }}>
 
           {isDate(1, 1, 2) ? <Fireworks className="absolute" /> : <></>}
 
@@ -119,6 +122,10 @@ function AppContent({ parallaxRef }) {
 
           <ParallaxLayer speed={1} offset={0.9999} factor={6}>
             <Action parallaxRef={parallaxRef} />
+          </ParallaxLayer>
+
+
+          <ParallaxLayer speed={1} offset={1.3} factor={6}>
             <Featured />
             <Gallery />
             <Photogrid />
@@ -126,7 +133,7 @@ function AppContent({ parallaxRef }) {
             <Wall />
           </ParallaxLayer>
 
-          <ParallaxLayer speed={1} offset={4.5} factor={0.5}>
+          <ParallaxLayer speed={1} offset={window.innerWidth >= 768 ? 4 : 5} factor={0.5}>
             <Footer />
           </ParallaxLayer>
         </Parallax>

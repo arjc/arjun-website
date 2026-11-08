@@ -55,7 +55,7 @@ const Cube = () => {
     };
   }, [isMobile]);
 
-  const face = <img className="h-10 sm:h-50" src={faceImg} alt="loading..." />;
+  const face = <img className="h-7 sm:h-30" src={faceImg} alt="loading..." />;
   const dev = <span className="bg-black px-2 py-1 font-head">{isMalayalam ? "ഡെവലപ്പർ" : "DEVELOPER"}</span>;
   const des = <span className="bg-black px-2 py-1 font-des tracking-[0.3ch]">{isMalayalam ? "ഡിസൈനർ" : "DESIGNER"}</span>;
 

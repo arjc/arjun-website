@@ -29,8 +29,8 @@
   position: absolute;
   width: 300px;
   height: 300px;
-  background: transparent;
-  border: 1px solid #fff;
+  background: #00000075;
+  border: 1px dashed #fff;
   box-sizing: border-box;
   display: flex;
   align-items: center;

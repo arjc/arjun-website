@@ -45,11 +45,11 @@ const Contact = () => {
       <div className="flex gap-5 flex-col sm:flex-row justify-evenly w-screen px-5 ">
         <div className="my-25 text-[1.5em]">
           <h1 className="font-des">
-            {isMalayalam ? '' : 'SOCIAL LINKS'}
+            {isMalayalam ? 'സന്വര്ക്കം' : 'SOCIAL LINKS'}
           </h1>
           <h1 className="font-dev">~~&gt;</h1>
         </div>
-        <div className="text-des flex flex-col lg:flex-row items-center lg:gap-40 sm:py-10 text-[2.2em] sm:text-[1em]">
+        <div className="text-des flex flex-col lg:flex-row items-center lg:gap-40 sm:py-10 text-[1.5em] sm:text-[1em]">
           {/* i am too lazy to use grid to i made it like this */}
           <div>
             <div className="max-w-4xl mx-auto py-10 px-5">
