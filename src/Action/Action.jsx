@@ -79,7 +79,7 @@ const Action = ({ parallaxRef }) => {
             <div className="tracking-wider sm:tracking-widest">
               <span>
                 നമസ്കാരം! എന്റെ പേര് അർജുൻ എം ലിജി (
-                {new Date().getFullYear() - 2007}), എനിക്ക് സംഗീതം, കമ്പ്യൂട്ടർ
+                {new Date().getFullYear() - 2006}), എനിക്ക് സംഗീതം, കമ്പ്യൂട്ടർ
                 തുടങ്ങിയവ വളരെയധികം ഇഷ്ടമാണ്.
               </span>
               <span>എന്റെ വെബ്‌സൈറ്റിലേക്ക് വന്നതിനു നന്ദി.</span>
@@ -87,7 +87,7 @@ const Action = ({ parallaxRef }) => {
           ) : (
             <>
               <span>
-                My name is Arjun M Liji I am a {new Date().getFullYear() - 2007}{" "}
+                My name is Arjun M Liji I am a {new Date().getFullYear() - 2006}{" "}
                 year old guy who has a deep love for computers and music.
               </span>{" "}
               <span>Thank you for visiting my website.</span>
@@ -98,7 +98,7 @@ const Action = ({ parallaxRef }) => {
       <div className="flex flex-col flex-wrap sm:flex-row justify-center items-baseline gap-5 text-4xl sm:text-5xl leading-normal font-des">
         <a
           href="https://dev.arjc.me"
-          className="text-purple-400! px-3 py-1 underline decoration-wavy underline-offset-5 w-auto m-auto sm:mb-10 px:15 sm:px-10"
+          className="text-purple-200! hover:tracking-widest py-1 underline decoration-wavy underline-offset-5 w-300 sm:w-auto px-11 m-auto sm:mb-10"
         >
           {isMalayalam ? (
             <>
@@ -111,7 +111,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           href="https://blogs.arjc.me"
-          className="text-orange-400! px-3 py-1 border-6 border-dashed! rounded-bl-4xl rounded-tr-4xl w-auto m-auto sm:mb-10 px:15 sm:px-10"
+          className="text-orange-200! hover:tracking-widest py-1 border-6 border-dashed! rounded-bl-4xl rounded-tr-4xl w-300 sm:w-auto px-11 m-auto sm:mb-10"
         >
           {isMalayalam ? (
             <>
@@ -124,7 +124,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           href="https://music.arjc.me"
-          className="text-green-400! px-3 py-1 overline w-auto m-auto sm:mb-10 px:15 sm:px-10"
+          className="text-green-200! hover:tracking-widest py-1 overline w-300 sm:w-auto px-11 m-auto sm:mb-10"
         >
           {isMalayalam ? (
             <>
@@ -137,7 +137,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           onClick={() => scrollTo(1.1)}
-          className="text-yellow-400! px-3 py-1 border-7 border-double! rounded-r-4xl w-auto m-auto sm:mb-10 px:15 sm:px-10 cursor-pointer"
+          className="text-yellow-200! hover:tracking-widest py-1 border-7 border-double! rounded-r-4xl w-300 sm:w-auto px-11 m-auto sm:mb-10 cursor-pointer"
         >
           {isMalayalam ? (
             <>
@@ -151,7 +151,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           onClick={() => scrollTo(2)}
-          className="text-blue-400! px-3 py-1 overline decoration-wavy underline-offset-5 w-auto m-auto sm:mb-10 px:15 sm:px-10 cursor-pointer"
+          className="text-blue-200! hover:tracking-widest py-1 overline decoration-wavy underline-offset-5 w-300 sm:w-auto px-11 m-auto sm:mb-10 cursor-pointer"
         >
           {isMalayalam ? (
             <>
@@ -164,7 +164,7 @@ const Action = ({ parallaxRef }) => {
         </a>
         <a
           onClick={() => scrollTo(3.5)}
-          className="text-red-400! px-3 py-1 border-6 border-dotted! w-auto m-auto sm:mb-10 px:15 sm:px-10 cursor-pointer"
+          className="text-red-200! hover:tracking-widest py-1 border-6 border-dotted! w-300 sm:w-auto px-11 m-auto sm:mb-10 cursor-pointer"
         >
           {isMalayalam ? (
             <>

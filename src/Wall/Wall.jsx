@@ -425,10 +425,10 @@ export default function Wall() {
             </span>
           </div>
             <span className="text-sm mt-5">
-              Does'nt collect IP information... just make sure to be respectfull...
+              {isMalayalam ? "ഐ.പി. വിവരങ്ങൾ ഈ വെബ്‌സൈറ്റ് ശേഖരിക്കുന്നതല്ല... മാന്യമായി പെരുമാറണം..." : "Does'nt collect IP information... just make sure to be respectfull..."}
             </span>
             <span className="text-sm opacity-50">
-              *just a random name, to prevent missuse ;)
+              {isMalayalam ? "*ദുരുപയോഗം തടയാൻ വേണ്ടി മാത്രം നൽകിയ ഒരു പേര്" : "*just a random name, to prevent missuse ;)"}
             </span>
         </div>
       </div>

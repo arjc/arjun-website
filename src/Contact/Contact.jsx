@@ -53,7 +53,7 @@ const Contact = () => {
           {/* i am too lazy to use grid to i made it like this */}
           <div>
             <div className="max-w-4xl mx-auto py-10 px-5">
-              Youtube:
+            {isMalayalam ? 'യൂട്യൂബ്:' : 'Youtube:'}
               <ul>
                 <li>
                   <a href="https://www.youtube.com/@arjcyt">
@@ -66,7 +66,7 @@ const Contact = () => {
               </ul>
             </div>
             <div className="max-w-4xl mx-auto py-10 px-5">
-              Github:
+              {isMalayalam ? 'ഗിറ്റ്ഹബ്:' : 'Github:'}
               <ul>
                 <li>
                   <a href="https://www.github.com/arjc">
@@ -79,7 +79,7 @@ const Contact = () => {
               </ul>
             </div>
             <div className="max-w-4xl mx-auto py-10 px-5">
-              Linkedin:
+              {isMalayalam ? 'ലിങ്ക്ഡ്ഇൻ:' : 'Linkedin:'}
               <ul>
                 <li>
                   <a href="https://www.linkedin.com/in/arjc">
@@ -94,7 +94,7 @@ const Contact = () => {
           </div>
           <div>
             <div className="max-w-4xl mx-auto py-10 px-5">
-              Insta:
+              {isMalayalam ? 'ഇൻസ്റ്റാ:' : 'Insta:'}
               <ul>
                 <li>
                   <a href="https://www.instagram.com/arjcig">
@@ -109,7 +109,7 @@ const Contact = () => {
               </ul>
             </div>
             <div className="max-w-4xl mx-auto py-10 px-5">
-              Discord:
+              {isMalayalam ? 'ഡിസ്കോർഡ്:' : 'Discord:'}
               <ul>
                 <li>
                   <a href="https://discordapp.com/">
@@ -122,7 +122,7 @@ const Contact = () => {
               </ul>
             </div>
             <div className="max-w-4xl mx-auto py-10 px-5">
-              LeetCode:
+              {isMalayalam ? 'ലീറ്റ്‌കോഡ്:' : 'LeetCode:'}
               <ul>
                 <li>
                   <a href="https://leetcode.com/u/arjc/">
