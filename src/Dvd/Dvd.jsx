@@ -1,12 +1,14 @@
 import "./Dvd.css";
 import { useState, useEffect } from "react";
 import faceImg from "../assets/images/face.webp";
+import { useLanguage } from "../context/LanguageContext";
 
 const colors = [36, 83, 107, 203, 264, 310, 352];
 
 let i = 1;
 
 const Dvd = () => {
+  const { isMalayalam } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hue, setHue] = useState(203);
@@ -91,7 +93,11 @@ const Dvd = () => {
           pointerEvents: "none",
         }}
       />
-      <div className="text-white text-center mt-4">[Screensaver] interact to dismiss</div>
+      <div className="text-white text-center mt-4">
+        {isMalayalam
+          ? "[സ്ക്രീൻസേവർ] "
+          : "[Screensaver] interact to dismiss"}
+      </div>
     </div>
   );
 };
