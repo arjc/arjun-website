@@ -49,7 +49,7 @@ const Contact = () => {
           </h1>
           <h1 className="font-dev">~~&gt;</h1>
         </div>
-        <div className="text-des flex flex-col lg:flex-row items-center lg:gap-40 sm:py-10 text-[1.5em] sm:text-[1em]">
+        <div className="text-des flex flex-col lg:flex-row items-center lg:gap-40 sm:py-10 text-[1.7em] sm:text-[1em]">
           {/* i am too lazy to use grid to i made it like this */}
           <div>
             <div className="max-w-4xl mx-auto py-10 px-5">

@@ -324,7 +324,7 @@ export default function Wall() {
         <h1 className="mx-5 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3">
           <div className="flex">
             <div className={`${isMalayalam ? 'tracking-[0.2ch]' : 'tracking-[0.5ch]'} sm:tracking-[1ch] md:tracking-[2ch] lg:tracking-[3ch] xl:tracking-[4ch]`}>
-              {isMalayalam ? "അഭിപ്രായം പറയൂ" : "COMMENTS"}
+              {isMalayalam ? "അഭിപ്രായം പറയൂ" : "GUEST BOOK"}
             </div>
             <span className="font-dev">~~&gt;</span>
           </div>
@@ -416,14 +416,7 @@ export default function Wall() {
             placeholder={isMalayalam ? "എന്തെലും പറയൂ..." : "Say something..."}
             className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 font-para focus:outline-none focus:border-white/50 transition-all"
           />
-          <div className="flex items-center justify-between">
-            <span
-              onClick={toggleMute}
-              className="text-xl sm:text-2xl cursor-pointer hover:opacity-70 transition-all border-3 border-dashed rounded-full py-2 px-5 my-2 tracking-normal font-dev"
-              title={isMuted ? "Unmute notifications" : "Mute notifications"}
-            >
-              {isMuted ? (isMalayalam ? "🔇 നോട്ടിഫിക്ഷൻ" : "🔇 Notification") : (isMalayalam ? "🔊 നോട്ടിഫിക്ഷൻ" : "🔊 Notification")}
-            </span>
+          <div className="flex items-center flex-row-reverse justify-between">
             <span
               onClick={send}
               className="px-6 py-3 w-max bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"

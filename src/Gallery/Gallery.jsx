@@ -1,6 +1,6 @@
 import { useLanguage } from "../context/LanguageContext";
 
-import na from "/gallery/na.webp";
+import na from "/gallery/na.gif";
 import nss from "/gallery/nss.jpg";
 import train from "/gallery/train.jpg";
 
