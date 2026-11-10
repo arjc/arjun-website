@@ -18,25 +18,27 @@ import Notif from "../assets/audio/notif.ogg";
 import { useLanguage } from "../context/LanguageContext";
 
 const namePrefix = [
-  "Raman",
+  "Sugunan",
   "Soman",
-  "Sasi",
+  "Sugumaran",
   "Vikraman",
-  "Muttappan",
-  "Kannan",
-  "Appu",
-  "Koch",
-  "Pappan",
-  "Kunju",
+  "Girija",
+  "",
+  "Kunjandi",
+  "Matthayi",
+  "Antappan",
+  "Sreekutty",
   "Balan",
   "Rajan",
-  "Achu",
-  "Lalan",
-  "Maniyan",
-  "Gopan",
-  "Sreekuttan",
-  "Ambady",
-  "Chuchudu",
+  "Pankajakshan",
+  "Luttapi",
+  "Dagini",
+  "Surendran",
+  "Hajiar",
+  "Babu",
+  "Manu",
+  "Thoma",
+  "Kochunni"
 ];
 
 const colours = [
@@ -51,11 +53,11 @@ const colours = [
 ];
 
 const nameSuffix = [
-  "Master",
-  "Kuttan",
-  "Annan",
-  "Chettan",
-  "Mass",
+  "Theepori",
+  "Idivett",
+  "Thekkethil",
+  "Ravipuram",
+  "Thamarasheri",
   "Bhai",
   "Kochappi",
   "Mashi",
@@ -67,8 +69,31 @@ const nameSuffix = [
   "Kuttan",
 ];
 
+const rname = [
+  "Kappad",
+  "Thamarasheri",
+  "Kothamangalam",
+  "Thrippunithara",
+  "Mannar",
+  "Kayamkulam",
+  "Kottayam", 
+  "Kottarakkara",
+  "Kuttanad",
+  "Adoor",
+  "Pathanamtitta",
+  "Cherpulasherri",
+  "Aranmula",
+  "Aluva",
+  "Perunthalmanna",
+  "Irinjalikudda",
+  "Varkala",
+  "Pala",
+  "Kakkanad"
+];
+
 const NOTIFICATION_SOUND_URL = Notif;
 const MESSAGES_PER_PAGE = 10;
+const WALL_USER_NAME_KEY = "wallUserNameV2";
 
 const curseWords = [
   "fuck",
@@ -121,8 +146,21 @@ const curseWords = [
   "thayoli",
   "poora",
   "kunne",
-  "oombe"
-
+  "oombe",
+  "my re",
+  "myyr",
+  "myr",
+  "my rre",
+  "myr", 
+  "m y re",
+  "m yre",
+  "myr",
+  "thayoli",
+  "fu ck",
+  "f uck",
+  "fuc k",
+  "f u c k",
+  "parri"
 ];
 
 const filterMessage = (message) => {
@@ -141,12 +179,11 @@ const filterMessage = (message) => {
 };
 
 export default function Wall() {
-
   const { isMalayalam } = useLanguage();
 
   const [messages, setMessages] = useState([]);
   const [userName, setUserName] = useState(() => {
-    return localStorage.getItem("wallUserName") || "";
+    return localStorage.getItem(WALL_USER_NAME_KEY) || "";
   });
   const [userColor, setUserColor] = useState(() => {
     return localStorage.getItem("wallUserColor") || "";
@@ -162,23 +199,21 @@ export default function Wall() {
   const prevMessageCount = useRef(0);
 
   useEffect(() => {
-    if (
-      localStorage.getItem("wallUserName") &&
-      localStorage.getItem("wallUserColor")
-    ) {
+    if (localStorage.getItem(WALL_USER_NAME_KEY)) {
       return;
     }
 
+    const randomRname = rname[Math.floor(Math.random() * rname.length)];
     const randomPrefix =
       namePrefix[Math.floor(Math.random() * namePrefix.length)];
     const randomSuffix =
       nameSuffix[Math.floor(Math.random() * nameSuffix.length)];
-    const randomNumber = Math.floor(Math.random() * 8) + 1;
     const randomColorIndex = Math.floor(Math.random() * colours.length);
-    const generatedName = `${randomPrefix} ${randomSuffix} ${randomNumber}`;
-    const generatedColor = colours[randomColorIndex];
+    const generatedName = `${randomRname} ${randomSuffix} ${randomPrefix}`;
+    const generatedColor =
+      localStorage.getItem("wallUserColor") || colours[randomColorIndex];
 
-    localStorage.setItem("wallUserName", generatedName);
+    localStorage.setItem(WALL_USER_NAME_KEY, generatedName);
     localStorage.setItem("wallUserColor", generatedColor);
     setUserName(generatedName);
     setUserColor(generatedColor);
@@ -194,8 +229,7 @@ export default function Wall() {
   const playNotificationSound = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {
-      });
+      audioRef.current.play().catch(() => {});
     }
   };
 
@@ -203,7 +237,7 @@ export default function Wall() {
     const q = query(
       collection(db, "messages"),
       orderBy("time"),
-      limitToLast(MESSAGES_PER_PAGE)
+      limitToLast(MESSAGES_PER_PAGE),
     );
     const unsub = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => ({
@@ -252,7 +286,7 @@ export default function Wall() {
         collection(db, "messages"),
         orderBy("time"),
         endBefore(oldestDoc),
-        limitToLast(MESSAGES_PER_PAGE)
+        limitToLast(MESSAGES_PER_PAGE),
       );
 
       const snapshot = await getDocs(q);
@@ -265,7 +299,7 @@ export default function Wall() {
         setHasMoreMessages(false);
       } else {
         setOldestDoc(snapshot.docs[0]);
-        
+
         const container = chatContainerRef.current;
         const prevScrollHeight = container?.scrollHeight || 0;
 
@@ -299,8 +333,7 @@ export default function Wall() {
       const newValue = !prev;
       if (!newValue && audioRef.current) {
         audioRef.current.currentTime = 0;
-        audioRef.current.play().catch(() => {
-        });
+        audioRef.current.play().catch(() => {});
       }
       return newValue;
     });
@@ -319,11 +352,13 @@ export default function Wall() {
   };
 
   return (
-    <div className="relative w-screen bg-black py-20 box-border overflow-hidden">
-      <div className="mx-auto h-full flex flex-col overflow-hidden">
-        <h1 className="mx-5 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4 gap-3">
+    <div className="relative px-5 sm:px-20 bg-black box-border overflow-hidden">
+      <div className="mx-auto max-w-525 flex flex-col overflow-hidden">
+        <h1 className="sm:mx-30 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4">
           <div className="flex">
-            <div className={`${isMalayalam ? 'tracking-[0.2ch]' : 'tracking-[0.5ch]'} sm:tracking-[1ch] md:tracking-[2ch] lg:tracking-[3ch] xl:tracking-[4ch]`}>
+            <div
+              className={`${isMalayalam ? "tracking-[0.2ch]" : "tracking-[0.5ch]"} sm:tracking-[1ch] md:tracking-[2ch] lg:tracking-[3ch] xl:tracking-[4ch]`}
+            >
               {isMalayalam ? "അഭിപ്രായം പറയൂ" : "GUEST BOOK"}
             </div>
             <span className="font-dev">~~&gt;</span>
@@ -333,7 +368,7 @@ export default function Wall() {
         <div
           ref={chatContainerRef}
           onScroll={handleScroll}
-          className="flex flex-col h-120 overflow-y-auto overflow-x-hidden border-y-3 border-dashed border-y-[#aaa] px-5 md:px-10 py-5 my-6"
+          className="flex flex-col h-50 text-xs overflow-y-auto overflow-x-hidden border-3 border-dashed border-y-[#aaa] px-5 md:px-10 py-5 my-6"
         >
           {isLoadingMore && (
             <div className="text-center text-white/50 font-para py-4">
@@ -347,7 +382,9 @@ export default function Wall() {
           )}
           {messages.length === 0 ? (
             <p className="text-center text-white/50 font-para">
-              {isMalayalam ? "ഒരു നിമിഷം ക്ഷമിക്കു..." : "Looking 4 messages..."}
+              {isMalayalam
+                ? "ഒരു നിമിഷം ക്ഷമിക്കു..."
+                : "Looking 4 messages..."}
             </p>
           ) : (
             messages.map((m, index) => {
@@ -386,8 +423,17 @@ export default function Wall() {
                     </div>
                   )}
                   <div className="flex items-center gap-2 mb-2 py-1 w-full min-w-0">
-                    <span className="font-para flex-1 min-w-0 border-r-2 border-[#333f]" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
-                      <span className="font-bold font-dev " style={{ color: m.color || "#aaa" }}>
+                    <span
+                      className="font-para flex-1 min-w-0 border-r-2 border-[#333f]"
+                      style={{
+                        wordBreak: "break-word",
+                        overflowWrap: "anywhere",
+                      }}
+                    >
+                      <span
+                        className="font-bold font-dev "
+                        style={{ color: m.color || "#aaa" }}
+                      >
                         {m.name}:
                       </span>{" "}
                       <span className="text-white">{m.text}</span>
@@ -403,13 +449,6 @@ export default function Wall() {
         </div>
 
         <div className="flex flex-col gap-3 mx-6">
-          <span className="text-white/70 font-dev text-md">
-            {isMalayalam ? "നിങ്ങളുടെ പേര്:" : "Sending as:"}{" "}
-            <span className="text-white font-bold">
-              {userName || "getting name pls wait..."}{" *"}
-            </span>
-            <br />
-          </span>
           <input
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -417,19 +456,35 @@ export default function Wall() {
             className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 font-para focus:outline-none focus:border-white/50 transition-all"
           />
           <div className="flex items-center flex-row-reverse justify-between">
-            <span
-              onClick={send}
-              className="px-6 py-3 w-max bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-2 border-white border-dashed transition-all"
-            >
-              {isMalayalam ? "അയയ്ക്കു" : "SEND"}
+            <div>
+              {/* <span className="text-white/70 font-dev text-md">
+            {isMalayalam ? "നിങ്ങളുടെ പേര്:" : "Sending as:"}{" "}
+            <span className="text-white font-bold">
+              {userName || "getting name pls wait..."}{" *"}
             </span>
+            <br />
+          </span> */}
+              <span
+                onClick={send}
+                className="px-6 py-3 w-max cursor-pointer bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-3 border-white border-dashed transition-all"
+              >
+                {isMalayalam ? <>അയയ്ക്കു</> : <>SEND</>}
+              </span>
+              <br />
+            </div>
+            <div className="flex flex-col ">
+              <span className="text-sm mt-5">
+                {isMalayalam
+                  ? "ഐ.പി. വിവരങ്ങൾ ഈ വെബ്‌സൈറ്റ് ശേഖരിക്കുന്നതല്ല... മാന്യമായി പെരുമാറണം..."
+                  : "IP not collected. Be respectfull..."}
+              </span>
+              <span className="text-sm opacity-50">
+                {isMalayalam
+                  ? "*ദുരുപയോഗം തടയാൻ വേണ്ടി നൽകിയ ഒരു പേര്"
+                  : "*random name to prevent missuse"}
+              </span>
+            </div>
           </div>
-            <span className="text-sm mt-5">
-              {isMalayalam ? "ഐ.പി. വിവരങ്ങൾ ഈ വെബ്‌സൈറ്റ് ശേഖരിക്കുന്നതല്ല... മാന്യമായി പെരുമാറണം..." : "Does'nt collect IP information... just make sure to be respectfull..."}
-            </span>
-            <span className="text-sm opacity-50">
-              {isMalayalam ? "*ദുരുപയോഗം തടയാൻ വേണ്ടി മാത്രം നൽകിയ ഒരു പേര്" : "*just a random name, to prevent missuse ;)"}
-            </span>
         </div>
       </div>
     </div>
