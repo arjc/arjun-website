@@ -123,11 +123,11 @@ function AppContent({ parallaxRef }) {
               onClick={() => {
                 if (window.innerWidth < 768) setIsMobileNavOpen((isOpen) => !isOpen); else navigateTo('/');
               }} aria-expanded={isMobileNavOpen} aria-controls="mobile-navigation">
-              <img className="h-8 sm:h-9 md:h-10 lg:h-12 rounded-full" src={faceImg} alt="achu face logo" />
+              <img className="h-8 sm:h-9 md:h-10 lg:h-12" src={faceImg} alt="achu face logo" />
               {isMalayalam ? (<span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">അർജ.സ</span>
               ) : ( <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">arjc.me</span>)}
               <span aria-hidden="true" className={`md:hidden text-base transition-transform duration-300 ${isMobileNavOpen ? "rotate-180" : ""}`}>
-                ↓ </span>
+                ˅ </span>
             </button>
             <nav className="hidden md:flex items-center justify-center gap-6 lg:gap-8 font-dev text-sm lg:text-base">
               <a href="https://dev.arjc.me" target="_blank" rel="noreferrer">{isMalayalam ? "ദേവ." : "Dev"}</a>
