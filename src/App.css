@@ -15,6 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.gta6 {
+  background: linear-gradient(90deg,rgba(59, 28, 110, 1) 0%, rgba(252, 148, 175, 1) 55%, rgba(237, 221, 83, 1) 100%);
+}
+
 .font-des {
   font-family: "Major Mono Display", "Anek Malayalam", sans-serif;
   font-optical-sizing: auto;

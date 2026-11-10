@@ -1,7 +1,8 @@
 import "./Cube.css";
-import faceImg from "../assets/images/face.webp";
+import { faceImg } from "../App";
 import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { isDate, event6end, event6start } from "../App";
 
 
 const Cube = () => {
@@ -56,8 +57,8 @@ const Cube = () => {
   }, [isMobile]);
 
   const face = <img className="h-7 sm:h-30" src={faceImg} alt="loading..." />;
-  const dev = <span className="bg-black px-2 py-1 font-head">{isMalayalam ? "ഡെവലപ്പർ" : "DEVELOPER"}</span>;
-  const des = <span className="bg-black px-2 py-1 font-des tracking-[0.3ch]">{isMalayalam ? "ഡിസൈനർ" : "DESIGNER"}</span>;
+  const dev = <span className={(`${isDate(11, event6start, event6end) ? "bg-[#ffb570] text-black" : "bg-black"} px-2 py-1 font-head`)}>{isMalayalam ? "ഡെവലപ്പർ" : "DEVELOPER"}</span>;
+  const des = <span className={(`${isDate(11, event6start, event6end) ? "bg-[#3B1C6E] " : "bg-black"} px-2 py-1 font-des tracking-[0.3ch]`)}>{isMalayalam ? "ഡിസൈനർ" : "DESIGNER"}</span>;
 
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen z-10">

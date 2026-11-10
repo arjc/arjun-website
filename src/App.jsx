@@ -9,20 +9,29 @@ import Action from "./Action/Action.jsx";
 import Featured from "./Featured/Featured.jsx";
 import Gallery from "./Gallery/Gallery.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
-import faceImg from "./assets/images/face.webp";
+
+import regface from "./assets/images/face.webp";
+import xmasface from "./assets/images/faceXmas.png"
+import gta6face from "./assets/images/face6.png";
+
 import Contact from "./Contact/Contact.jsx";
 import Wall from "./Wall/Wall.jsx";
 import Footer from "./Footer/Footer.jsx";
 import NotFound from "./Pages/NotFound.jsx";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
+
+export const event6start = 10, event6end = 30;
+const novSnowStart = 15; 
+
 let dateObj = new Date();
-const isDate = ((month, start, end) => {
+export const isDate = ((month, start, end) => {
   const now = new Date();
   const isCurrentMonth = now.getMonth() + 1 === month;
   const isInDayRange = now.getDate() >= start && now.getDate() <= end;
   return isCurrentMonth && isInDayRange ? true : false;
 });
 
+export const faceImg = isDate(11, event6start, event6end) ? gta6face : isDate(12, 1, 31) ? xmasface : regface; 
 
 function App() {
   const parallaxRef = useRef(null);
@@ -80,7 +89,7 @@ function AppContent({ parallaxRef }) {
   // GTA 6 THEME
   useEffect(() => {
     const root = document.documentElement;
-    root.style.background = isDate(11, 1, 30)
+    root.style.background = isDate(11, event6start, event6end)
       ? "linear-gradient(180deg,rgba(59, 28, 110, 1) 0%, rgba(252, 148, 175, 1) 55%, rgba(237, 221, 83, 1) 100%)"
       : "";
 
@@ -102,7 +111,7 @@ function AppContent({ parallaxRef }) {
 
       <div ref={containerRef}>
         {/* // November half */}
-        {isDate(11, 15, 31) && <Snow />}
+        {isDate(11, novSnowStart, 30) && <Snow />}
         {/* // December full  */}
         {isDate(12, 1, 31) && <Snow />} 
         
