@@ -352,7 +352,8 @@ export default function Wall() {
   };
 
   return (
-    <div className="relative px-5 sm:px-20 bg-black box-border overflow-hidden">
+    <>
+    <div className="relative px-5 sm:px-20 pt-5 pb-30 bg-black box-border overflow-hidden">
       <div className="mx-auto max-w-525 flex flex-col overflow-hidden">
         <h1 className="sm:mx-30 flex flex-col text-6xl sm:text-4xl items-center font-des font-bold mb-4">
           <div className="flex">
@@ -368,7 +369,7 @@ export default function Wall() {
         <div
           ref={chatContainerRef}
           onScroll={handleScroll}
-          className="flex flex-col h-50 text-xs overflow-y-auto overflow-x-hidden border-3 border-dashed border-y-[#aaa] px-5 md:px-10 py-5 my-6"
+          className="flex flex-col h-50 text-xs overflow-y-auto overflow-x-hidden border border-y-[#aaa] px-5 md:px-10 py-5 my-6"
         >
           {isLoadingMore && (
             <div className="text-center text-white/50 font-para py-4">
@@ -453,7 +454,7 @@ export default function Wall() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder={isMalayalam ? "എന്തെലും പറയൂ..." : "Say something..."}
-            className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 font-para focus:outline-none focus:border-white/50 transition-all"
+            className="flex-1 px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/50 font-para focus:outline-none focus:border-white/50 transition-all"
           />
           <div className="flex items-center flex-row-reverse justify-between">
             <div>
@@ -466,7 +467,7 @@ export default function Wall() {
           </span> */}
               <span
                 onClick={send}
-                className="px-6 py-3 w-max cursor-pointer bg-white! text-black font-para font-bold rounded-xl hover:text-white hover:bg-black! text-center border-3 border-white border-dashed transition-all"
+                className="px-6 py-3 w-max cursor-pointer bg-white! text-black font-para font-bold hover:text-white hover:bg-black! text-center border border-white border-dashed transition-all"
               >
                 {isMalayalam ? <>അയയ്ക്കു</> : <>SEND</>}
               </span>
@@ -487,6 +488,46 @@ export default function Wall() {
           </div>
         </div>
       </div>
+      
     </div>
+          <div className="w-screen bg-white overflow-hidden">
+        <span
+          className="inline-block font-extrabold text-black px-1 py-3 text-6xl sm:text-8xl leading-normal whitespace-nowrap animate-marquee font-des"
+          style={{
+            animation: "marquee 16s ease-in-out infinite alternate",
+          }}
+        >
+          {isMalayalam ? (
+            <>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി ~ </span>
+              <span>നന്ദി</span>
+            </>
+          ) : (
+            <>
+              <span>Thank ~ </span>
+              <span>YOU ~ </span>
+              <span>Thank ~ </span>
+              <span>YOU ~ </span>
+              <span>Thank ~ </span>
+              <span>YOU ~ </span>
+              <span>Thank ~ </span>
+              <span>YOU ~ </span>
+              <span>Thank ~ </span>
+              <span>YOU ~ </span>
+              <span>Thank ~ </span>
+              <span>YOU </span>
+            </>
+          )}
+        </span>
+      </div>
+    </>
   );
 }

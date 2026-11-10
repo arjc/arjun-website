@@ -9,6 +9,7 @@ import Action from "./Action/Action.jsx";
 import Featured from "./Featured/Featured.jsx";
 import Gallery from "./Gallery/Gallery.jsx";
 import Photogrid from "./Photogrid/Photogrid.jsx";
+import WorksWheel from "./WorksWheel/WorksWheel.jsx";
 
 import regface from "./assets/images/face.webp";
 import xmasface from "./assets/images/faceXmas.png"
@@ -20,8 +21,10 @@ import Footer from "./Footer/Footer.jsx";
 import NotFound from "./Pages/NotFound.jsx";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 
-export const event6start = 10, event6end = 30;
-const novSnowStart = 15; 
+export const ename = "arjunliji", mname = "അർജസ";
+
+export const event6start = 15, event6end = 30;
+const novSnowStart = 25; 
 
 let dateObj = new Date();
 export const isDate = ((month, start, end) => {
@@ -63,7 +66,10 @@ function AppContent({ parallaxRef }) {
 
     if (scrollPosition !== undefined) {
       setIs404(false);
-      if (parallaxRef.current) setTimeout(() => parallaxRef.current.scrollTo(scrollPosition), 100);
+      const timeoutId = setTimeout(() => {
+        parallaxRef.current?.scrollTo(scrollPosition);
+      }, 100);
+      return () => clearTimeout(timeoutId);
     } else setIs404(true);
   }, [parallaxRef]);
   const navigateTo = (path) => {
@@ -124,11 +130,12 @@ function AppContent({ parallaxRef }) {
                 if (window.innerWidth < 768) setIsMobileNavOpen((isOpen) => !isOpen); else navigateTo('/');
               }} aria-expanded={isMobileNavOpen} aria-controls="mobile-navigation">
               <img className="h-8 sm:h-9 md:h-10 lg:h-12" src={faceImg} alt="achu face logo" />
-              {isMalayalam ? (<span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">അർജ.സ</span>
-              ) : ( <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">arjc.me</span>)}
+              {isMalayalam ? (<span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">{mname}</span>
+              ) : ( <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">{ename}</span>)}
               <span aria-hidden="true" className={`md:hidden text-base transition-transform duration-300 ${isMobileNavOpen ? "rotate-180" : ""}`}>
                 ˅ </span>
             </button>
+
             <nav className="hidden md:flex items-center justify-center gap-6 lg:gap-8 font-dev text-sm lg:text-base">
               <a href="https://dev.arjc.me" target="_blank" rel="noreferrer">{isMalayalam ? "ദേവ." : "Dev"}</a>
               <a href="https://music.arjc.me" target="_blank" rel="noreferrer">{isMalayalam ? "സംഗീതം" : "Music"}</a>
@@ -152,13 +159,13 @@ function AppContent({ parallaxRef }) {
             style={{ opacity: 0.25 * 1 / scrollY }}>
             {isDate(12, 31, 31) || isDate(1, 1, 2) ? `2 0 
             ${Math.floor((dateObj.getFullYear() - 2000) / 10)}   // NEW YEAR
-            ${dateObj.getFullYear() - 2020}` : isMalayalam ? "അർജ.സ" : "arjc.me"}
+            ${dateObj.getFullYear() - 2020}` : isMalayalam ? mname : ename}
           </span>
 
         </div>
 
         {/* CTX */}
-        <Parallax ref={parallaxRef} pages={window.innerWidth >= 768 ? 5 : 5.74} style={{ top: 0, left: 0 }} config={{ mass: 1, tension: 170, friction: 26 }}>
+        <Parallax ref={parallaxRef} pages={window.innerWidth >= 768 ? 5.11 : 4.661} style={{ top: 0, left: 0 }} config={{ mass: 1, tension: 170, friction: 26 }}>
 
           {isDate(1, 1, 2) ? <Fireworks className="absolute" /> : <></>}
 
@@ -172,9 +179,10 @@ function AppContent({ parallaxRef }) {
             <Photogrid />
             <Contact />
             <Wall />
+            {/* <WorksWheel works={["cheeta",]} parallaxRef={parallaxRef} /> */}
           </ParallaxLayer>
           
-          <ParallaxLayer speed={1} offset={window.innerWidth >= 768 ? 4.5 : 5} factor={0.5}>
+          <ParallaxLayer speed={1} offset={window.innerWidth >= 768 ? 4.5 : 3.99999999999999978} factor={0.5}>
             <Footer />
           </ParallaxLayer>
         </Parallax>
