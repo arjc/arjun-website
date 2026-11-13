@@ -23,7 +23,7 @@ import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 
 export const ename = "arjunliji", mname = "അർജസ";
 
-export const event6start = 15, event6end = 30;
+export const event6start = 13, event6end = 30;
 const novSnowStart = 25; 
 
 let dateObj = new Date();
